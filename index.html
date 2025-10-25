@@ -4,38 +4,93 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Repair shop Beshoe｜靴修理・クリーニング</title>
-  <meta name="description" content="Repair shop Beshoe｜靴修理・クリーニング。黒基調のシンプルな構成。料金・利用方法・問い合わせ・SNS。英語表示切替対応。" />
-  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="Repair shop Beshoe｜靴修理・クリーニング。和モダンの清潔感あるデザイン。料金・利用方法・問い合わせ・SNS。英語表示切替対応。" />
+  <meta name="theme-color" content="#0f172a" />
   <style>
-    :root{--bg:#000;--fg:#f6f6f6;--muted:#a7a7a7;--line:#1a1a1a;--accent:#c6a869}
+    /* 和紙×コンクリの淡色ベース */
+    :root{
+      --bg:#f5f2ea;      /* 生成り */
+      --paper:#ffffff;   /* 白紙 */
+      --ink:#0f172a;     /* 紺藍 */
+      --char:#202427;    /* 墨黒(本文) */
+      --muted:#6b7280;   /* 補助文字 */
+      --line:#dad5c8;    /* 罫線 */
+      --accent:#8f7a66;  /* 焦茶 */
+      --accent2:#5a7a6a; /* 青緑 */
+    }
     *{box-sizing:border-box}
-    html,body{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Noto Sans JP",sans-serif;line-height:1.7}
-    a{color:var(--fg);text-decoration:none}
+    html,body{
+      margin:0;
+      color:var(--char);
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Noto Sans JP",sans-serif;
+      line-height:1.7;
+      /* コンクリ風の繊細な斑点＋和紙グラデ */
+      background:
+        radial-gradient(1px 1px at 12% 18%, rgba(0,0,0,.04) 0, rgba(0,0,0,0) 60%),
+        radial-gradient(1px 1px at 72% 8%,  rgba(0,0,0,.03) 0, rgba(0,0,0,0) 55%),
+        radial-gradient(1.2px 1.2px at 40% 78%, rgba(0,0,0,.03) 0, rgba(0,0,0,0) 60%),
+        radial-gradient(0.8px 0.8px at 86% 58%, rgba(0,0,0,.025) 0, rgba(0,0,0,0) 55%),
+        linear-gradient(180deg, #faf7f0 0%, #f5f2ea 50%, #f0ede6 100%);
+      background-attachment: fixed;
+    }
+    a{color:var(--ink);text-decoration:none}
     img{max-width:100%;display:block}
-    .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
-    header{position:sticky;top:0;z-index:50;background:rgba(0,0,0,.7);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--line)}
+    .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+
+    /* ヘッダー */
+    header{
+      position:sticky;top:0;z-index:50;
+      background:rgba(255,255,255,.7);
+      backdrop-filter:saturate(140%) blur(10px);
+      border-bottom:1px solid var(--line);
+    }
     .nav{height:64px;display:flex;align-items:center;justify-content:space-between}
-    .brand{font-weight:800;letter-spacing:.06em}
+    .brand{font-weight:800;letter-spacing:.04em;color:var(--ink)}
     .menu{display:flex;gap:16px;align-items:center}
     .menu a{padding:8px 10px;border-radius:10px}
-    .menu a:hover{background:#111}
-    .lang{border:1px solid var(--line);border-radius:10px;padding:6px 10px;background:#0f0f0f;cursor:pointer}
+    .menu a:hover{background:#efede7}
+    .lang{border:1px solid var(--line);border-radius:10px;padding:6px 10px;background:#ffffff;cursor:pointer;color:var(--ink)}
+
+    /* ヒーロー：淡色写真 or テクスチャ */
     .hero{position:relative}
-    .hero .kv{height:56vh;min-height:360px;border-bottom:1px solid var(--line);background:#0a0a0a url('hero.jpg') center/cover no-repeat;display:flex;align-items:flex-end}
-    .hero .copy{padding:24px 20px 28px;background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.6));width:100%}
-    .h1{font-size:clamp(28px,5vw,48px);margin:0 0 6px}
+    .kv{
+      height:52vh;min-height:360px;border-bottom:1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.0), rgba(255,255,255,.7)),
+        url('hero.jpg') center/cover no-repeat;
+      display:flex;align-items:flex-end;
+    }
+    .copy{width:100%}
+    .copy-box{
+      margin:0 0 24px 0;padding:16px 18px;border:1px solid var(--line);
+      border-radius:14px;background:rgba(255,255,255,.85)
+    }
+    .h1{font-size:clamp(26px,4.2vw,42px);margin:0 0 6px;color:var(--ink)}
     .lead{color:var(--muted);margin:0}
+
+    /* セクション */
     section{padding:42px 0;border-bottom:1px solid var(--line)}
-    h2{margin:0 0 12px;font-size:clamp(20px,3.2vw,28px)}
-    .card{background:#0b0b0b;border:1px solid var(--line);border-radius:14px;padding:18px}
+    h2{margin:0 0 12px;color:var(--ink);font-size:clamp(20px,3.2vw,28px)}
+    .card{
+      background:var(--paper);border:1px solid var(--line);
+      border-radius:14px;padding:18px;box-shadow:0 6px 20px rgba(17,24,39,.05)
+    }
     .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
     .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-    .btn{display:inline-block;padding:10px 14px;border:1px solid var(--line);border-radius:10px;background:#0f0f0f}
+    .btn{display:inline-block;padding:10px 14px;border:1px solid var(--line);border-radius:10px;background:#ffffff;color:var(--ink)}
+    .btn.primary{border-color:#d4c9b6;background:linear-gradient(#fff,#fbf8f3)}
     .note{color:var(--muted);font-size:13px}
     ul{padding-left:18px;margin:10px 0}
+
+    /* ギャラリー占位 */
     .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-    .gallery div{aspect-ratio:4/3;background:#0d0d0d;border:1px dashed #222;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#666}
+    .gallery div{
+      aspect-ratio:4/3;border:1px dashed #d8d1c4;border-radius:10px;background:#f9f7f2;color:#a3a3a3;
+      display:flex;align-items:center;justify-content:center
+    }
+
     footer{color:var(--muted);padding:36px 0}
+
     @media (max-width:900px){.grid-3,.grid-2{grid-template-columns:1fr}}
   </style>
 </head>
@@ -55,15 +110,19 @@
   </header>
 
   <main>
+    <!-- Hero -->
     <section class="hero" id="home">
       <div class="kv">
         <div class="wrap copy">
-          <h1 class="h1" data-i18n="hero.title">一足ずつ、丁寧に直す。</h1>
-          <p class="lead" data-i18n="hero.lead">革靴・スニーカーの修理と洗浄。黒基調の静かな仕上がり。店頭と郵送で受付。</p>
+          <div class="copy-box">
+            <h1 class="h1" data-i18n="hero.title">一足ずつ、丁寧に直す。</h1>
+            <p class="lead" data-i18n="hero.lead">革靴・スニーカーの修理と洗浄。清潔感ある和モダンの仕上がり。店頭と郵送で受付。</p>
+          </div>
         </div>
       </div>
     </section>
 
+    <!-- 概要 -->
     <section id="about">
       <div class="wrap">
         <h2 data-i18n="about.h">概要</h2>
@@ -74,6 +133,7 @@
       </div>
     </section>
 
+    <!-- 料金 -->
     <section id="price">
       <div class="wrap">
         <h2 data-i18n="price.h">料金</h2>
@@ -98,6 +158,7 @@
       </div>
     </section>
 
+    <!-- 利用方法 -->
     <section id="how">
       <div class="wrap">
         <h2 data-i18n="how.h">利用方法</h2>
@@ -126,18 +187,18 @@
       </div>
     </section>
 
+    <!-- 事例 -->
     <section id="gallery">
       <div class="wrap">
         <h2 data-i18n="gal.h">事例</h2>
         <div class="gallery">
-          <div>Photo 1</div>
-          <div>Photo 2</div>
-          <div>Photo 3</div>
+          <div>Photo 1</div><div>Photo 2</div><div>Photo 3</div>
         </div>
-        <p class="note" data-i18n="gal.note">写真は順次追加。hero.jpg 等は後で差し替え。</p>
+        <p class="note" data-i18n="gal.note">写真は順次追加。hero.jpg は淡色推奨。</p>
       </div>
     </section>
 
+    <!-- 問い合わせ -->
     <section id="contact">
       <div class="wrap">
         <h2 data-i18n="ct.h">問い合わせ</h2>
@@ -151,13 +212,14 @@
           <div class="card">
             <h3 data-i18n="notice.h">開店前セール</h3>
             <p data-i18n="notice.p1">限定メニューを通常の半額で受付。協力者はオープン後も同条件であと2回まで利用可。</p>
-            <a class="btn" href="#contact" data-i18n="notice.btn">申し込み・問い合わせ</a>
+            <a class="btn primary" href="#contact" data-i18n="notice.btn">申し込み・問い合わせ</a>
             <p class="note" data-i18n="notice.note">期間と内容は変更の可能性あり。</p>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- SNS -->
     <section id="sns">
       <div class="wrap">
         <h2 data-i18n="sns.h">各SNS</h2>
@@ -184,11 +246,11 @@
     const dict = {
       ja: {
         nav:{about:'概要',price:'料金',how:'利用方法',contact:'問い合わせ',sns:'各SNS'},
-        hero:{title:'一足ずつ、丁寧に直す。',lead:'革靴・スニーカーの修理と洗浄。黒基調の静かな仕上がり。店頭と郵送で受付。'},
+        hero:{title:'一足ずつ、丁寧に直す。',lead:'革靴・スニーカーの修理と洗浄。清潔感ある和モダンの仕上がり。店頭と郵送で受付。'},
         about:{h:'概要',p1:'Repair shop Beshoe は、元の形と履き心地を守る方針で、必要十分な修理と手入れを行います。前後写真を記録し、方法を再現できるよう管理します。',p2:'対象：革靴、パンプス、ブーツ、スニーカー。特殊素材は事前相談。'},
         price:{h:'料金',m1:'トップリフト交換',m2:'ハーフソール貼り',m3:'靴クリーニング',n1:'かかとのゴム交換。素材で金額変動。',n2:'前底のすり減り防止。薄さ選択可。',n3:'汚れ・におい除去。色補修は別見積。',ship:'送料：返送は実費。2足同梱または税込¥5,000以上で返送無料（キャンペーンで変動）。'},
         how:{h:'利用方法',shop:'店頭',post:'郵送',s1:'来店・状態確認',s2:'見積・納期案内',s3:'作業',s4:'受け取り・支払い',p1:'写真と希望内容をLINEまたはフォームで送信',p2:'概算見積と発送先を返信',p3:'到着後に本見積→了承後に作業',p4:'完了写真→入金確認→返送',note1:'所在地・時間は確定後に告知。',note2:'梱包は新聞紙などで固定。伝票番号を共有。'},
-        gal:{h:'事例',note:'写真は順次追加。hero.jpg 等は後で差し替え。'},
+        gal:{h:'事例',note:'写真は順次追加。hero.jpg は淡色推奨。'},
         ct:{h:'問い合わせ',mail:'メール',form:'フォーム',note:'写真はメールまたはLINEで送信可。'},
         notice:{h:'開店前セール',p1:'限定メニューを通常の半額で受付。協力者はオープン後も同条件であと2回まで利用可。',btn:'申し込み・問い合わせ',note:'期間と内容は変更の可能性あり。'},
         sns:{h:'各SNS',note:'最新情報はLINEで先行配信。'},
@@ -196,11 +258,11 @@
       },
       en: {
         nav:{about:'About',price:'Price',how:'How to use',contact:'Contact',sns:'SNS'},
-        hero:{title:'Repair one pair at a time.',lead:'Shoe repair and cleaning. Calm, black-toned look. Walk-in and mail-in accepted.'},
+        hero:{title:'Repair one pair at a time.',lead:'Shoe repair and cleaning. Clean, Japanese-modern look. Walk-in and mail-in accepted.'},
         about:{h:'About',p1:'Repair shop Beshoe repairs and cares for shoes while keeping the original shape and comfort. We record before/after photos and document methods for repeatability.',p2:'Targets: leather shoes, pumps, boots, sneakers. Please consult for special materials.'},
         price:{h:'Price',m1:'Top lift replacement',m2:'Half sole',m3:'Shoe cleaning',n1:'Heel rubber replacement. Price varies by material.',n2:'Front sole protection. Thickness selectable.',n3:'Deodorizing and stain removal. Recolor quoted separately.',ship:'Shipping: return at actual cost. Return free for two pairs in one box or orders over ¥5,000 (campaign may vary).'},
         how:{h:'How to use',shop:'In-store',post:'Mail-in',s1:'Visit & inspection',s2:'Quote & lead time',s3:'Work',s4:'Pickup & payment',p1:'Send photos and request via LINE or form',p2:'We reply with rough quote and shipping address',p3:'Final quote after arrival → work after approval',p4:'Completion photos → payment → return shipment',note1:'Address & hours will be announced.',note2:'Pack with paper to fix shape. We share tracking number.'},
-        gal:{h:'Works',note:'Photos will be added. Replace hero.jpg later.'},
+        gal:{h:'Works',note:'Photos will be added. Use a light hero.jpg for best contrast.'},
         ct:{h:'Contact',mail:'Email',form:'Form',note:'You can send photos via email or LINE.'},
         notice:{h:'Pre-open offer',p1:'Limited menu at half price. Same condition available two more times after opening for supporters.',btn:'Inquiry / Apply',note:'Content and period may change.'},
         sns:{h:'SNS',note:'LINE sends updates first.'},
