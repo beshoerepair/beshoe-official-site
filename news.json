@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Repair shop Beshoe｜靴修理・クリーニング</title>
+<meta name="description" content="Repair shop Beshoe｜靴修理・クリーニング。和モダンの静かなデザイン。料金と利用方法はデータ駆動で簡単更新。お知らせはJSONから自動表示。英語切替対応。" />
+<meta name="theme-color" content="#0f172a" />
+<style>
+  :root{
+    --ink:#0f172a; --char:#222; --muted:#6b7280; --line:#dad5c8;
+    --paper:#ffffff; --paper2:#fbf8f3; --accent:#8f7a66; --accent2:#5a7a6a;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;line-height:1.7;color:var(--char);font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Noto Sans JP",sans-serif}
+  /* コンクリ背景（HTTPSフリー画像＋薄レイヤー） */
+  body{
+    background:
+      linear-gradient(180deg,rgba(255,255,255,.86),rgba(255,255,255,.9)),
+      url('https://images.unsplash.com/photo-1600607688334-cdf3a3e19ebc?auto=format&fit=crop&w=1920&q=80') center/cover fixed no-repeat;
+  }
+  a{text-decoration:none;color:var(--ink)}
+  img{max-width:100%;display:block;border-radius:12px;border:1px solid var(--line)}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+
+  /* ヘッダー */
+  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.75);backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid var(--line)}
+  .nav{height:64px;display:flex;align-items:center;justify-content:space-between}
+  .brand{font-weight:800;letter-spacing:.04em;color:var(--ink)}
+  .menu{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  .menu a,.menu button{padding:8px 12px;border-radius:10px;border:1px solid transparent;background:transparent;cursor:pointer}
+  .menu a:hover,.menu button:hover{background:#efede7}
+  .lang{border:1px solid var(--line);background:#fff}
+  .active{border-color:var(--line);background:#fff}
+
+  /* セクションとカード */
+  main{padding:18px 0 40px}
+  section{display:none;padding:28px 0;border-bottom:1px solid var(--line)}
+  section.active{display:block}
+  h1,h2{color:var(--ink);margin:0 0 12px}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:0 6px 18px rgba(17,24,39,.05)}
+  .grid-2{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .strip{height:22vw;max-height:260px;min-height:120px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:18px 0;border-radius:12px}
+  .note{color:var(--muted);font-size:13px}
+
+  /* 画像プレースホルダ（仮フリー画像） */
+  .hero{
+    height:52vh;min-height:360px;margin:14px 0 0;border-radius:14px;border:1px solid var(--line);
+    background:
+      linear-gradient(180deg,rgba(255,255,255,.0),rgba(255,255,255,.75)),
+      url('https://images.unsplash.com/photo-1520256862855-398228c41684?auto=format&fit=crop&w=2400&q=80') center/cover no-repeat;
+  }
+
+  footer{padding:36px 0;color:var(--muted)}
+  @media (max-width:900px){.grid-2,.grid-3{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <div class="brand">Repair shop Beshoe</div>
+    <nav class="menu" id="nav">
+      <a href="#about" data-i18n="nav.about">概要</a>
+      <a href="#news"  data-i18n="nav.news">お知らせ</a>
+      <a href="#price" data-i18n="nav.price">料金</a>
+      <a href="#how"   data-i18n="nav.how">利用方法</a>
+      <a href="#contact" data-i18n="nav.contact">問い合わせ</a>
+      <a href="#sns"   data-i18n="nav.sns">各SNS</a>
+      <button class="lang" id="langBtn" aria-label="言語切替">EN</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <!-- ヒーロー帯（画像差し込み枠） -->
+  <div class="hero" aria-label="hero image"></div>
+
+  <!-- 概要 -->
+  <section id="about" class="active">
+    <h2 data-i18n="about.h">概要</h2>
+    <div class="grid-2">
+      <div class="card">
+        <p data-i18n="about.p1">
+          ものづくりの現場で磨いた手と目で、必要十分の処置を行います。ベテラン修理職人から学んだ靴の構造と手製靴の基礎を土台に、修理とクリーニングを丁寧に行います。履き心地と形を守ることを優先し、前後写真で記録、方法は再現できるように管理します。作業前に見積と納期をお伝えします。
+        </p>
+        <p class="note" data-i18n="about.p2">対象：革靴、パンプス、ブーツ、スニーカー。特殊素材や難事例は事前にご相談ください。</p>
+      </div>
+      <div class="card">
+        <h3 data-i18n="notice.h">開店前セール</h3>
+        <p data-i18n="notice.p1">限定メニューを通常の半額で受付。協力者はオープン後も同条件であと2回まで利用可。</p>
+        <p class="note" data-i18n="notice.note">期間と内容は変更の可能性あり。</p>
+      </div>
+    </div>
+    <!-- セクション間 画像帯（仮） -->
+    <div class="strip" style="background:url('https://images.unsplash.com/photo-1548095115-45697e51336b?auto=format&fit=crop&w=2400&q=80') center/cover no-repeat" aria-hidden="true"></div>
+  </section>
+
+  <!-- お知らせ：news.json を自動表示 -->
+  <section id="news">
+    <h2 data-i18n="news.h">お知らせ</h2>
+    <div id="newsList" class="card"></div>
+    <p class="note" data-i18n="news.note">最新のお知らせは随時更新します。</p>
+    <div class="strip" style="background:url('https://images.unsplash.com/photo-1501045661006-fcebe0257c3f?auto=format&fit=crop&w=2400&q=80') center/cover no-repeat" aria-hidden="true"></div>
+  </section>
+
+  <!-- 料金（データ駆動） -->
+  <section id="price">
+    <h2 data-i18n="price.h">料金</h2>
+    <div id="priceCards" class="grid-3"></div>
+    <p class="note" data-i18n="price.ship">送料：返送は実費。2足同梱または税込¥5,000以上で返送無料（キャンペーンで変動）。</p>
+  </section>
+
+  <!-- 利用方法（データ駆動） -->
+  <section id="how">
+    <h2 data-i18n="how.h">利用方法</h2>
+    <div class="grid-2">
+      <div class="card">
+        <h3 data-i18n="how.shop">店頭</h3>
+        <ol id="howShop"></ol>
+        <p class="note" data-i18n="how.note1">所在地・時間は確定後に告知。</p>
+      </div>
+      <div class="card">
+        <h3 data-i18n="how.post">郵送</h3>
+        <ol id="howPost"></ol>
+        <p class="note" data-i18n="how.note2">梱包は新聞紙などで固定。伝票番号を共有。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 問い合わせ（フォーム廃止） -->
+  <section id="contact">
+    <h2 data-i18n="ct.h">問い合わせ</h2>
+    <div class="grid-2">
+      <div class="card">
+        <p><strong>LINE</strong>：<a href="https://lin.ee/XXXXXXX" target="_blank" rel="noopener">https://lin.ee/XXXXXXX</a></p>
+        <p><strong data-i18n="ct.mail">メール</strong>：<a href="mailto:beshoe.repair@gmail.com">beshoe.repair@gmail.com</a></p>
+        <p><strong data-i18n="ct.tel">電話（仮）</strong>：<a href="tel:000-0000-0000">000-0000-0000</a></p>
+        <p class="note" data-i18n="ct.note">営業時間・所在地は決定次第お知らせします。</p>
+      </div>
+      <div class="card">
+        <h3 data-i18n="contact.imgH">参考イメージ</h3>
+        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=80" alt="作業イメージ">
+      </div>
+    </div>
+  </section>
+
+  <!-- 各種SNS（事例は削除しSNSに統合） -->
+  <section id="sns">
+    <h2 data-i18n="sns.h">各SNS</h2>
+    <div class="grid-3">
+      <a class="card" href="https://www.instagram.com/beshoe.repair" target="_blank" rel="noopener">Instagram @beshoe.repair →</a>
+      <a class="card" href="https://x.com/BeShoe_repair" target="_blank" rel="noopener">X @BeShoe_repair →</a>
+      <a class="card" href="https://www.tiktok.com/@beshoe.repair" target="_blank" rel="noopener">TikTok @beshoe.repair →</a>
+      <a class="card" href="https://www.youtube.com/" target="_blank" rel="noopener">YouTube →</a>
+      <a class="card" href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook（仮） →</a>
+    </div>
+    <p class="note" data-i18n="sns.note">施工事例は各SNSで発信します。</p>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>© <span id="year"></span> Repair shop Beshoe</p>
+    <p class="note" data-i18n="legal">所在地・事業者情報・特定商取引法表記は決定次第掲載。</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* 多言語辞書＋データ（価格・工程） */
+  const DATA = {
+    ja: {
+      nav:{about:'概要',news:'お知らせ',price:'料金',how:'利用方法',contact:'問い合わせ',sns:'各SNS'},
+      about:{h:'概要',
+        p1:'ものづくりの現場で磨いた手と目で、必要十分の処置を行います。ベテラン修理職人から学んだ靴の構造と手製靴の基礎を土台に、修理とクリーニングを丁寧に行います。履き心地と形を守ることを優先し、前後写真で記録、方法は再現できるように管理します。作業前に見積と納期をお伝えします。',
+        p2:'対象：革靴、パンプス、ブーツ、スニーカー。特殊素材や難事例は事前にご相談ください。'
+      },
+      notice:{h:'開店前セール',p1:'限定メニューを通常の半額で受付。協力者はオープン後も同条件であと2回まで利用可。',note:'期間と内容は変更の可能性あり。'},
+      news:{h:'お知らせ',note:'最新のお知らせは随時更新します。'},
+      price:{h:'料金',
+        ship:'送料：返送は実費。2足同梱または税込¥5,000以上で返送無料（キャンペーンで変動）。',
+        items:[
+          {title:'トップリフト交換', price:'¥3,500〜', note:'かかとのゴム交換。素材で金額変動。'},
+          {title:'ハーフソール貼り', price:'¥3,500〜', note:'前底のすり減り防止。薄さ選択可。'},
+          {title:'つま先補強',       price:'¥2,500〜', note:'ラバーまたは革で補強。'},
+          {title:'オールソール',     price:'¥12,000〜', note:'素材・製法で変動。見積提示後に作業。'},
+          {title:'靴クリーニング',   price:'¥5,000〜', note:'汚れ・におい除去。色補修は別見積。'},
+          {title:'スエードケア',     price:'¥4,000〜', note:'起毛の整えと防汚。'}
+        ]
+      },
+      how:{h:'利用方法',shop:'店頭',post:'郵送',
+        s:['来店・状態確認','見積・納期案内','作業','受け取り・支払い'],
+        p:['写真と希望内容をLINEまたはメールで送信','概算見積と発送先を返信','到着後に本見積→了承後に作業','完了写真→入金確認→返送'],
+        note1:'所在地・時間は確定後に告知。',note2:'梱包は新聞紙などで固定。伝票番号を共有。'
+      },
+      ct:{h:'問い合わせ',mail:'メール',tel:'電話（仮）',note:'営業時間・所在地は決定次第お知らせします。'},
+      contact:{imgH:'参考イメージ'},
+      sns:{h:'各SNS',note:'施工事例は各SNSで発信します。'},
+      legal:'所在地・事業者情報・特定商取引法表記は決定次第掲載。'
+    },
+    en: {
+      nav:{about:'About',news:'News',price:'Price',how:'How to use',contact:'Contact',sns:'SNS'},
+      about:{h:'About',
+        p1:'I work with practical, minimal interventions grounded in hands-on craft. Trained by a veteran repair artisan, I repair and clean with priority on preserving fit and shape. I document before/after photos and provide a clear quote and lead time before starting.',
+        p2:'Targets: leather shoes, pumps, boots, sneakers. Please consult for special materials or complex cases.'
+      },
+      notice:{h:'Pre-open offer',p1:'Limited menu at half price. Same condition available two more times after opening for supporters.',note:'Content and period may change.'},
+      news:{h:'News',note:'We update notices as needed.'},
+      price:{h:'Price',
+        ship:'Shipping: return at actual cost. Free for two pairs in one box or orders over ¥5,000 (campaign may vary).',
+        items:[
+          {title:'Top lift replacement', price:'¥3,500〜', note:'Heel rubber. Varies by material.'},
+          {title:'Half sole',            price:'¥3,500〜', note:'Front sole protection. Thickness selectable.'},
+          {title:'Toe protection',       price:'¥2,500〜', note:'Rubber or leather.'},
+          {title:'Full resole',          price:'¥12,000〜', note:'Depends on material/method. Quoted first.'},
+          {title:'Shoe cleaning',        price:'¥5,000〜', note:'Deodorizing and stain removal. Recolor separate.'},
+          {title:'Suede care',           price:'¥4,000〜', note:'Raise and protect the nap.'}
+        ]
+      },
+      how:{h:'How to use',shop:'In-store',post:'Mail-in',
+        s:['Visit & inspection','Quote & lead time','Work','Pickup & payment'],
+        p:['Send photos and request via LINE or email','We reply with rough quote and shipping address','Final quote after arrival → work after approval','Completion photos → payment → return shipment'],
+        note1:'Address & hours will be announced.',note2:'Pack with paper to hold shape. We share tracking.'
+      },
+      ct:{h:'Contact',mail:'Email',tel:'Phone (temp)',note:'Address and hours will be announced.'},
+      contact:{imgH:'Reference image'},
+      sns:{h:'SNS',note:'We post works on SNS.'},
+      legal:'Company info and legal notice will be posted later.'
+    }
+  };
+
+  /* 言語切替 */
+  let lang = 'ja';
+  const langBtn = document.getElementById('langBtn');
+  function i18nApply(){
+    const D = DATA[lang];
+    document.documentElement.lang = lang;
+    document.title = lang==='ja' ? 'Repair shop Beshoe｜靴修理・クリーニング' : 'Repair shop Beshoe｜Shoe Repair & Cleaning';
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+      const path = el.getAttribute('data-i18n').split('.');
+      let cur = D;
+      for(const k of path) cur = cur?.[k];
+      if(typeof cur==='string') el.textContent = cur;
+    });
+    // 再描画（料金・工程）
+    renderPrice(); renderHow();
+  }
+  langBtn.addEventListener('click',()=>{ lang = (lang==='ja')?'en':'ja'; langBtn.textContent = (lang==='ja')?'EN':'日本語'; i18nApply(); });
+
+  /* SPA風切替（スクロールなし） */
+  const sections = Array.from(document.querySelectorAll('main section'));
+  function switchTo(id){
+    sections.forEach(s=>s.classList.toggle('active', s.id===id));
+    document.querySelectorAll('#nav a').forEach(a=>a.classList.toggle('active', a.getAttribute('href')==='#'+id));
+  }
+  document.getElementById('nav').addEventListener('click', (e)=>{
+    if(e.target.tagName==='A'){
+      e.preventDefault();
+      const id = e.target.getAttribute('href').slice(1);
+      switchTo(id);
+    }
+  });
+
+  /* 料金カード描画（データ駆動） */
+  function renderPrice(){
+    const box = document.getElementById('priceCards');
+    const list = DATA[lang].price.items;
+    box.innerHTML = list.map(item=>`
+      <div class="card">
+        <h3>${item.title}</h3>
+        <p><strong>${item.price}</strong></p>
+        <p class="note">${item.note}</p>
+      </div>`).join('');
+  }
+
+  /* 利用方法描画（データ駆動） */
+  function renderHow(){
+    const D = DATA[lang].how;
+    const shop = document.getElementById('howShop');
+    const post = document.getElementById('howPost');
+    shop.innerHTML = D.s.map(x=>`<li>${x}</li>`).join('');
+    post.innerHTML = D.p.map(x=>`<li>${x}</li>`).join('');
+  }
+
+  /* お知らせ（news.json） */
+  async function loadNews(){
+    try{
+      const r = await fetch('news.json', {cache:'no-store'});
+      const list = await r.json();
+      const el = document.getElementById('newsList');
+      el.innerHTML = list.map(n=>`
+        <div style="margin:10px 0;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--paper2)">
+          <div><strong>${n.date}</strong>　${n.title}</div>
+          <div class="note">${n.text}</div>
+        </div>
+      `).join('');
+    }catch(e){
+      document.getElementById('newsList').innerHTML = '<p class="note">お知らせを読み込めませんでした。</p>';
+    }
+  }
+
+  // 初期表示
+  i18nApply(); renderPrice(); renderHow(); loadNews(); switchTo('about');
+</script>
+</body>
+</html>
