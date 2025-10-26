@@ -354,7 +354,7 @@
   /* お知らせ（news.json）— セール強調 */
   async function loadNews(){
     try{
-      const r = await fetch('news.json', {cache:'no-store'});
+      const r = await fetch('news.json?v=' + Date.now(), {cache:'no-store'});
       const list = await r.json();
       const el = document.getElementById('newsList');
       el.innerHTML = list.map(n=>{
