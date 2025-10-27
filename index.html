@@ -7,9 +7,9 @@
   <meta name="description" content="Repair shop Beshoe｜靴修理・クリーニング。お知らせ＋営業日カレンダーをトップ表示。料金はカテゴリ別に整理。英語切替対応。" />
   <meta name="theme-color" content="#0f172a" />
 
-  <!-- フォント：Corporate Logo（本文）＋ Shippori Mincho（見出し） -->
+  <!-- フォント：Corporate Logo（本文）＋ Shippori Mincho（見出し）＋ Dela Gothic One（レトロ見出し用） -->
   <link href="https://cdn.jsdelivr.net/gh/qrac/fonts-corporate-logo@latest/corporate-logo.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Dela+Gothic+One&display=swap" rel="stylesheet">
 
   <style>
     :root{
@@ -24,16 +24,21 @@
     .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
 
     /* ヘッダー */
-    header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.86);backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid rgba(0,0,0,.06)}
-    .nav{height:78px;display:flex;align-items:center;justify-content:space-between}
-    .brand{display:flex;align-items:flex-end;gap:8px}
-    .brand .small{font-size:14px;color:#666;letter-spacing:.1em}
-    .brand .big{font-size:clamp(30px,6vw,46px);font-weight:800;letter-spacing:.04em;color:var(--ink);font-family:'Shippori Mincho','Noto Serif JP',serif}
-    .brand .sub{font-size:12px;color:var(--muted);letter-spacing:.12em}
+    header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.86);backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid rgba(0,0,0,.06)}
+    .nav{height:78px;display:flex;align-items:center;justify-content:space-between;position:relative}
+
+    /* ブランド表記：上に Repair shop、中央 Beshoe、下に レトロ日本語 */
+    .brand{text-align:center;line-height:1.1}
+    .brand-top{font-size:13px;letter-spacing:.12em;color:#555;display:block}
+    .brand-main{font-family:'Shippori Mincho','Noto Serif JP',serif;font-size:clamp(30px,6vw,46px);font-weight:800;letter-spacing:.04em;color:var(--ink);display:block}
+    .brand-sub{font-family:'Dela Gothic One','Yu Mincho',serif;font-size:13px;color:#555;margin-top:2px}
+
+    /* ナビ＋ハンバーガー */
     .menu{display:flex;gap:10px;align-items:center;flex-wrap:nowrap}
     .menu a,.menu button{padding:8px 12px;border-radius:10px;background:transparent;cursor:pointer;text-decoration:none;color:var(--ink)}
     .menu a:hover,.menu button:hover{background:#efede7}
     .lang{border:1px solid #ddd;background:#fff}
+    .hamburger{display:none;border:1px solid #ddd;background:#fff;border-radius:10px;padding:8px 12px}
 
     /* 見出し */
     h1,h2,h3,h4{font-family:'Shippori Mincho','Noto Serif JP',serif;color:var(--ink);margin:0 0 14px;text-align:center;letter-spacing:.04em}
@@ -52,8 +57,9 @@
     .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
     .strip{height:22vw;max-height:260px;min-height:120px;margin:18px 0;border-radius:12px}
 
-    /* ヒーロー */
-    .hero{height:44vh;min-height:300px;margin:14px 0 0;border-radius:14px;background:linear-gradient(180deg,rgba(255,255,255,0),rgba(255,255,255,.6)),url('IMG_0099.jpg') center/contain no-repeat}
+    /* ヒーロー：IMG_0099.jpg を要素で配置し横幅を1100px上限に */
+    .hero{display:flex;justify-content:center;align-items:center;margin:14px 0 0}
+    .hero img{width:100%;max-width:1100px;height:auto;object-fit:contain;display:block;border-radius:14px;box-shadow:0 6px 18px rgba(17,24,39,.06);background:#fff}
 
     /* SNS */
     .sns-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
@@ -81,31 +87,29 @@
     .steps li::before{content:counter(step);grid-column:1;grid-row:1;display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:var(--deepgreen);color:#fff;font-weight:800}
     .steps li:not(:last-child)::after{content:"↓";grid-column:1 / -1;justify-self:center;color:var(--deepgreen);font-weight:800;margin-top:14px}
 
-    /* 概要：画像＋文章を同じ白面で囲う */
+    /* 概要：画像＋文章を同じ白面で囲う。スマホは画像非表示で崩れ防止 */
     .about-wrap{background:rgba(255,255,255,0.92);padding:24px;border-radius:16px;box-shadow:0 6px 18px rgba(0,0,0,.05)}
     .about-grid{display:grid;grid-template-columns:0.9fr 1.1fr;align-items:center;gap:24px;max-width:1000px;margin:0 auto}
-    .about-visual{width:100%;height:100%;object-fit:cover;border-radius:12px}
+    .about-visual{width:100%;max-width:480px;height:auto;object-fit:contain;border-radius:12px}
     .about-text{line-height:2.1;text-align:center}
     .emph{font-size:200%;font-weight:900;display:inline-block;margin-left:4px;letter-spacing:.04em;color:var(--ink);font-family:'Shippori Mincho','Noto Serif JP',serif}
+    .emph-note{font-size:12px;color:#555;display:block;margin-top:6px}
 
     footer{padding:36px 0;color:var(--muted);text-align:center}
 
-    /* モバイル最適化 */
+    /* モバイル最適化＋ハンバーガー */
     @media (max-width: 840px){
       .wrap{padding:0 14px}
       header .nav{height:auto;gap:10px;padding:10px 12px}
-      .menu{flex-wrap:wrap;gap:6px}
-      .menu a,.menu button{padding:6px 10px;font-size:14px}
+      .hamburger{display:inline-block}
+      .menu{display:none;position:absolute;right:12px;top:72px;flex-direction:column;gap:6px;background:#fff;padding:10px;border-radius:12px;box-shadow:0 12px 32px rgba(0,0,0,.12)}
+      .menu.open{display:flex}
+      .menu a,.menu button{padding:8px 12px;font-size:14px}
       h1{font-size:28px} h2{font-size:22px} h3{font-size:18px} h4{font-size:16px}
       .grid-2,.grid-3,.sns-grid{grid-template-columns:1fr}
       .card{padding:16px;border-radius:12px}
       .about-grid{grid-template-columns:1fr;gap:14px}
-      .about-visual{height:46vw;max-height:320px}
-      .hero{height:38vh;min-height:220px}
-      #price .price-block{padding:16px}
-      .steps{max-width:100%}
-      .steps li{grid-template-columns:32px 1fr;column-gap:10px;margin:18px 0}
-      .steps li::before{width:32px;height:32px}
+      .about-visual{display:none}
       body{padding-bottom:88px}
     }
   </style>
@@ -114,10 +118,12 @@
 <header>
   <div class="wrap nav">
     <div class="brand">
-      <span class="small">Repair shop</span>
-      <span class="big">Beshoe</span>
-      <span class="sub">リペアショップビシュー</span>
+      <span class="brand-top">Repair shop</span>
+      <span class="brand-main">Beshoe</span>
+      <div class="brand-sub">リペアショップビシュー</div>
     </div>
+
+    <button id="menuBtn" class="hamburger" aria-controls="nav" aria-expanded="false">☰</button>
     <nav class="menu" id="nav">
       <a href="#news" data-i18n="nav.news" style="min-width:44px;display:inline-block">お知らせ</a>
       <a href="#price" data-i18n="nav.price" style="min-width:44px;display:inline-block">料金</a>
@@ -131,7 +137,10 @@
 </header>
 
 <main class="wrap">
-  <div class="hero" aria-label="hero image"></div>
+  <!-- ヒーロー（横幅は1100px上限で中央） -->
+  <div class="hero" aria-label="hero image">
+    <img src="IMG_0099.jpg" alt="Hero image">
+  </div>
 
   <!-- お知らせ＋カレンダー -->
   <section id="news" class="active">
@@ -152,7 +161,7 @@
     <div class="strip" style="background:url('https://images.unsplash.com/photo-1548095115-45697e51336b?auto=format&fit=crop&w=2400&q=80') center/cover no-repeat" aria-hidden="true"></div>
   </section>
 
-  <!-- 料金（データ駆動で描画） -->
+  <!-- 料金（データ駆動） -->
   <section id="price">
     <h2 data-i18n="price.h">料金表（税込）</h2>
     <div id="priceBlocks"></div>
@@ -210,13 +219,13 @@
     <h2 data-i18n="about.h">概要</h2>
     <div class="about-wrap">
       <div class="about-grid">
-        <img src="IMG_0098_trimmed.png" alt="Repair shop Beshoe" class="about-visual" style="width:100%;max-width:480px;">
+        <img src="IMG_0098_trimmed.png" alt="Repair shop Beshoe" class="about-visual">
         <div class="about-text">
           <p data-i18n="about.p1">長年ものづくりの現場で磨いた手と目で、大切なものを長く愛して使っていくためのお手伝いさせていただきます。</p>
           <p data-i18n="about.p2">各分野のスペシャリストから学んだ靴や足の構造・手製靴作成の基礎を土台に、修理とクリーニングを丁寧に行います。</p>
           <p><span class="emph" data-i18n="about.k1">「Beshoe（ビシュー）」</span><span data-i18n="about.k1b">には</span></p>
           <p data-i18n="about.p3">またあなたの靴（shoe）になる（Be）という意味や</p>
-          <p>日本語の <span class="emph" data-i18n="about.k2">「美醜」</span></p>
+          <p>日本語の <span class="emph" data-i18n="about.k2">「美醜」</span><span id="biShuNote" class="emph-note" style="display:none"></span></p>
           <p data-i18n="about.p4">一見対立した言葉のように感じますが、美しさと醜さは共存関係にあると考えます。</p>
           <p data-i18n="about.p5">新品の美しさを保って丁寧に使ったり、醜く汚れてしまったモノでもまた美しく。</p>
           <p data-i18n="about.p6">たとえ傷やヘタリが見られても、値段や価値では測れない持ち主の歴史や思い出を刻んだ本当の美しさというものを大切にしていきたい。</p>
@@ -414,7 +423,7 @@
       about:{h:'About',
         p1:'With hands and eyes trained in making things, we help you keep your items in use for longer.',
         p2:'Grounded in fundamentals of foot/shoe structure and hand-made shoemaking learned from specialists, we repair and clean with care.',
-        k1:'“Beshoe”',k1b:'means',k2:'“beauty & ugliness”',
+        k1:'“Beshoe”',k1b:'means',k2:'美醜',
         p3:'“Be” your “shoe” again is one meaning,',
         p4:'and we also value the idea that beauty and ugliness coexist.',
         p5:'We keep pristine items beautiful, and restore those that became unsightly back to beauty.',
@@ -438,9 +447,20 @@
     document.documentElement.lang = lang;
     document.title = lang==='ja' ? 'Repair shop Beshoe｜靴修理・クリーニング' : 'Repair shop Beshoe｜Shoe Repair & Cleaning';
     document.querySelectorAll('[data-i18n]').forEach(el=>{ el.textContent = i18nText(el.getAttribute('data-i18n')); });
+    // 英語時は「美醜」の英語説明を追記
+    const bi = document.getElementById('biShuNote');
+    if(bi){ bi.style.display = (lang==='en')?'inline-block':'none'; if(lang==='en'){ bi.textContent = 'This means beauty and ugliness.'; } }
     renderPrice(); renderHow(); renderPostNote(); loadNews();
   }
   langBtn.addEventListener('click',()=>{ lang = (lang==='ja')?'en':'ja'; langBtn.textContent = (lang==='ja')?'EN':'日本語'; i18nApply(); });
+
+  /* ハンバーガー */
+  const menuBtn = document.getElementById('menuBtn');
+  menuBtn.addEventListener('click', ()=>{
+    const nav = document.getElementById('nav');
+    const open = nav.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', open?'true':'false');
+  });
 
   /* SPA切替 */
   const sections = Array.from(document.querySelectorAll('main section'));
@@ -449,7 +469,7 @@
     document.querySelectorAll('#nav a').forEach(a=>a.classList.toggle('active', a.getAttribute('href')==='#'+id));
   }
   document.getElementById('nav').addEventListener('click', (e)=>{
-    if(e.target.tagName==='A'){ e.preventDefault(); switchTo(e.target.getAttribute('href').slice(1)); }
+    if(e.target.tagName==='A'){ e.preventDefault(); switchTo(e.target.getAttribute('href').slice(1)); const nav=document.getElementById('nav'); nav.classList.remove('open'); menuBtn.setAttribute('aria-expanded','false'); }
   });
 
   /* 料金：データ駆動描画 */
@@ -479,21 +499,29 @@
     if(el) el.textContent = (lang==='ja')?txt_ja:txt_en;
   }
 
-  /* お知らせ（news.json）— セール強調＋多言語（title_en/text_en があれば使用）＋キャッシュ無視 */
+  /* お知らせ（news.json）：英語切替時の自動置換＋title_en/text_en 優先。セールは強調。 */
+  function enFallback(t){
+    // よく使う日本語→英語の簡易置換
+    return t
+      .replace('開店前セールのお知らせ','Pre-opening Sale Notice')
+      .replace('開店前セール','Pre-opening Sale')
+      .replace('受付中','Now accepting')
+      .replace('限定メニュー','Limited menu');
+  }
   async function loadNews(){
     try{
       const r = await fetch('news.json?v=' + Date.now(), {cache:'no-store'});
       const list = await r.json();
       const el = document.getElementById('newsList');
       el.innerHTML = list.map(n=>{
-        const title = (lang==='en' && n.title_en) ? n.title_en : (n.title||'');
-        const text  = (lang==='en' && n.text_en)  ? n.text_en  : (n.text||'');
-        const isSale = /セール|SALE|offer|discount/i.test(title);
+        let title = n.title||''; let text = n.text||'';
+        if(lang==='en'){ title = n.title_en || enFallback(title); text = n.text_en || enFallback(text); }
+        const isSale = /セール|SALE|offer|discount|Pre-opening/i.test(title);
         return `
           <div style="margin:10px 0;padding:18px;border-radius:16px;background:${isSale ? '#0ea5ff10' : 'var(--paper2)'};border:${isSale ? '3px solid #0ea5ff' : 'none'};box-shadow:${isSale ? '0 0 14px rgba(14,165,255,.35)' : '0 6px 18px rgba(17,24,39,.05)'};text-align:${isSale?'center':'left'}">
             <div style="font-size:${isSale?'22px':'18px'};font-weight:800;color:${isSale?'#0e1a2a':'inherit'};">${title}</div>
             <div class="note" style="font-size:${isSale?'15px':'13px'};margin-top:6px">${text}</div>
-            ${isSale ? `<a href="https://page.line.me/981xrswf" target="_blank" rel="noopener" class="btn" style="margin-top:12px;background:#06C755;color:#fff;text-decoration:none;padding:8px 14px;border-radius:10px;display:inline-block">${lang==='ja'?'LINEでお申し込み':'Apply via LINE'}</a>` : ''}
+            ${isSale ? `<a href=\"https://page.line.me/981xrswf\" target=\"_blank\" rel=\"noopener\" class=\"btn\" style=\"margin-top:12px;background:#06C755;color:#fff;text-decoration:none;padding:8px 14px;border-radius:10px;display:inline-block\">${lang==='ja'?'LINEでお申し込み':'Apply via LINE'}</a>` : ''}
             <div class="note" style="margin-top:6px">${n.date||''}</div>
           </div>`;
       }).join('');
