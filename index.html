@@ -4,105 +4,140 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Repair shop Beshoe｜靴修理・クリーニング</title>
-<meta name="description" content="Repair shop Beshoe｜靴修理・クリーニング。お知らせ＋営業日カレンダーをトップ表示。料金と利用方法はデータ駆動で簡単更新。英語切替対応。" />
+<meta name="description" content="Repair shop Beshoe｜靴修理・クリーニング。お知らせ＋営業日カレンダーをトップ表示。料金・利用方法はデータ駆動。英語切替対応。" />
 <meta name="theme-color" content="#0f172a" />
-<!-- 見出し用フォント -->
-<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Corporate+Logo&family=Shippori+Mincho:wght@500;700&display=swap" rel="stylesheet">
+
 <style>
-  :root{
-    --ink:#0e1a2a; --char:#222; --muted:#6b7280;
-    --paper:#ffffff; --paper2:#fbf8f3;
-    --linegreen:#06C755;
-    --ig:#E4405F; --x:#000; --tt:#000; --yt:#f00; --fb:#1877F2;
-  }
-  *{box-sizing:border-box}
-  html,body{margin:0;line-height:1.7;color:var(--char);font-family:"Noto Sans JP",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
-  /* 背景：リポジトリ直リンクに差し替え */
-  body{
+:root{
+  --ink:#0e1a2a; --char:#222; --muted:#6b7280;
+  --paper:#ffffff; --paper2:#fbf8f3;
+  --linegreen:#06C755;
+  --deepgreen:#165b4a;
+}
+*{box-sizing:border-box}
+html,body{margin:0;line-height:1.8;color:var(--char);font-family:'Corporate Logo',"Noto Sans JP",sans-serif}
+body{
   background:
-    linear-gradient(180deg,rgba(255,255,255,.8),rgba(255,255,255,.85)),
+    linear-gradient(180deg, rgba(255,255,255,.4), rgba(255,255,255,.5)),
     url('https://beshoerepair.github.io/beshoe-official-site/denis-agati-xKy_9mID07o-unsplash.jpg?v=2')
     center/cover fixed no-repeat !important;
+  padding-bottom:70px; /* 下部固定バー分 */
+}
+a{color:#0f3b84;text-decoration:underline;text-underline-offset:3px}
+a:hover{opacity:.85}
+img{max-width:100%;display:block;border-radius:12px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+
+/* ヘッダー（左上ブランドの強調） */
+header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.78);backdrop-filter:saturate(140%) blur(10px)}
+.nav{height:78px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:flex-end;gap:8px}
+.brand .sub{font-size:12px;color:var(--muted);letter-spacing:.12em;line-height:1}
+.brand .main{
+  line-height:1;
+  display:flex;align-items:flex-end;gap:6px;
+}
+.brand .main .small{font-size:14px;color:#666;letter-spacing:.1em}
+.brand .main .big{
+  font-size:clamp(30px,6vw,46px);
+  font-weight:800;letter-spacing:.04em;color:var(--ink);
+  font-family:"Shippori Mincho","Noto Serif JP",serif;
+}
+.menu{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.menu a,.menu button{padding:8px 12px;border-radius:10px;background:transparent;cursor:pointer;text-decoration:none;color:var(--ink)}
+.menu a:hover,.menu button:hover{background:#efede7}
+.lang{border:1px solid #ddd;background:#fff}
+
+/* 見出し（中央・やわらかい） */
+h1,h2,h3{
+  font-family:"Shippori Mincho","Noto Serif JP",serif;
+  color:var(--ink);margin:0 0 14px;text-align:center;letter-spacing:.04em
+}
+h1{font-size:clamp(28px,5.2vw,48px)}
+h2{font-size:clamp(22px,3.6vw,32px)}
+h3{font-size:clamp(20px,3vw,26px)}
+.note{color:var(--muted);font-size:13px;text-align:center}
+
+/* セクションとカード：枠線なし */
+main{padding:12px 0 40px}
+section{display:none;padding:28px 0}
+section.active{display:block}
+.card{background:var(--paper);border:none;border-radius:14px;padding:22px;box-shadow:0 6px 18px rgba(17,24,39,.06)}
+.grid-2{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.strip{height:22vw;max-height:260px;min-height:120px;margin:18px 0;border-radius:12px}
+
+/* ヒーロー */
+.hero{
+  height:44vh;min-height:300px;margin:14px 0 0;border-radius:14px;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,0),rgba(255,255,255,.75)),
+    url('https://images.unsplash.com/photo-1520256862855-398228c41684?auto=format&fit=crop&w=2400&q=80') center/cover no-repeat;
 }
 
+/* ボタン */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;background:#fff;text-decoration:none;font-weight:700;border:none}
 
-    padding-bottom:56px; /* 下部固定バー分 */
-  }
-  a{color:#0f3b84;text-decoration:underline;text-underline-offset:3px}
-  a:hover{opacity:.85}
-  img{max-width:100%;display:block;border-radius:12px}
-  .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+/* SNSボタン */
+.sns-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.sns{display:flex;align-items:center;gap:10px;padding:12px;border-radius:12px;background:#fff;text-decoration:none;font-weight:700;color:#111;justify-content:center}
+.sns svg{width:20px;height:20px}
+.sns.ig{color:#fff;background:linear-gradient(45deg,#fd5949,#d6249f,#285AEB)}
+.sns.x{background:#000;color:#fff}
+.sns.tt{background:#000;color:#fff}
+.sns.yt{background:#fff;color:#111}
+.sns.fb{background:#1877F2;color:#fff}
 
-  /* ヘッダー */
-  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.78);backdrop-filter:saturate(140%) blur(10px)}
-  .nav{height:72px;display:flex;align-items:center;justify-content:space-between}
-  .brand{display:flex;flex-direction:column}
-  .brand .name{font-family:"Shippori Mincho","Noto Serif JP",serif;font-weight:700;letter-spacing:.04em;color:var(--ink);font-size:clamp(28px,5vw,40px);line-height:1}
-  .brand .ja{font-size:12px;color:var(--muted);letter-spacing:.12em;margin-top:4px}
-  .menu{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-  .menu a,.menu button{padding:8px 12px;border-radius:10px;background:transparent;cursor:pointer;text-decoration:none;color:var(--ink)}
-  .menu a:hover,.menu button:hover{background:#efede7}
-  .lang{border:1px solid #ddd;background:#fff}
-  .active{background:#fff}
+/* 固定LINEバー（ロゴ＋文言＋サブ文言） */
+.linebar{
+  position:fixed;left:0;right:0;bottom:0;background:var(--linegreen);
+  z-index:1000;text-align:center;padding:8px 0 2px
+}
+.linebtn{
+  display:inline-flex;align-items:center;gap:6px;
+  color:#fff;font-weight:700;font-size:15px;text-decoration:none
+}
+.lineicon{width:20px;height:20px;vertical-align:middle}
+.linesub{font-size:11px;color:#fff;opacity:.95;line-height:1.4;margin-top:2px}
 
-  /* 見出し＝中央＋やわらかい */
-  h1,h2,h3{
-    font-family:"Shippori Mincho","Noto Serif JP",serif;
-    color:var(--ink);margin:0 0 12px;text-align:center;letter-spacing:.04em
-  }
-  h1{font-size:clamp(28px,5.2vw,48px)}
-  h2{font-size:clamp(22px,3.6vw,32px)}
-  h3{font-size:clamp(18px,2.6vw,22px)}
+/* 利用方法：縦配置・丸数字チップ強調 */
+#how .grid-2{grid-template-columns:1fr}
+#how h3{font-size:clamp(24px,4.4vw,30px)}
+#how .card{padding:30px 24px}
+.steps{counter-reset:step;margin:0;padding:0}
+.steps li{
+  list-style:none;counter-increment:step;position:relative;
+  padding-left:56px;margin:20px 0;line-height:2.0
+}
+.steps li::before{
+  content:counter(step);position:absolute;left:0;top:0.15em;
+  width:36px;height:36px;border-radius:50%;background:var(--deepgreen);
+  color:#fff;font-weight:800;display:inline-flex;align-items:center;justify-content:center;
+  box-shadow:0 1px 0 rgba(0,0,0,.08)
+}
 
-  /* セクションとカード：枠線なし */
-  main{padding:12px 0 40px}
-  section{display:none;padding:28px 0}
-  section.active{display:block}
-  .card{background:var(--paper);border:none;border-radius:14px;padding:18px;box-shadow:0 6px 18px rgba(17,24,39,.05)}
-  .grid-2{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}
-  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-  .strip{height:22vw;max-height:260px;min-height:120px;margin:18px 0;border-radius:12px}
-  .note{color:var(--muted);font-size:13px;text-align:center}
-
-  /* ヒーロー（仮画像：後で変更可） */
-  .hero{
-    height:44vh;min-height:300px;margin:14px 0 0;border-radius:14px;
-    background:
-      linear-gradient(180deg,rgba(255,255,255,.0),rgba(255,255,255,.75)),
-      url('https://images.unsplash.com/photo-1520256862855-398228c41684?auto=format&fit=crop&w=2400&q=80') center/cover no-repeat;
-  }
-
-  /* ボタン */
-  .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;background:#fff;text-decoration:none;font-weight:700;border:none}
-  .btn.line{background:var(--linegreen);color:#fff}
-
-  /* SNSボタン */
-  .sns-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
-  .sns{display:flex;align-items:center;gap:10px;padding:12px;border-radius:12px;background:#fff;text-decoration:none;font-weight:700;color:#111;justify-content:center}
-  .sns svg{width:20px;height:20px}
-  .sns.ig{color:#fff;background:linear-gradient(45deg,#fd5949,#d6249f,#285AEB)}
-  .sns.x{background:#000;color:#fff}
-  .sns.tt{background:#000;color:#fff}
-  .sns.yt{background:#fff;color:#111}
-  .sns.fb{background:#1877F2;color:#fff}
-
-  /* 下部固定 LINE バー */
-  #fixedLine{position:fixed;left:0;right:0;bottom:0;background:var(--linegreen);z-index:100;text-align:center}
-  #fixedLine a{display:inline-block;color:#fff;font-weight:700;padding:12px 16px;text-decoration:none;font-size:15px}
-
-  footer{padding:36px 0;color:var(--muted);text-align:center}
-  @media (max-width:980px){.grid-2,.grid-3,.sns-grid{grid-template-columns:1fr}}
+footer{padding:36px 0;color:var(--muted);text-align:center}
+@media (max-width:980px){.grid-2,.grid-3,.sns-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
+
 <header>
   <div class="wrap nav">
-    <div class="brand">
-      <div class="name">Repair shop Beshoe</div>
-      <div class="ja">リペアショップビシュー</div>
+    <!-- 左上ブランド：Repair shop（小） / Beshoe（大） -->
+    <div class="brand" aria-label="site brand">
+      <div class="main">
+        <span class="small">Repair shop</span>
+        <span class="big">Beshoe</span>
+      </div>
+      <div class="sub">リペアショップビシュー</div>
     </div>
+
     <nav class="menu" id="nav">
-      <!-- 右上メニュー：News / Price / How / Contact / SNS / About / EN -->
+      <!-- メニュー：News / Price / How / Contact / SNS / About / EN -->
       <a href="#news"  data-i18n="nav.news">お知らせ</a>
       <a href="#price" data-i18n="nav.price">料金</a>
       <a href="#how"   data-i18n="nav.how">利用方法</a>
@@ -117,7 +152,7 @@
 <main class="wrap">
   <div class="hero" aria-label="hero image"></div>
 
-  <!-- お知らせ＋カレンダー（トップ） -->
+  <!-- 1) お知らせ＋カレンダー -->
   <section id="news" class="active">
     <h1 data-i18n="news.h">お知らせ</h1>
     <div class="grid-2">
@@ -140,38 +175,35 @@
     <div class="strip" style="background:url('https://images.unsplash.com/photo-1548095115-45697e51336b?auto=format&fit=crop&w=2400&q=80') center/cover no-repeat" aria-hidden="true"></div>
   </section>
 
-  <!-- 料金（データ駆動） -->
+  <!-- 2) 料金（データ駆動） -->
   <section id="price">
     <h2 data-i18n="price.h">料金</h2>
     <div id="priceCards" class="grid-3"></div>
     <p class="note" data-i18n="price.ship">送料：返送は実費。2足同梱または税込¥5,000以上で返送無料（キャンペーンで変動）。</p>
   </section>
 
-  <!-- 利用方法（店頭テキスト変更・郵送わかりやすく） -->
+  <!-- 3) 利用方法（縦配置＋丸数字） -->
   <section id="how">
     <h2 data-i18n="how.h">利用方法</h2>
     <div class="grid-2">
       <div class="card">
         <h3 data-i18n="how.shop">店頭</h3>
         <p data-i18n="how.shopLead">住所（仮）までお持ちください。作業内容やお見積もり、納期をご相談のうえで作業します。</p>
-        <ol id="howShop"></ol>
+        <ol id="howShop" class="steps"></ol>
       </div>
       <div class="card">
         <h3 data-i18n="how.post">郵送</h3>
-        <ol id="howPost"></ol>
+        <ol id="howPost" class="steps"></ol>
         <p class="note" data-i18n="how.note2">梱包は新聞紙などで固定。伝票番号を共有。</p>
       </div>
     </div>
   </section>
 
-  <!-- 問い合わせ（フォーム廃止） -->
+  <!-- 4) 問い合わせ -->
   <section id="contact">
     <h2 data-i18n="ct.h">問い合わせ</h2>
     <div class="grid-2">
       <div class="card" style="text-align:center">
-        <a class="btn line" href="https://lin.ee/981xrswf" target="_blank" rel="noopener">
-          お見積もり・仕上がり連絡・割引情報などはこちらから
-        </a>
         <p><strong data-i18n="ct.mail">メール</strong>：<a href="mailto:beshoe.repair@gmail.com">beshoe.repair@gmail.com</a></p>
         <p><strong data-i18n="ct.tel">電話（仮）</strong>：<a href="tel:000-0000-0000">000-0000-0000</a></p>
         <p class="note" data-i18n="ct.note">営業時間・所在地は決定次第お知らせします。</p>
@@ -183,7 +215,7 @@
     </div>
   </section>
 
-  <!-- 各種SNS -->
+  <!-- 5) 各種SNS -->
   <section id="sns">
     <h2 data-i18n="sns.h">各SNS</h2>
     <div class="sns-grid">
@@ -211,22 +243,17 @@
     <p class="note" data-i18n="sns.note">施工事例は各SNSで発信します。</p>
   </section>
 
-  <!-- 概要（SNSとENの間に配置済み） -->
+  <!-- 6) 概要（理念文に全面リライト） -->
   <section id="about">
     <h2 data-i18n="about.h">概要</h2>
-    <div class="grid-2">
-      <div class="card">
-        <p data-i18n="about.p1">
-          ものづくりの現場で磨いた手と目で、必要十分の処置を行います。ベテラン修理職人から学んだ靴の構造と手製靴の基礎を土台に、修理とクリーニングを丁寧に行います。履き心地と形を守ることを優先し、前後写真で記録、方法は再現できるように管理します。作業前に見積と納期をお伝えします。
-        </p>
-        <p class="note" data-i18n="about.p2">対象：革靴、パンプス、ブーツ、スニーカー。特殊素材や難事例は事前にご相談ください。</p>
-      </div>
-      <!-- ※ 開店前セールカードは削除 -->
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1501045661006-fcebe0257c3f?auto=format&fit=crop&w=2400&q=80" alt="雰囲気イメージ">
-      </div>
+    <div class="card" style="max-width:900px;margin:0 auto">
+      <p>長年ものづくりの現場で磨いた手と目で、大切なものを長く愛して使っていくためのお手伝いをさせていただきます。</p>
+      <p>各分野のスペシャリストから学んだ靴や足の構造・手製靴作成の基礎を土台に、修理とクリーニングを丁寧に行います。</p>
+      <p><strong style="font-size:1.05em;letter-spacing:.06em">「BESHOE（ビシュー）」</strong> には、またあなたの靴（<strong>SHOE</strong>）になる（<strong>BE</strong>）という意味や、<strong>「美醜」</strong>という言葉も込めています。</p>
+      <p>一見対立した言葉のように感じますが、美しさと醜さは共存関係にあると考えます。新品の美しさを保って丁寧に使ったり、醜く汚れてしまったモノでもまた美しく。</p>
+      <p>たとえ傷やヘタリが見られても、値段や価値では測れない持ち主の歴史や思い出を刻んだ “本当の美しさ” を大切にしていきたい。</p>
+      <p>という思いが込められています。</p>
     </div>
-    <div class="strip" style="background:url('https://images.unsplash.com/photo-1548095115-45697e51336b?auto=format&fit=crop&w=2400&q=80') center/cover no-repeat" aria-hidden="true"></div>
   </section>
 </main>
 
@@ -237,151 +264,148 @@
   </div>
 </footer>
 
-<!-- 下部固定LINEバー -->
-<div id="fixedLine">
-  <a href="https://lin.ee/981xrswf" target="_blank" rel="noopener">
-    お見積もり・仕上がり連絡・割引情報などはこちらから
+<!-- 下部固定 LINE バー -->
+<div class="linebar">
+  <a href="https://page.line.me/981xrswf" target="_blank" rel="noopener" class="linebtn">
+    <!-- LINEロゴ（SVG） -->
+    <svg class="lineicon" viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M19.05 3.5H4.95A3.45 3.45 0 0 0 1.5 6.95v7.6a3.45 3.45 0 0 0 3.45 3.45h6.9l3.6 2.5a.8.8 0 0 0 1.25-.66v-1.84h2.35a3.45 3.45 0 0 0 3.45-3.45v-7.6A3.45 3.45 0 0 0 19.05 3.5Z"/></svg>
+    公式LINEはこちら
   </a>
+  <div class="linesub">↑お得なキャンペーン情報も↑</div>
 </div>
 
 <script>
-  document.getElementById('year').textContent = new Date().getFullYear();
+document.getElementById('year').textContent = new Date().getFullYear();
 
-  const DATA = {
-    ja: {
-      nav:{news:'お知らせ',price:'料金',how:'利用方法',contact:'問い合わせ',sns:'各SNS',about:'概要'},
-      news:{h:'お知らせ',note:'最新のお知らせは随時更新します。'},
-      cal:{h:'営業日カレンダー',note:'予定はカレンダー更新で自動反映されます。'},
-      price:{h:'料金',
-        ship:'送料：返送は実費。2足同梱または税込¥5,000以上で返送無料（キャンペーンで変動）。',
-        items:[
-          {title:'トップリフト交換', price:'¥3,500〜', note:'かかとのゴム交換。素材で金額変動。'},
-          {title:'ハーフソール貼り', price:'¥3,500〜', note:'前底のすり減り防止。薄さ選択可。'},
-          {title:'つま先補強',       price:'¥2,500〜', note:'ラバーまたは革で補強。'},
-          {title:'オールソール',     price:'¥12,000〜', note:'素材・製法で変動。見積提示後に作業。'},
-          {title:'靴クリーニング',   price:'¥5,000〜', note:'汚れ・におい除去。色補修は別見積。'},
-          {title:'スエードケア',     price:'¥4,000〜', note:'起毛の整えと防汚。'}
-        ]
-      },
-      how:{h:'利用方法',shop:'店頭',post:'郵送',
-        shopLead:'住所（仮）までお持ちください。作業内容やお見積もり、納期をご相談のうえで作業します。',
-        s:['受付（状態確認）','見積・納期案内','作業','受け取り・お支払い'],
-        p:['LINEまたはメールで写真と希望内容を送信','概算見積と発送先をご案内','到着後に本見積→了承後に作業','完了写真→入金確認→返送']
-      },
-      ct:{h:'問い合わせ',mail:'メール',tel:'電話（仮）',note:'営業時間・所在地は決定次第お知らせします。'},
-      contact:{imgH:'参考イメージ'},
-      sns:{h:'各SNS',note:'施工事例は各SNSで発信します。'},
-      about:{h:'概要',
-        p1:'ものづくりの現場で磨いた手と目で、必要十分の処置を行います。ベテラン修理職人から学んだ靴の構造と手製靴の基礎を土台に、修理とクリーニングを丁寧に行います。履き心地と形を守ることを優先し、前後写真で記録、方法は再現できるように管理します。作業前に見積と納期をお伝えします。',
-        p2:'対象：革靴、パンプス、ブーツ、スニーカー。特殊素材や難事例は事前にご相談ください。'
-      },
-      legal:'所在地・事業者情報・特定商取引法表記は決定次第掲載。'
+/* 多言語データと価格・工程 */
+const DATA = {
+  ja: {
+    nav:{news:'お知らせ',price:'料金',how:'利用方法',contact:'問い合わせ',sns:'各SNS',about:'概要'},
+    news:{h:'お知らせ',note:'最新のお知らせは随時更新します。'},
+    cal:{h:'営業日カレンダー',note:'予定はカレンダー更新で自動反映されます。'},
+    price:{h:'料金',
+      ship:'送料：返送は実費。2足同梱または税込¥5,000以上で返送無料（キャンペーンで変動）。',
+      items:[
+        {title:'トップリフト交換', price:'¥3,500〜', note:'かかとのゴム交換。素材で金額変動。'},
+        {title:'ハーフソール貼り', price:'¥3,500〜', note:'前底のすり減り防止。薄さ選択可。'},
+        {title:'つま先補強',       price:'¥2,500〜', note:'ラバーまたは革で補強。'},
+        {title:'オールソール',     price:'¥12,000〜', note:'素材・製法で変動。見積提示後に作業。'},
+        {title:'靴クリーニング',   price:'¥5,000〜', note:'汚れ・におい除去。色補修は別見積。'},
+        {title:'スエードケア',     price:'¥4,000〜', note:'起毛の整えと防汚。'}
+      ]
     },
-    en: {
-      nav:{news:'News',price:'Price',how:'How to use',contact:'Contact',sns:'SNS',about:'About'},
-      news:{h:'News',note:'We update notices as needed.'},
-      cal:{h:'Calendar',note:'Updates reflect automatically via Google Calendar.'},
-      price:{h:'Price',
-        ship:'Shipping: return at actual cost. Free for two pairs in one box or orders over ¥5,000 (campaign may vary).',
-        items:[
-          {title:'Top lift replacement', price:'¥3,500〜', note:'Heel rubber. Varies by material.'},
-          {title:'Half sole',            price:'¥3,500〜', note:'Front sole protection. Thickness selectable.'},
-          {title:'Toe protection',       price:'¥2,500〜', note:'Rubber or leather.'},
-          {title:'Full resole',          price:'¥12,000〜', note:'Depends on material/method. Quoted first.'},
-          {title:'Shoe cleaning',        price:'¥5,000〜', note:'Deodorizing and stain removal. Recolor separate.'},
-          {title:'Suede care',           price:'¥4,000〜', note:'Raise and protect the nap.'}
-        ]
-      },
-      how:{h:'How to use',shop:'In-store',post:'Mail-in',
-        shopLead:'Bring your pair to the temp address. We discuss scope, quote, and lead time before starting.',
-        s:['Check-in & inspection','Quote & lead time','Work','Pickup & payment'],
-        p:['Send photos and request via LINE or email','We reply with rough quote and shipping address','Final quote after arrival → work after approval','Completion photos → payment → return shipment']
-      },
-      ct:{h:'Contact',mail:'Email',tel:'Phone (temp)',note:'Address and hours will be announced.'},
-      contact:{imgH:'Reference image'},
-      sns:{h:'SNS',note:'We post works on SNS.'},
-      about:{h:'About',
-        p1:'I work with practical, minimal interventions grounded in hands-on craft. Trained by a veteran repair artisan, I repair and clean with priority on preserving fit and shape. I document before/after photos and provide a clear quote and lead time before starting.',
-        p2:'Targets: leather shoes, pumps, boots, sneakers. Please consult for special materials or complex cases.'
-      },
-      legal:'Company info and legal notice will be posted later.'
-    }
-  };
-
-  /* 言語切替 */
-  let lang = 'ja';
-  const langBtn = document.getElementById('langBtn');
-  function i18nApply(){
-    const D = DATA[lang];
-    document.documentElement.lang = lang;
-    document.title = lang==='ja' ? 'Repair shop Beshoe｜靴修理・クリーニング' : 'Repair shop Beshoe｜Shoe Repair & Cleaning';
-    document.querySelectorAll('[data-i18n]').forEach(el=>{
-      const path = el.getAttribute('data-i18n').split('.');
-      let cur = D; for(const k of path) cur = cur?.[k];
-      if(typeof cur==='string') el.textContent = cur;
-    });
-    renderPrice(); renderHow();
+    how:{h:'利用方法',shop:'店頭',post:'郵送',
+      shopLead:'住所（仮）までお持ちください。作業内容やお見積もり、納期をご相談のうえで作業します。',
+      s:['受付（状態確認）','見積・納期案内','作業','受け取り・お支払い'],
+      p:['LINEまたはメールで写真と希望内容を送信','概算見積と発送先をご案内','到着後に本見積→了承後に作業','完了写真→入金確認→返送']
+    },
+    ct:{h:'問い合わせ',mail:'メール',tel:'電話（仮）',note:'営業時間・所在地は決定次第お知らせします。'},
+    contact:{imgH:'参考イメージ'},
+    sns:{h:'各SNS',note:'施工事例は各SNSで発信します。'},
+    about:{h:'概要'},
+    legal:'所在地・事業者情報・特定商取引法表記は決定次第掲載。'
+  },
+  en: {
+    nav:{news:'News',price:'Price',how:'How to use',contact:'Contact',sns:'SNS',about:'About'},
+    news:{h:'News',note:'We update notices as needed.'},
+    cal:{h:'Calendar',note:'Updates reflect automatically via Google Calendar.'},
+    price:{h:'Price',
+      ship:'Shipping: return at actual cost. Free for two pairs in one box or orders over ¥5,000 (campaign may vary).',
+      items:[
+        {title:'Top lift replacement', price:'¥3,500〜', note:'Heel rubber. Varies by material.'},
+        {title:'Half sole',            price:'¥3,500〜', note:'Front sole protection. Thickness selectable.'},
+        {title:'Toe protection',       price:'¥2,500〜', note:'Rubber or leather.'},
+        {title:'Full resole',          price:'¥12,000〜', note:'Depends on material/method. Quoted first.'},
+        {title:'Shoe cleaning',        price:'¥5,000〜', note:'Deodorizing and stain removal. Recolor separate.'},
+        {title:'Suede care',           price:'¥4,000〜', note:'Raise and protect the nap.'}
+      ]
+    },
+    how:{h:'How to use',shop:'In-store',post:'Mail-in',
+      shopLead:'Bring your pair to the temp address. We discuss scope, quote, and lead time before starting.',
+      s:['Check-in & inspection','Quote & lead time','Work','Pickup & payment'],
+      p:['Send photos and request via LINE or email','We reply with rough quote and shipping address','Final quote after arrival → work after approval','Completion photos → payment → return shipment']
+    },
+    ct:{h:'Contact',mail:'Email',tel:'Phone (temp)',note:'Address and hours will be announced.'},
+    contact:{imgH:'Reference image'},
+    sns:{h:'SNS',note:'We post works on SNS.'},
+    about:{h:'About'},
+    legal:'Company info and legal notice will be posted later.'
   }
-  langBtn.addEventListener('click',()=>{ lang = (lang==='ja')?'en':'ja'; langBtn.textContent = (lang==='ja')?'EN':'日本語'; i18nApply(); });
+};
 
-  /* SPA切替 */
-  const sections = Array.from(document.querySelectorAll('main section'));
-  function switchTo(id){
-    sections.forEach(s=>s.classList.toggle('active', s.id===id));
-    document.querySelectorAll('#nav a').forEach(a=>a.classList.toggle('active', a.getAttribute('href')==='#'+id));
-  }
-  document.getElementById('nav').addEventListener('click', (e)=>{
-    if(e.target.tagName==='A'){ e.preventDefault(); switchTo(e.target.getAttribute('href').slice(1)); }
+/* 言語切替 */
+let lang = 'ja';
+const langBtn = document.getElementById('langBtn');
+function i18nApply(){
+  const D = DATA[lang];
+  document.documentElement.lang = lang;
+  document.title = lang==='ja' ? 'Repair shop Beshoe｜靴修理・クリーニング' : 'Repair shop Beshoe｜Shoe Repair & Cleaning';
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const path = el.getAttribute('data-i18n').split('.');
+    let cur = D; for(const k of path) cur = cur?.[k];
+    if(typeof cur==='string') el.textContent = cur;
   });
+  renderPrice(); renderHow();
+}
+langBtn.addEventListener('click',()=>{ lang = (lang==='ja')?'en':'ja'; langBtn.textContent = (lang==='ja')?'EN':'日本語'; i18nApply(); });
 
-  /* 料金カード */
-  function renderPrice(){
-    const box = document.getElementById('priceCards');
-    const list = DATA[lang].price.items;
-    box.innerHTML = list.map(item=>`
-      <div class="card">
-        <h3>${item.title}</h3>
-        <p style="font-weight:700;font-size:18px;text-align:center">${item.price}</p>
-        <p class="note">${item.note}</p>
-      </div>`).join('');
+/* SPA切替 */
+const sections = Array.from(document.querySelectorAll('main section'));
+function switchTo(id){
+  sections.forEach(s=>s.classList.toggle('active', s.id===id));
+  document.querySelectorAll('#nav a').forEach(a=>a.classList.toggle('active', a.getAttribute('href')==='#'+id));
+}
+document.getElementById('nav').addEventListener('click', (e)=>{
+  if(e.target.tagName==='A'){ e.preventDefault(); switchTo(e.target.getAttribute('href').slice(1)); }
+});
+
+/* 料金カード */
+function renderPrice(){
+  const box = document.getElementById('priceCards');
+  const list = DATA[lang].price.items;
+  box.innerHTML = list.map(item=>`
+    <div class="card">
+      <h3>${item.title}</h3>
+      <p style="font-weight:800;font-size:18px;text-align:center">${item.price}</p>
+      <p class="note">${item.note}</p>
+    </div>`).join('');
+}
+
+/* 利用方法 */
+function renderHow(){
+  const D = DATA[lang].how;
+  document.querySelector('[data-i18n="how.shopLead"]').textContent = D.shopLead;
+  document.getElementById('howShop').innerHTML = D.s.map(x=>`<li>${x}</li>`).join('');
+  document.getElementById('howPost').innerHTML = D.p.map(x=>`<li>${x}</li>`).join('');
+}
+
+/* お知らせ（news.json）— セール強調表示 */
+async function loadNews(){
+  try{
+    const r = await fetch('news.json?v=' + Date.now(), {cache:'no-store'});
+    const list = await r.json();
+    const el = document.getElementById('newsList');
+    el.innerHTML = list.map(n=>{
+      const isSale = /セール|SALE/i.test(n.title||'');
+      return `
+        <div style="
+          margin:10px 0;padding:18px;border-radius:16px;
+          background:${isSale ? '#0ea5ff10' : 'var(--paper2)'};
+          border:${isSale ? '3px solid #0ea5ff' : 'none'};
+          box-shadow:${isSale ? '0 0 14px rgba(14,165,255,.35)' : '0 6px 18px rgba(17,24,39,.05)'};text-align:${isSale?'center':'left'}">
+          <div style="font-size:${isSale?'22px':'18px'};font-weight:800;color:${isSale?'#0e1a2a':'inherit'};">${n.title||''}</div>
+          <div class="note" style="font-size:${isSale?'15px':'13px'};margin-top:6px">${n.text||''}</div>
+          ${isSale ? `<a href="https://page.line.me/981xrswf" target="_blank" rel="noopener" class="btn" style="margin-top:12px;background:#06C755;color:#fff;text-decoration:none">LINEで申し込み</a>` : ''}
+          <div class="note" style="margin-top:6px">${n.date||''}</div>
+        </div>`;
+    }).join('');
+  }catch(e){
+    document.getElementById('newsList').innerHTML = '<p class="note">お知らせを読み込めませんでした。</p>';
   }
+}
 
-  /* 利用方法 */
-  function renderHow(){
-    const D = DATA[lang].how;
-    document.querySelector('[data-i18n="how.shopLead"]').textContent = D.shopLead;
-    document.getElementById('howShop').innerHTML = D.s.map(x=>`<li>${x}</li>`).join('');
-    document.getElementById('howPost').innerHTML = D.p.map(x=>`<li>${x}</li>`).join('');
-  }
-
-  /* お知らせ（news.json）— セール強調 */
-  async function loadNews(){
-    try{
-      const r = await fetch('news.json?v=' + Date.now(), {cache:'no-store'});
-      const list = await r.json();
-      const el = document.getElementById('newsList');
-      el.innerHTML = list.map(n=>{
-        const isSale = /セール|SALE/i.test(n.title||'');
-        return `
-          <div style="
-            margin:10px 0;padding:16px;border-radius:16px;
-            background:${isSale ? '#0ea5ff10' : 'var(--paper2)'};
-            border:${isSale ? '3px solid #0ea5ff' : 'none'};
-            box-shadow:${isSale ? '0 0 14px rgba(14,165,255,.35)' : '0 6px 18px rgba(17,24,39,.05)'};text-align:${isSale?'center':'left'}">
-            <div style="font-size:${isSale?'22px':'18px'};font-weight:700;color:${isSale?'#0e1a2a':'inherit'};">${n.title||''}</div>
-            <div class="note" style="font-size:${isSale?'15px':'13px'};margin-top:6px">${n.text||''}</div>
-            ${isSale ? `<a href="https://lin.ee/981xrswf" target="_blank" rel="noopener" class="btn line" style="margin-top:12px;text-decoration:none">LINEで申し込み</a>` : ''}
-            <div class="note" style="margin-top:6px">${n.date||''}</div>
-          </div>`;
-      }).join('');
-    }catch(e){
-      document.getElementById('newsList').innerHTML = '<p class="note">お知らせを読み込めませんでした。</p>';
-    }
-  }
-
-  // 初期化（トップはNews）
-  i18nApply(); loadNews(); switchTo('news');
+/* 初期化 */
+i18nApply(); loadNews(); switchTo('news');
 </script>
-
 </body>
 </html>
