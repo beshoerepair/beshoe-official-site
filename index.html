@@ -27,11 +27,11 @@
     header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.86);backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid rgba(0,0,0,.06)}
     .nav{height:78px;display:flex;align-items:center;justify-content:space-between;position:relative}
 
-    /* ブランド表記：上に Repair shop、中央 Beshoe、下に レトロ日本語 */
-    .brand{text-align:center;line-height:1.1}
-    .brand-top{font-size:13px;letter-spacing:.12em;color:#555;display:block}
+    /* ブランド表記：Beshoeと日本語を横並び、黒文字。Repair shop は非表示 */
+    .brand{display:flex;align-items:flex-end;justify-content:center;gap:8px;line-height:1.1}
+    .brand-top{display:none}
     .brand-main{font-family:'Shippori Mincho','Noto Serif JP',serif;font-size:clamp(30px,6vw,46px);font-weight:800;letter-spacing:.04em;color:var(--ink);display:block}
-    .brand-sub{font-family:'Dela Gothic One','Yu Mincho',serif;font-size:13px;color:#555;margin-top:2px}
+    .brand-sub{font-family:'Dela Gothic One','Yu Mincho',serif;font-size:13px;color:#000;margin-bottom:6px}
 
     /* ナビ＋ハンバーガー */
     .menu{display:flex;gap:10px;align-items:center;flex-wrap:nowrap}
@@ -57,9 +57,9 @@
     .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
     .strip{height:22vw;max-height:260px;min-height:120px;margin:18px 0;border-radius:12px}
 
-    /* ヒーロー：IMG_0099.jpg を要素で配置し横幅を1100px上限に */
+    /* ヒーロー：IMG_0099 下余白をトリミングして中央寄せ */
     .hero{display:flex;justify-content:center;align-items:center;margin:14px 0 0}
-    .hero img{width:100%;max-width:1100px;height:auto;object-fit:contain;display:block;border-radius:14px;box-shadow:0 6px 18px rgba(17,24,39,.06);background:#fff}
+    .hero img{width:100%;max-width:1100px;height:500px;object-fit:cover;object-position:center top;display:block;border-radius:14px;box-shadow:0 6px 18px rgba(17,24,39,.06);background:#fff}
 
     /* SNS */
     .sns-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
@@ -120,7 +120,7 @@
     <div class="brand">
       <span class="brand-top">Repair shop</span>
       <span class="brand-main">Beshoe</span>
-      <div class="brand-sub">リペアショップビシュー</div>
+      <span class="brand-sub">リペアショップビシュー</span>
     </div>
 
     <button id="menuBtn" class="hamburger" aria-controls="nav" aria-expanded="false">☰</button>
@@ -137,7 +137,7 @@
 </header>
 
 <main class="wrap">
-  <!-- ヒーロー（横幅は1100px上限で中央） -->
+  <!-- ヒーロー（下余白トリミングで中央） -->
   <div class="hero" aria-label="hero image">
     <img src="IMG_0099.jpg" alt="Hero image">
   </div>
@@ -165,6 +165,7 @@
   <section id="price">
     <h2 data-i18n="price.h">料金表（税込）</h2>
     <div id="priceBlocks"></div>
+    <p class="note" data-i18n="price.noteExtra">※その他、表記されていないメニューや、どのメニューに該当するかわからない場合もお気軽にお問い合わせください。内容に応じて、関連分野の専門家と相談のうえ、適切な方法と料金でご提案いたします。</p>
   </section>
 
   <!-- 利用方法 -->
@@ -225,7 +226,7 @@
           <p data-i18n="about.p2">各分野のスペシャリストから学んだ靴や足の構造・手製靴作成の基礎を土台に、修理とクリーニングを丁寧に行います。</p>
           <p><span class="emph" data-i18n="about.k1">「Beshoe（ビシュー）」</span><span data-i18n="about.k1b">には</span></p>
           <p data-i18n="about.p3">またあなたの靴（shoe）になる（Be）という意味や</p>
-          <p>日本語の <span class="emph" data-i18n="about.k2">「美醜」</span><span id="biShuNote" class="emph-note" style="display:none"></span></p>
+          <p><span data-i18n="about.jp">日本語の </span><span class="emph" data-i18n="about.k2">「美醜」</span><span id="biShuNote" class="emph-note" style="display:none"></span></p>
           <p data-i18n="about.p4">一見対立した言葉のように感じますが、美しさと醜さは共存関係にあると考えます。</p>
           <p data-i18n="about.p5">新品の美しさを保って丁寧に使ったり、醜く汚れてしまったモノでもまた美しく。</p>
           <p data-i18n="about.p6">たとえ傷やヘタリが見られても、値段や価値では測れない持ち主の歴史や思い出を刻んだ本当の美しさというものを大切にしていきたい。</p>
@@ -319,7 +320,8 @@
               'カップソール再接着（片足）¥10,000'
             ]}]
           }
-        ]
+        ],
+        noteExtra:'※その他、表記されていないメニューや、どのメニューに該当するかわからない場合もお気軽にお問い合わせください。内容に応じて、関連分野の専門家と相談のうえ、適切な方法と料金でご提案いたします。'
       },
       how:{h:'利用方法',shop:'店頭',post:'郵送',
         shopLead:'住所（仮）までお持ちください。作業内容やお見積もり、納期をご相談のうえで作業します。',
@@ -331,7 +333,7 @@
       about:{h:'概要',
         p1:'長年ものづくりの現場で磨いた手と目で、大切なものを長く愛して使っていくためのお手伝いさせていただきます。',
         p2:'各分野のスペシャリストから学んだ靴や足の構造・手製靴作成の基礎を土台に、修理とクリーニングを丁寧に行います。',
-        k1:'「Beshoe（ビシュー）」',k1b:'には',k2:'「美醜」',
+        k1:'「Beshoe（ビシュー）」',k1b:'には',k2:'「美醜」', jp:'日本語の ',
         p3:'またあなたの靴（shoe）になる（Be）という意味や',
         p4:'一見対立した言葉のように感じますが、美しさと醜さは共存関係にあると考えます。',
         p5:'新品の美しさを保って丁寧に使ったり、醜く汚れてしまったモノでもまた美しく。',
@@ -411,7 +413,8 @@
               'Cup sole re-glue (per foot) ¥10,000'
             ]}]
           }
-        ]
+        ],
+        noteExtra:'*If you have a request not listed here or are unsure which service applies, feel free to contact us. We will consult with specialists in related fields to propose the most suitable method and fair pricing.*'
       },
       how:{h:'How to Use',shop:'In-store',post:'Mail-in',
         shopLead:'Please bring your items to our address (TBD). We discuss the work, quote and lead time before starting.',
@@ -423,7 +426,7 @@
       about:{h:'About',
         p1:'With hands and eyes trained in making things, we help you keep your items in use for longer.',
         p2:'Grounded in fundamentals of foot/shoe structure and hand-made shoemaking learned from specialists, we repair and clean with care.',
-        k1:'“Beshoe”',k1b:'means',k2:'美醜',
+        k1:'“Beshoe”',k1b:'means',k2:'美醜', jp:'',
         p3:'“Be” your “shoe” again is one meaning,',
         p4:'and we also value the idea that beauty and ugliness coexist.',
         p5:'We keep pristine items beautiful, and restore those that became unsightly back to beauty.',
@@ -483,6 +486,9 @@
       `).join('');
       return `<div class="price-block"><h3>${b.title}</h3>${groups}</div>`;
     }).join('');
+    // 追記の補足文
+    const extra = document.querySelector('[data-i18n="price.noteExtra"]');
+    if(extra){ extra.textContent = DATA[lang].price.noteExtra; }
   }
 
   /* 利用方法 */
