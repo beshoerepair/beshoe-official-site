@@ -7,39 +7,33 @@
 <meta name="description" content="Repair shop Beshoe｜靴修理・クリーニング。お知らせ＋営業日カレンダーをトップ表示。料金・利用方法はデータ駆動。英語切替対応。" />
 <meta name="theme-color" content="#0f172a" />
 
-<!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Corporate+Logo&family=Shippori+Mincho:wght@500;700&display=swap" rel="stylesheet">
 
 <style>
 :root{
   --ink:#0e1a2a; --char:#222; --muted:#6b7280;
   --paper:#ffffff; --paper2:#fbf8f3;
-  --linegreen:#06C755;
-  --deepgreen:#165b4a;
+  --linegreen:#06C755; --deepgreen:#165b4a;
 }
 *{box-sizing:border-box}
 html,body{margin:0;line-height:1.8;color:var(--char);font-family:'Corporate Logo',"Noto Sans JP",sans-serif}
 body{
   background:
-    linear-gradient(180deg, rgba(255,255,255,.4), rgba(255,255,255,.5)),
-    url('https://beshoerepair.github.io/beshoe-official-site/denis-agati-xKy_9mID07o-unsplash.jpg?v=2')
-    center/cover fixed no-repeat !important;
-  padding-bottom:70px; /* 下部固定バー分 */
+    linear-gradient(180deg, rgba(255,255,255,0), rgba(255,255,255,0)),
+    url('mw-iTvnetL2k6I-unsplash.jpg') center/cover fixed no-repeat;
+  padding-bottom:70px;
 }
 a{color:#0f3b84;text-decoration:underline;text-underline-offset:3px}
 a:hover{opacity:.85}
 img{max-width:100%;display:block;border-radius:12px}
 .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
 
-/* ヘッダー（左上ブランドの強調） */
+/* ヘッダー */
 header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.78);backdrop-filter:saturate(140%) blur(10px)}
 .nav{height:78px;display:flex;align-items:center;justify-content:space-between}
 .brand{display:flex;align-items:flex-end;gap:8px}
 .brand .sub{font-size:12px;color:var(--muted);letter-spacing:.12em;line-height:1}
-.brand .main{
-  line-height:1;
-  display:flex;align-items:flex-end;gap:6px;
-}
+.brand .main{line-height:1;display:flex;align-items:flex-end;gap:6px}
 .brand .main .small{font-size:14px;color:#666;letter-spacing:.1em}
 .brand .main .big{
   font-size:clamp(30px,6vw,46px);
@@ -51,7 +45,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.78);backdro
 .menu a:hover,.menu button:hover{background:#efede7}
 .lang{border:1px solid #ddd;background:#fff}
 
-/* 見出し（中央・やわらかい） */
+/* 見出し */
 h1,h2,h3{
   font-family:"Shippori Mincho","Noto Serif JP",serif;
   color:var(--ink);margin:0 0 14px;text-align:center;letter-spacing:.04em
@@ -61,7 +55,7 @@ h2{font-size:clamp(22px,3.6vw,32px)}
 h3{font-size:clamp(20px,3vw,26px)}
 .note{color:var(--muted);font-size:13px;text-align:center}
 
-/* セクションとカード：枠線なし */
+/* セクションとカード（枠線なし） */
 main{padding:12px 0 40px}
 section{display:none;padding:28px 0}
 section.active{display:block}
@@ -74,14 +68,11 @@ section.active{display:block}
 .hero{
   height:44vh;min-height:300px;margin:14px 0 0;border-radius:14px;
   background:
-    linear-gradient(180deg,rgba(255,255,255,0),rgba(255,255,255,.75)),
+    linear-gradient(180deg,rgba(255,255,255,0),rgba(255,255,255,.6)),
     url('https://images.unsplash.com/photo-1520256862855-398228c41684?auto=format&fit=crop&w=2400&q=80') center/cover no-repeat;
 }
 
-/* ボタン */
-.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;background:#fff;text-decoration:none;font-weight:700;border:none}
-
-/* SNSボタン */
+/* SNS */
 .sns-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
 .sns{display:flex;align-items:center;gap:10px;padding:12px;border-radius:12px;background:#fff;text-decoration:none;font-weight:700;color:#111;justify-content:center}
 .sns svg{width:20px;height:20px}
@@ -91,43 +82,50 @@ section.active{display:block}
 .sns.yt{background:#fff;color:#111}
 .sns.fb{background:#1877F2;color:#fff}
 
-/* 固定LINEバー（ロゴ＋文言＋サブ文言） */
-.linebar{
-  position:fixed;left:0;right:0;bottom:0;background:var(--linegreen);
-  z-index:1000;text-align:center;padding:8px 0 2px
-}
-.linebtn{
-  display:inline-flex;align-items:center;gap:6px;
-  color:#fff;font-weight:700;font-size:15px;text-decoration:none
-}
+/* 固定LINEバー */
+.linebar{position:fixed;left:0;right:0;bottom:0;background:var(--linegreen);z-index:1000;text-align:center;padding:8px 0 2px}
+.linebtn{display:inline-flex;align-items:center;gap:6px;color:#fff;font-weight:700;font-size:15px;text-decoration:none}
 .lineicon{width:20px;height:20px;vertical-align:middle}
 .linesub{font-size:11px;color:#fff;opacity:.95;line-height:1.4;margin-top:2px}
 
-/* 利用方法：縦配置・丸数字チップ強調 */
+/* 利用方法：縦配置＋丸数字＋下矢印 */
 #how .grid-2{grid-template-columns:1fr}
 #how h3{font-size:clamp(24px,4.4vw,30px)}
 #how .card{padding:30px 24px}
 .steps{counter-reset:step;margin:0;padding:0}
 .steps li{
   list-style:none;counter-increment:step;position:relative;
-  padding-left:56px;margin:20px 0;line-height:2.0
+  padding-left:56px;margin:26px 0;line-height:2.0
 }
 .steps li::before{
-  content:counter(step);position:absolute;left:0;top:0.15em;
+  content:counter(step);position:absolute;left:0;top:.15em;
   width:36px;height:36px;border-radius:50%;background:var(--deepgreen);
   color:#fff;font-weight:800;display:inline-flex;align-items:center;justify-content:center;
   box-shadow:0 1px 0 rgba(0,0,0,.08)
 }
+.steps li:not(:last-child)::after{
+  content:"↓"; display:block; text-align:center; color:var(--deepgreen);
+  font-weight:800; margin:14px 0 0  -56px;
+}
+
+/* 概要の画像＋文レイアウト */
+.about-grid{display:grid;grid-template-columns:0.9fr 1.1fr;align-items:center;gap:24px;max-width:1000px;margin:0 auto}
+.about-visual{width:100%;height:100%;max-height:520px;border-radius:16px;object-fit:cover}
+
+/* 強調テキスト */
+.emph{font-size:250%;font-weight:900;display:inline-block;margin-left:4px;letter-spacing:.04em;color:var(--ink);font-family:"Shippori Mincho","Noto Serif JP",serif}
 
 footer{padding:36px 0;color:var(--muted);text-align:center}
-@media (max-width:980px){.grid-2,.grid-3,.sns-grid{grid-template-columns:1fr}}
+@media (max-width:980px){
+  .grid-2,.grid-3,.sns-grid{grid-template-columns:1fr}
+  .about-grid{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
 
 <header>
   <div class="wrap nav">
-    <!-- 左上ブランド：Repair shop（小） / Beshoe（大） -->
     <div class="brand" aria-label="site brand">
       <div class="main">
         <span class="small">Repair shop</span>
@@ -137,7 +135,6 @@ footer{padding:36px 0;color:var(--muted);text-align:center}
     </div>
 
     <nav class="menu" id="nav">
-      <!-- メニュー：News / Price / How / Contact / SNS / About / EN -->
       <a href="#news"  data-i18n="nav.news">お知らせ</a>
       <a href="#price" data-i18n="nav.price">料金</a>
       <a href="#how"   data-i18n="nav.how">利用方法</a>
@@ -152,7 +149,7 @@ footer{padding:36px 0;color:var(--muted);text-align:center}
 <main class="wrap">
   <div class="hero" aria-label="hero image"></div>
 
-  <!-- 1) お知らせ＋カレンダー -->
+  <!-- お知らせ＋カレンダー -->
   <section id="news" class="active">
     <h1 data-i18n="news.h">お知らせ</h1>
     <div class="grid-2">
@@ -163,11 +160,7 @@ footer{padding:36px 0;color:var(--muted);text-align:center}
       <div class="card">
         <h3 data-i18n="cal.h">営業日カレンダー</h3>
         <div style="aspect-ratio:4/3;max-height:520px">
-          <iframe
-            title="calendar"
-            src="https://calendar.google.com/calendar/embed?src=beshoe.repair%40gmail.com&ctz=Asia%2FTokyo"
-            style="border:0;width:100%;height:100%;border-radius:12px"
-            loading="lazy"></iframe>
+          <iframe title="calendar" src="https://calendar.google.com/calendar/embed?src=beshoe.repair%40gmail.com&ctz=Asia%2FTokyo" style="border:0;width:100%;height:100%;border-radius:12px" loading="lazy"></iframe>
         </div>
         <p class="note" data-i18n="cal.note">予定はカレンダー更新で自動反映されます。</p>
       </div>
@@ -175,14 +168,14 @@ footer{padding:36px 0;color:var(--muted);text-align:center}
     <div class="strip" style="background:url('https://images.unsplash.com/photo-1548095115-45697e51336b?auto=format&fit=crop&w=2400&q=80') center/cover no-repeat" aria-hidden="true"></div>
   </section>
 
-  <!-- 2) 料金（データ駆動） -->
+  <!-- 料金 -->
   <section id="price">
     <h2 data-i18n="price.h">料金</h2>
     <div id="priceCards" class="grid-3"></div>
     <p class="note" data-i18n="price.ship">送料：返送は実費。2足同梱または税込¥5,000以上で返送無料（キャンペーンで変動）。</p>
   </section>
 
-  <!-- 3) 利用方法（縦配置＋丸数字） -->
+  <!-- 利用方法（改訂） -->
   <section id="how">
     <h2 data-i18n="how.h">利用方法</h2>
     <div class="grid-2">
@@ -194,28 +187,30 @@ footer{padding:36px 0;color:var(--muted);text-align:center}
       <div class="card">
         <h3 data-i18n="how.post">郵送</h3>
         <ol id="howPost" class="steps"></ol>
-        <p class="note" data-i18n="how.note2">梱包は新聞紙などで固定。伝票番号を共有。</p>
+        <p class="note" id="postNote"></p>
       </div>
     </div>
   </section>
 
-  <!-- 4) 問い合わせ -->
+  <!-- 問い合わせ（参考イメージ削除、LINEボタン追加） -->
   <section id="contact">
     <h2 data-i18n="ct.h">問い合わせ</h2>
     <div class="grid-2">
       <div class="card" style="text-align:center">
+        <p>
+          <a href="https://page.line.me/981xrswf" target="_blank" rel="noopener"
+             style="display:inline-block;background-color:#06C755;color:#fff;font-weight:700;padding:12px 20px;border-radius:12px;text-align:center;text-decoration:none;">
+            LINEでお申し込み
+          </a>
+        </p>
         <p><strong data-i18n="ct.mail">メール</strong>：<a href="mailto:beshoe.repair@gmail.com">beshoe.repair@gmail.com</a></p>
         <p><strong data-i18n="ct.tel">電話（仮）</strong>：<a href="tel:000-0000-0000">000-0000-0000</a></p>
         <p class="note" data-i18n="ct.note">営業時間・所在地は決定次第お知らせします。</p>
       </div>
-      <div class="card">
-        <h3 data-i18n="contact.imgH">参考イメージ</h3>
-        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=80" alt="作業イメージ">
-      </div>
     </div>
   </section>
 
-  <!-- 5) 各種SNS -->
+  <!-- 各SNS -->
   <section id="sns">
     <h2 data-i18n="sns.h">各SNS</h2>
     <div class="sns-grid">
@@ -243,16 +238,22 @@ footer{padding:36px 0;color:var(--muted);text-align:center}
     <p class="note" data-i18n="sns.note">施工事例は各SNSで発信します。</p>
   </section>
 
-  <!-- 6) 概要（理念文に全面リライト） -->
+  <!-- 概要（画像左＋文） -->
   <section id="about">
     <h2 data-i18n="about.h">概要</h2>
-    <div class="card" style="max-width:900px;margin:0 auto">
-      <p>長年ものづくりの現場で磨いた手と目で、大切なものを長く愛して使っていくためのお手伝いをさせていただきます。</p>
-      <p>各分野のスペシャリストから学んだ靴や足の構造・手製靴作成の基礎を土台に、修理とクリーニングを丁寧に行います。</p>
-      <p><strong style="font-size:1.05em;letter-spacing:.06em">「BESHOE（ビシュー）」</strong> には、またあなたの靴（<strong>SHOE</strong>）になる（<strong>BE</strong>）という意味や、<strong>「美醜」</strong>という言葉も込めています。</p>
-      <p>一見対立した言葉のように感じますが、美しさと醜さは共存関係にあると考えます。新品の美しさを保って丁寧に使ったり、醜く汚れてしまったモノでもまた美しく。</p>
-      <p>たとえ傷やヘタリが見られても、値段や価値では測れない持ち主の歴史や思い出を刻んだ “本当の美しさ” を大切にしていきたい。</p>
-      <p>という思いが込められています。</p>
+    <div class="about-grid">
+      <img src="IMG_0098.JPG" alt="Repair shop Beshoe" class="about-visual">
+      <div class="card" style="text-align:center;line-height:2.1">
+        <p>長年ものづくりの現場で磨いた手と目で、大切なものを長く愛して使っていくためのお手伝いさせていただきます。</p>
+        <p>各分野のスペシャリストから学んだ靴や足の構造・手製靴作成の基礎を土台に、修理とクリーニングを丁寧に行います。</p>
+        <p><span class="emph">「Beshoe（ビシュー）」</span>には</p>
+        <p>またあなたの靴（shoe）になる（Be）　という意味や</p>
+        <p>日本語の<span class="emph">「美醜」</span></p>
+        <p>一見対立した言葉のように感じますが、美しさと醜さは共存関係にあると考えます。</p>
+        <p>新品の美しさを保って丁寧に使ったり、醜く汚れてしまったモノでもまた美しく。</p>
+        <p>たとえ傷やヘタリが見られても、値段や価値では測れない持ち主の歴史や思い出を刻んだ本当の美しさというものを大切にしていきたい。</p>
+        <p>という思いが込められています</p>
+      </div>
     </div>
   </section>
 </main>
@@ -264,10 +265,9 @@ footer{padding:36px 0;color:var(--muted);text-align:center}
   </div>
 </footer>
 
-<!-- 下部固定 LINE バー -->
+<!-- 固定 LINE バー -->
 <div class="linebar">
   <a href="https://page.line.me/981xrswf" target="_blank" rel="noopener" class="linebtn">
-    <!-- LINEロゴ（SVG） -->
     <svg class="lineicon" viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M19.05 3.5H4.95A3.45 3.45 0 0 0 1.5 6.95v7.6a3.45 3.45 0 0 0 3.45 3.45h6.9l3.6 2.5a.8.8 0 0 0 1.25-.66v-1.84h2.35a3.45 3.45 0 0 0 3.45-3.45v-7.6A3.45 3.45 0 0 0 19.05 3.5Z"/></svg>
     公式LINEはこちら
   </a>
@@ -277,7 +277,7 @@ footer{padding:36px 0;color:var(--muted);text-align:center}
 <script>
 document.getElementById('year').textContent = new Date().getFullYear();
 
-/* 多言語データと価格・工程 */
+/* 多言語とデータ */
 const DATA = {
   ja: {
     nav:{news:'お知らせ',price:'料金',how:'利用方法',contact:'問い合わせ',sns:'各SNS',about:'概要'},
@@ -296,11 +296,20 @@ const DATA = {
     },
     how:{h:'利用方法',shop:'店頭',post:'郵送',
       shopLead:'住所（仮）までお持ちください。作業内容やお見積もり、納期をご相談のうえで作業します。',
-      s:['受付（状態確認）','見積・納期案内','作業','受け取り・お支払い'],
-      p:['LINEまたはメールで写真と希望内容を送信','概算見積と発送先をご案内','到着後に本見積→了承後に作業','完了写真→入金確認→返送']
+      s:[
+        '受付（状態確認）',
+        '見積・納期案内・お支払い（前払い）',
+        '作業（完了次第公式LINE、SMS、お電話等でお知らせ）',
+        '受け取り'
+      ],
+      p:[
+        'LINEまたはメールで写真と希望内容を送信',
+        '概算見積と発送先をご案内',
+        '到着後に本見積→入金確認後に作業',
+        '完了次第順次配送'
+      ]
     },
     ct:{h:'問い合わせ',mail:'メール',tel:'電話（仮）',note:'営業時間・所在地は決定次第お知らせします。'},
-    contact:{imgH:'参考イメージ'},
     sns:{h:'各SNS',note:'施工事例は各SNSで発信します。'},
     about:{h:'概要'},
     legal:'所在地・事業者情報・特定商取引法表記は決定次第掲載。'
@@ -321,12 +330,10 @@ const DATA = {
       ]
     },
     how:{h:'How to use',shop:'In-store',post:'Mail-in',
-      shopLead:'Bring your pair to the temp address. We discuss scope, quote, and lead time before starting.',
-      s:['Check-in & inspection','Quote & lead time','Work','Pickup & payment'],
-      p:['Send photos and request via LINE or email','We reply with rough quote and shipping address','Final quote after arrival → work after approval','Completion photos → payment → return shipment']
+      s:['Check-in & inspection','Quote, lead time & prepayment','Work (notify via LINE/SMS/phone when done)','Pickup'],
+      p:['Send photos and request via LINE or email','We reply with rough quote and shipping address','Final quote after arrival → work after payment','Ship out as soon as completed']
     },
     ct:{h:'Contact',mail:'Email',tel:'Phone (temp)',note:'Address and hours will be announced.'},
-    contact:{imgH:'Reference image'},
     sns:{h:'SNS',note:'We post works on SNS.'},
     about:{h:'About'},
     legal:'Company info and legal notice will be posted later.'
@@ -345,7 +352,7 @@ function i18nApply(){
     let cur = D; for(const k of path) cur = cur?.[k];
     if(typeof cur==='string') el.textContent = cur;
   });
-  renderPrice(); renderHow();
+  renderPrice(); renderHow(); renderPostNote();
 }
 langBtn.addEventListener('click',()=>{ lang = (lang==='ja')?'en':'ja'; langBtn.textContent = (lang==='ja')?'EN':'日本語'; i18nApply(); });
 
@@ -374,12 +381,16 @@ function renderPrice(){
 /* 利用方法 */
 function renderHow(){
   const D = DATA[lang].how;
-  document.querySelector('[data-i18n="how.shopLead"]').textContent = D.shopLead;
   document.getElementById('howShop').innerHTML = D.s.map(x=>`<li>${x}</li>`).join('');
   document.getElementById('howPost').innerHTML = D.p.map(x=>`<li>${x}</li>`).join('');
 }
+function renderPostNote(){
+  const txt_ja = '※写真だけでは判断が難しく、文章のみでリスクや仕上がりの説明が困難な作業はお受けできない場合があります。店頭にお持ちいただければ対応可能な場合もありますので、お気軽にご相談ください。';
+  const txt_en = 'Note: Some requests are hard to assess from photos and text alone. We may decline in such cases. Bringing items in-store may make them possible. Feel free to ask.';
+  document.getElementById('postNote').textContent = (lang==='ja')?txt_ja:txt_en;
+}
 
-/* お知らせ（news.json）— セール強調表示 */
+/* お知らせ（news.json）— セール強調 */
 async function loadNews(){
   try{
     const r = await fetch('news.json?v=' + Date.now(), {cache:'no-store'});
@@ -395,7 +406,7 @@ async function loadNews(){
           box-shadow:${isSale ? '0 0 14px rgba(14,165,255,.35)' : '0 6px 18px rgba(17,24,39,.05)'};text-align:${isSale?'center':'left'}">
           <div style="font-size:${isSale?'22px':'18px'};font-weight:800;color:${isSale?'#0e1a2a':'inherit'};">${n.title||''}</div>
           <div class="note" style="font-size:${isSale?'15px':'13px'};margin-top:6px">${n.text||''}</div>
-          ${isSale ? `<a href="https://page.line.me/981xrswf" target="_blank" rel="noopener" class="btn" style="margin-top:12px;background:#06C755;color:#fff;text-decoration:none">LINEで申し込み</a>` : ''}
+          ${isSale ? `<a href="https://page.line.me/981xrswf" target="_blank" rel="noopener" class="btn" style="margin-top:12px;background:#06C755;color:#fff;text-decoration:none">LINEでお申し込み</a>` : ''}
           <div class="note" style="margin-top:6px">${n.date||''}</div>
         </div>`;
     }).join('');
