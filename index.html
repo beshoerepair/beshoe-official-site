@@ -1,154 +1,132 @@
 <!doctype html>
 <html lang="ja">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Repair shop Beshoe｜靴修理・クリーニング</title>
-<meta name="description" content="Repair shop Beshoe｜靴修理・クリーニング。お知らせ＋営業日カレンダーをトップ表示。料金はカテゴリ別に整理。英語切替対応。" />
-<meta name="theme-color" content="#0f172a" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Repair shop Beshoe｜靴修理・クリーニング</title>
+  <meta name="description" content="Repair shop Beshoe｜靴修理・クリーニング。お知らせ＋営業日カレンダーをトップ表示。料金はカテゴリ別に整理。英語切替対応。" />
+  <meta name="theme-color" content="#0f172a" />
 
-<!-- フォント：Corporate Logo（CDN）＋見出し用 -->
-<link href="https://cdn.jsdelivr.net/gh/qrac/fonts-corporate-logo@latest/corporate-logo.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&display=swap" rel="stylesheet">
+  <!-- フォント：Corporate Logo（本文）＋ Shippori Mincho（見出し） -->
+  <link href="https://cdn.jsdelivr.net/gh/qrac/fonts-corporate-logo@latest/corporate-logo.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&display=swap" rel="stylesheet">
 
-<style>
-:root{
-  --ink:#0e1a2a; --char:#222; --muted:#6b7280;
-  --paper:#ffffff; --paper2:#fbf8f3;
-  --linegreen:#06C755; --deepgreen:#165b4a;
-}
-*{box-sizing:border-box}
-html,body{margin:0;line-height:1.8;color:var(--char);font-family:'Corporate Logo',"Noto Sans JP",sans-serif}
-body{
-  background:
-    linear-gradient(180deg, rgba(255,255,255,0), rgba(255,255,255,0)),
-    url('alex-lvrs-Md6_qA-BMis-unsplash.jpg') center/cover fixed no-repeat;
-  padding-bottom:70px;
-}
-a{color:#0f3b84;text-decoration:underline;text-underline-offset:3px}
-a:hover{opacity:.9}
-img{max-width:100%;display:block;border-radius:12px}
-.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+  <style>
+    :root{
+      --ink:#0e1a2a; --char:#222; --muted:#6b7280;
+      --paper:#ffffff; --paper2:#fbf8f3; --deepgreen:#165b4a; --linegreen:#06C755;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;line-height:1.8;color:var(--char);font-family:'Corporate Logo','Noto Sans JP',sans-serif}
+    body{
+      background:url('alex-lvrs-Md6_qA-BMis-unsplash.jpg') center/cover fixed no-repeat;
+    }
+    a{color:#0f3b84;text-decoration:underline;text-underline-offset:3px}
+    a:hover{opacity:.9}
+    .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
 
-/* ヘッダー */
-header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.82);backdrop-filter:saturate(140%) blur(10px)}
-.nav{height:78px;display:flex;align-items:center;justify-content:space-between}
-.brand{display:flex;align-items:flex-end;gap:8px}
-.brand .main{display:flex;align-items:flex-end;gap:6px;line-height:1}
-.brand .main .small{font-size:14px;color:#666;letter-spacing:.1em}
-.brand .main .big{
-  font-size:clamp(30px,6vw,46px);font-weight:800;letter-spacing:.04em;color:var(--ink);
-  font-family:"Shippori Mincho","Noto Serif JP",serif;
-}
-.brand .sub{font-size:12px;color:var(--muted);letter-spacing:.12em;line-height:1}
-.menu{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-.menu a,.menu button{padding:8px 12px;border-radius:10px;background:transparent;cursor:pointer;text-decoration:none;color:var(--ink)}
-.menu a:hover,.menu button:hover{background:#efede7}
-.lang{border:1px solid #ddd;background:#fff}
+    /* ヘッダー */
+    header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.86);backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid rgba(0,0,0,.06)}
+    .nav{height:78px;display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;align-items:flex-end;gap:8px}
+    .brand .small{font-size:14px;color:#666;letter-spacing:.1em}
+    .brand .big{font-size:clamp(30px,6vw,46px);font-weight:800;letter-spacing:.04em;color:var(--ink);font-family:'Shippori Mincho','Noto Serif JP',serif}
+    .brand .sub{font-size:12px;color:var(--muted);letter-spacing:.12em}
+    .menu{display:flex;gap:10px;align-items:center;flex-wrap:nowrap}
+    .menu a,.menu button{padding:8px 12px;border-radius:10px;background:transparent;cursor:pointer;text-decoration:none;color:var(--ink)}
+    .menu a:hover,.menu button:hover{background:#efede7}
+    .lang{border:1px solid #ddd;background:#fff}
 
-/* 見出し */
-h1,h2,h3,h4{
-  font-family:"Shippori Mincho","Noto Serif JP",serif;
-  color:var(--ink);margin:0 0 14px;text-align:center;letter-spacing:.04em
-}
-h1{font-size:clamp(28px,5.2vw,48px)}
-h2{font-size:clamp(22px,3.6vw,32px)}
-h3{font-size:clamp(20px,3vw,26px)}
-h4{font-size:clamp(18px,2.4vw,22px);margin-top:8px}
-.note{color:var(--muted);font-size:13px;text-align:center}
+    /* 見出し */
+    h1,h2,h3,h4{font-family:'Shippori Mincho','Noto Serif JP',serif;color:var(--ink);margin:0 0 14px;text-align:center;letter-spacing:.04em}
+    h1{font-size:clamp(28px,5.2vw,48px)}
+    h2{font-size:clamp(22px,3.6vw,32px)}
+    h3{font-size:clamp(20px,3vw,28px)}
+    h4{font-size:clamp(18px,2.4vw,22px);margin-top:8px}
+    .note{color:var(--muted);font-size:13px;text-align:center}
 
-/* セクションとカード */
-main{padding:12px 0 40px}
-section{display:none;padding:28px 0}
-section.active{display:block}
-.card{background:var(--paper);border:none;border-radius:14px;padding:22px;box-shadow:0 6px 18px rgba(17,24,39,.06)}
-.grid-2{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}
-.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.strip{height:22vw;max-height:260px;min-height:120px;margin:18px 0;border-radius:12px}
+    /* セクションとカード */
+    main{padding:12px 0 40px}
+    section{display:none;padding:28px 0}
+    section.active{display:block}
+    .card{background:var(--paper);border:none;border-radius:14px;padding:22px;box-shadow:0 6px 18px rgba(17,24,39,.06)}
+    .grid-2{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .strip{height:22vw;max-height:260px;min-height:120px;margin:18px 0;border-radius:12px}
 
-/* ヒーロー */
-.hero{
-  height:44vh;min-height:300px;margin:14px 0 0;border-radius:14px;
-  background:
-    linear-gradient(180deg,rgba(255,255,255,0),rgba(255,255,255,.6)),
-    url('https://images.unsplash.com/photo-1520256862855-398228c41684?auto=format&fit=crop&w=2400&q=80') center/cover no-repeat;
-}
+    /* ヒーロー（青い靴に差し替え） */
+    .hero{height:44vh;min-height:300px;margin:14px 0 0;border-radius:14px;background:linear-gradient(180deg,rgba(255,255,255,0),rgba(255,255,255,.6)),url('IMG_0099.jpg') center/contain no-repeat}
 
-/* SNS */
-.sns-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
-.sns{display:flex;align-items:center;gap:10px;padding:12px;border-radius:12px;background:#fff;text-decoration:none;font-weight:700;color:#111;justify-content:center}
-.sns svg{width:20px;height:20px}
-.sns.ig{color:#fff;background:linear-gradient(45deg,#fd5949,#d6249f,#285AEB)}
-.sns.x{background:#000;color:#fff}
-.sns.tt{background:#000;color:#fff}
-.sns.yt{background:#fff;color:#111}
-.sns.fb{background:#1877F2;color:#fff}
+    /* SNS */
+    .sns-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+    .sns{display:flex;align-items:center;gap:10px;padding:12px;border-radius:12px;background:#fff;text-decoration:none;font-weight:700;color:#111;justify-content:center}
+    .sns.ig{color:#fff;background:linear-gradient(45deg,#fd5949,#d6249f,#285AEB)}
+    .sns.x{background:#000;color:#fff}
+    .sns.tt{background:#000;color:#fff}
+    .sns.yt{background:#fff;color:#111}
+    .sns.fb{background:#1877F2;color:#fff}
 
-/* 固定LINEバー */
-.linebar{position:fixed;left:0;right:0;bottom:0;background:var(--linegreen);z-index:1000;text-align:center;padding:8px 0 2px}
-.linebtn{display:inline-flex;align-items:center;gap:6px;color:#fff;font-weight:700;font-size:15px;text-decoration:none}
-.lineicon{width:20px;height:20px;vertical-align:middle}
-.linesub{font-size:11px;color:#fff;opacity:.95;line-height:1.4;margin-top:2px}
+    /* 料金：左揃え＋見出し強調 */
+    #price{text-align:left}
+    #price h2{text-align:left}
+    #price h3{text-align:left;font-size:clamp(24px,4.2vw,30px);color:#165b4a;margin:6px 0 10px}
+    #price h4{text-align:left;font-size:clamp(18px,2.6vw,22px);color:#333;margin:14px 0 6px}
+    .price-block{background:var(--paper);border:none;border-radius:14px;padding:20px;box-shadow:0 6px 18px rgba(17,24,39,.06);margin:14px 0}
+    .price-block ul{margin:6px 0;padding-left:1.2em}
+    .price-block li{margin:6px 0}
 
-/* 利用方法：中央配置 + 左揃え + 数字縦揃え */
-#how .grid-2{grid-template-columns:1fr}
-#how h3{font-size:clamp(24px,4.4vw,30px)}
-#how .card{padding:30px 24px}
-.steps{
-  counter-reset:step; max-width:760px; margin:0 auto; padding:0; text-align:left;
-}
-.steps li{
-  list-style:none; counter-increment:step; margin:26px 0; line-height:2.0;
-  display:grid; grid-template-columns:36px 1fr; column-gap:12px; align-items:start;
-}
-.steps li::before{
-  content:counter(step);
-  grid-column:1; grid-row:1;
-  display:flex; align-items:center; justify-content:center;
-  width:36px; height:36px; border-radius:50%;
-  background:var(--deepgreen); color:#fff; font-weight:800;
-}
-.steps li:not(:last-child)::after{
-  content:"↓"; grid-column:1 / -1; justify-self:center;
-  color:var(--deepgreen); font-weight:800; margin-top:14px;
-}
+    /* 利用方法：中央配置+左揃え+数字縦揃え */
+    #how .grid-2{grid-template-columns:1fr}
+    #how .card{padding:30px 24px}
+    .steps{counter-reset:step;max-width:760px;margin:0 auto;padding:0;text-align:left}
+    .steps li{list-style:none;counter-increment:step;margin:26px 0;line-height:2.0;display:grid;grid-template-columns:36px 1fr;column-gap:12px;align-items:start}
+    .steps li::before{content:counter(step);grid-column:1;grid-row:1;display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:var(--deepgreen);color:#fff;font-weight:800}
+    .steps li:not(:last-child)::after{content:"↓";grid-column:1 / -1;justify-self:center;color:var(--deepgreen);font-weight:800;margin-top:14px}
 
-/* 概要：画像と文章を同一白面で囲う＋画像大型化 */
-.about-wrap{
-  background:rgba(255,255,255,0.88);padding:24px;border-radius:16px;box-shadow:0 6px 18px rgba(0,0,0,.05)
-}
-.about-grid{display:grid;grid-template-columns:0.9fr 1.1fr;align-items:center;gap:24px;max-width:1000px;margin:0 auto}
-.about-visual{width:100%;height:100%;max-height:none;object-fit:cover;border-radius:12px}
-.emph{font-size:250%;font-weight:900;display:inline-block;margin-left:4px;letter-spacing:.04em;color:var(--ink);font-family:"Shippori Mincho","Noto Serif JP",serif}
+    /* 概要：画像＋文章を同じ白面で囲う。画像はテキスト縦幅に合わせて拡大 */
+    .about-wrap{background:rgba(255,255,255,0.92);padding:24px;border-radius:16px;box-shadow:0 6px 18px rgba(0,0,0,.05)}
+    .about-grid{display:grid;grid-template-columns:0.9fr 1.1fr;align-items:center;gap:24px;max-width:1000px;margin:0 auto}
+    .about-visual{width:100%;height:100%;max-height:none;object-fit:cover;border-radius:12px}
+    .about-text{line-height:2.1;text-align:center}
+    .emph{font-size:200%;font-weight:900;display:inline-block;margin-left:4px;letter-spacing:.04em;color:var(--ink);font-family:'Shippori Mincho','Noto Serif JP',serif}
 
-/* 料金：ブロック表示 */
-.price-block{background:var(--paper);border:none;border-radius:14px;padding:20px;box-shadow:0 6px 18px rgba(17,24,39,.06);margin:14px 0}
-.price-block ul{margin:8px 0 0 0;padding-left:1.2em}
-.price-block li{margin:6px 0}
-.price-block p{margin:8px 0}
-footer{padding:36px 0;color:var(--muted);text-align:center}
+    footer{padding:36px 0;color:var(--muted);text-align:center}
 
-@media (max-width:980px){
-  .grid-2,.grid-3,.sns-grid{grid-template-columns:1fr}
-  .about-grid{grid-template-columns:1fr}
-}
-</style>
+    /* モバイル最適化 */
+    @media (max-width: 840px){
+      .wrap{padding:0 14px}
+      header .nav{height:auto;gap:10px;padding:10px 12px}
+      .menu{flex-wrap:wrap;gap:6px}
+      .menu a,.menu button{padding:6px 10px;font-size:14px}
+      h1{font-size:28px} h2{font-size:22px} h3{font-size:18px} h4{font-size:16px}
+      .grid-2,.grid-3,.sns-grid{grid-template-columns:1fr}
+      .card{padding:16px;border-radius:12px}
+      .about-grid{grid-template-columns:1fr;gap:14px}
+      .about-visual{height:46vw;max-height:320px}
+      .hero{height:38vh;min-height:220px}
+      #price .price-block{padding:16px}
+      .steps{max-width:100%}
+      .steps li{grid-template-columns:32px 1fr;column-gap:10px;margin:18px 0}
+      .steps li::before{width:32px;height:32px}
+      body{padding-bottom:88px}
+    }
+  </style>
 </head>
 <body>
-
 <header>
   <div class="wrap nav">
     <div class="brand">
-      <div class="main"><span class="small">Repair shop</span><span class="big">Beshoe</span></div>
-      <div class="sub">リペアショップビシュー</div>
+      <span class="small">Repair shop</span>
+      <span class="big">Beshoe</span>
+      <span class="sub">リペアショップビシュー</span>
     </div>
     <nav class="menu" id="nav">
-      <a href="#news"  data-i18n="nav.news">お知らせ</a>
-      <a href="#price" data-i18n="nav.price">料金</a>
-      <a href="#how"   data-i18n="nav.how">利用方法</a>
-      <a href="#contact" data-i18n="nav.contact">問い合わせ</a>
-      <a href="#sns"   data-i18n="nav.sns">各SNS</a>
-      <a href="#about" data-i18n="nav.about">概要</a>
+      <a href="#news" data-i18n="nav.news" style="min-width:44px;display:inline-block">お知らせ</a>
+      <a href="#price" data-i18n="nav.price" style="min-width:44px;display:inline-block">料金</a>
+      <a href="#how" data-i18n="nav.how" style="min-width:44px;display:inline-block">利用方法</a>
+      <a href="#contact" data-i18n="nav.contact" style="min-width:44px;display:inline-block">問い合わせ</a>
+      <a href="#sns" data-i18n="nav.sns" style="min-width:44px;display:inline-block">各SNS</a>
+      <a href="#about" data-i18n="nav.about" style="min-width:44px;display:inline-block">概要</a>
       <button class="lang" id="langBtn" aria-label="言語切替">EN</button>
     </nav>
   </div>
@@ -176,13 +154,12 @@ footer{padding:36px 0;color:var(--muted);text-align:center}
     <div class="strip" style="background:url('https://images.unsplash.com/photo-1548095115-45697e51336b?auto=format&fit=crop&w=2400&q=80') center/cover no-repeat" aria-hidden="true"></div>
   </section>
 
-  <!-- 料金（カテゴリー別レイアウト） -->
+  <!-- 料金 -->
   <section id="price">
     <h2 data-i18n="price.h">料金表（税込）</h2>
 
     <div class="price-block">
-      <h3>◎クリーニング</h3>
-
+      <h3>クリーニング</h3>
       <h4>靴</h4>
       <ul>
         <li>スニーカークリーニング　スタンダード　¥5,500</li>
@@ -191,8 +168,7 @@ footer{padding:36px 0;color:var(--muted);text-align:center}
         <li>ブーツ　スタンダード　¥6,500</li>
         <li>カビ取り　¥7,000</li>
       </ul>
-
-      <p><strong>〜オプション〜</strong></p>
+      <p><strong>オプション</strong></p>
       <ul>
         <li>傷補修1箇所　¥2,000</li>
         <li>カラー 部分補修　¥5,000</li>
@@ -205,8 +181,7 @@ footer{padding:36px 0;color:var(--muted);text-align:center}
         <li>スムース革　¥7,000</li>
         <li>特殊素材　¥9,000</li>
       </ul>
-
-      <p><strong>〜オプション〜</strong></p>
+      <p><strong>オプション</strong></p>
       <ul>
         <li>カラー 部分補修　¥8,000</li>
         <li>カラー 全体補修　¥10,000</li>
@@ -214,13 +189,11 @@ footer{padding:36px 0;color:var(--muted);text-align:center}
     </div>
 
     <div class="price-block">
-      <h3>◎オールソール</h3>
-
+      <h3>オールソール</h3>
       <h4>レザーオールソール</h4>
       <p>（リフトはラバー Vibram5350 または革とのコンビリフト）</p>
       <ul><li>¥18,000</li></ul>
-
-      <p><strong>〜オプション〜</strong></p>
+      <p><strong>オプション</strong></p>
       <ul>
         <li>ハーフソール　¥3,500</li>
         <li>トゥスチール　¥3,700</li>
@@ -241,7 +214,7 @@ footer{padding:36px 0;color:var(--muted);text-align:center}
     </div>
 
     <div class="price-block">
-      <h3>◎通常修理料金</h3>
+      <h3>通常修理料金</h3>
       <ul>
         <li>ピンヒール　¥1,300</li>
         <li>ヒールリフト小　¥1,500</li>
@@ -260,20 +233,18 @@ footer{padding:36px 0;color:var(--muted);text-align:center}
         <li>カップソール再接着（片足）¥10,000</li>
       </ul>
     </div>
-
-    <p class="note" data-i18n="price.ship">送料：返送は実費。2足同梱または税込¥5,000以上で返送無料（キャンペーンで変動）。</p>
   </section>
 
-  <!-- 利用方法（中央配置＋左揃え＋縦揃え） -->
+  <!-- 利用方法 -->
   <section id="how">
     <h2 data-i18n="how.h">利用方法</h2>
     <div class="grid-2">
-      <div class="card">
+      <div class="card" style="text-align:center">
         <h3 data-i18n="how.shop">店頭</h3>
         <p data-i18n="how.shopLead">住所（仮）までお持ちください。作業内容やお見積もり、納期をご相談のうえで作業します。</p>
         <ol id="howShop" class="steps"></ol>
       </div>
-      <div class="card">
+      <div class="card" style="text-align:center">
         <h3 data-i18n="how.post">郵送</h3>
         <ol id="howPost" class="steps"></ol>
         <p class="note" id="postNote"></p>
@@ -284,19 +255,17 @@ footer{padding:36px 0;color:var(--muted);text-align:center}
   <!-- 問い合わせ（中央揃え） -->
   <section id="contact">
     <h2 data-i18n="ct.h">問い合わせ</h2>
-    <div class="grid-2">
-      <div class="card" style="text-align:center">
-        <p>
-          <a href="https://page.line.me/981xrswf" target="_blank" rel="noopener"
-             style="display:inline-block;background-color:#06C755;color:#fff;font-weight:700;padding:12px 20px;border-radius:12px;text-align:center;text-decoration:none;">
-            公式LINEはこちら
-          </a>
-        </p>
-        <p style="font-size:11px;color:#2a2a2a;margin-top:-6px">↑お得なキャンペーン情報も↑</p>
-        <p><strong data-i18n="ct.mail">メール</strong>：<a href="mailto:beshoe.repair@gmail.com">beshoe.repair@gmail.com</a></p>
-        <p><strong data-i18n="ct.tel">電話（仮）</strong>：<a href="tel:000-0000-0000">000-0000-0000</a></p>
-        <p class="note" data-i18n="ct.note">営業時間・所在地は決定次第お知らせします。</p>
-      </div>
+    <div class="card" style="text-align:center;max-width:680px;margin:0 auto">
+      <p>
+        <a href="https://page.line.me/981xrswf" target="_blank" rel="noopener"
+           style="display:inline-block;background:#06C755;color:#fff;font-weight:700;padding:12px 20px;border-radius:12px;text-align:center;text-decoration:none;min-width:200px;">
+          公式LINEはこちら
+        </a>
+      </p>
+      <p style="font-size:11px;color:#2a2a2a;margin-top:-6px">↑お得なキャンペーン情報も↑</p>
+      <p><strong data-i18n="ct.mail">メール</strong>：<a href="mailto:beshoe.repair@gmail.com">beshoe.repair@gmail.com</a></p>
+      <p><strong data-i18n="ct.tel">電話（仮）</strong>：<a href="tel:000-0000-0000">000-0000-0000</a></p>
+      <p class="note" data-i18n="ct.note">営業時間・所在地は決定次第お知らせします。</p>
     </div>
   </section>
 
@@ -313,13 +282,13 @@ footer{padding:36px 0;color:var(--muted);text-align:center}
     <p class="note" data-i18n="sns.note">施工事例は各SNSで発信します。</p>
   </section>
 
-  <!-- 概要（画像＋文章を同一白面で囲う） -->
+  <!-- 概要（画像＋文章） -->
   <section id="about">
     <h2 data-i18n="about.h">概要</h2>
     <div class="about-wrap">
       <div class="about-grid">
         <img src="IMG_0098_trimmed.png" alt="Repair shop Beshoe" class="about-visual">
-        <div style="text-align:center;line-height:2.1">
+        <div class="about-text">
           <p>長年ものづくりの現場で磨いた手と目で、大切なものを長く愛して使っていくためのお手伝いさせていただきます。</p>
           <p>各分野のスペシャリストから学んだ靴や足の構造・手製靴作成の基礎を土台に、修理とクリーニングを丁寧に行います。</p>
           <p><span class="emph">「Beshoe（ビシュー）」</span>には</p>
@@ -342,138 +311,125 @@ footer{padding:36px 0;color:var(--muted);text-align:center}
   </div>
 </footer>
 
-<!-- 固定 LINE バー -->
-<div class="linebar">
-  <a href="https://page.line.me/981xrswf" target="_blank" rel="noopener" class="linebtn">
-    <svg class="lineicon" viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M19.05 3.5H4.95A3.45 3.45 0 0 0 1.5 6.95v7.6a3.45 3.45 0 0 0 3.45 3.45h6.9l3.6 2.5a.8.8 0 0 0 1.25-.66v-1.84h2.35a3.45 3.45 0 0 0 3.45-3.45v-7.6A3.45 3.45 0 0 0 19.05 3.5Z"/></svg>
-    公式LINEはこちら
-  </a>
-  <div class="linesub">↑お得なキャンペーン情報も↑</div>
-</div>
-
 <script>
-document.getElementById('year').textContent = new Date().getFullYear();
+  document.getElementById('year').textContent = new Date().getFullYear();
 
-/* 多言語辞書（不足キー補完） */
-const DATA = {
-  ja: {
-    nav:{news:'お知らせ',price:'料金',how:'利用方法',contact:'問い合わせ',sns:'各SNS',about:'概要'},
-    news:{h:'お知らせ',note:'最新のお知らせは随時更新します。'},
-    cal:{h:'営業日カレンダー',note:'予定はカレンダー更新で自動反映されます。'},
-    price:{h:'料金表（税込）',ship:'送料：返送は実費。2足同梱または税込¥5,000以上で返送無料（キャンペーンで変動）。'},
-    how:{h:'利用方法',shop:'店頭',post:'郵送',
-      shopLead:'住所（仮）までお持ちください。作業内容やお見積もり、納期をご相談のうえで作業します。',
-      s:[
-        '来店・状態確認',
-        '見積・納期案内・お支払い（前払いになります）',
-        '作業（完了次第公式LINE、SMS、お電話等でお知らせいたします）',
-        '受け取り'
-      ],
-      p:[
-        'LINEまたはメールで写真と希望内容を送信',
-        '概算見積と発送先をご案内',
-        '到着後に本見積→入金確認後に作業',
-        '完了次第順次配送'
-      ]
+  /* 多言語辞書（英語キーを漏れなく用意） */
+  const DATA = {
+    ja: {
+      nav:{news:'お知らせ',price:'料金',how:'利用方法',contact:'問い合わせ',sns:'各SNS',about:'概要'},
+      news:{h:'お知らせ',note:'最新のお知らせは随時更新します。'},
+      cal:{h:'営業日カレンダー',note:'予定はカレンダー更新で自動反映されます。'},
+      price:{h:'料金表（税込）'},
+      how:{h:'利用方法',shop:'店頭',post:'郵送',
+        shopLead:'住所（仮）までお持ちください。作業内容やお見積もり、納期をご相談のうえで作業します。',
+        s:[
+          '来店・状態確認',
+          '見積・納期案内・お支払い（前払いになります）',
+          '作業（完了次第公式LINE、SMS、お電話等でお知らせいたします）',
+          '受け取り'
+        ],
+        p:[
+          'LINEまたはメールで写真と希望内容を送信',
+          '概算見積と発送先をご案内',
+          '到着後に本見積→入金確認後に作業',
+          '完了次第順次配送'
+        ]
+      },
+      ct:{h:'問い合わせ',mail:'メール',tel:'電話（仮）',note:'営業時間・所在地は決定次第お知らせします。'},
+      sns:{h:'各SNS',note:'施工事例は各SNSで発信します。'},
+      about:{h:'概要'},
+      legal:'所在地・事業者情報・特定商取引法表記は決定次第掲載。'
     },
-    ct:{h:'問い合わせ',mail:'メール',tel:'電話（仮）',note:'営業時間・所在地は決定次第お知らせします。'},
-    sns:{h:'各SNS',note:'施工事例は各SNSで発信します。'},
-    about:{h:'概要'},
-    legal:'所在地・事業者情報・特定商取引法表記は決定次第掲載。'
-  },
-  en: {
-    nav:{news:'News',price:'Price',how:'How to use',contact:'Contact',sns:'SNS',about:'About'},
-    news:{h:'News',note:'We update notices as needed.'},
-    cal:{h:'Calendar',note:'Updates reflect automatically via Google Calendar.'},
-    price:{h:'Price list (tax incl.)',ship:'Shipping: return at cost. Free for two pairs in one box or orders over ¥5,000 (may vary by campaign).'},
-    how:{h:'How to use',shop:'In-store',post:'Mail-in',
-      shopLead:'Please bring your items to our address (TBD). We discuss the work, quote and lead time before starting.',
-      s:[
-        'Check-in & inspection',
-        'Quote, lead time & prepayment',
-        'Work (we notify via LINE/SMS/phone when completed)',
-        'Pickup'
-      ],
-      p:[
-        'Send photos and request via LINE or email',
-        'We reply with a rough quote and shipping address',
-        'Final quote after arrival → work after payment',
-        'Ship out as soon as completed'
-      ]
-    },
-    ct:{h:'Contact',mail:'Email',tel:'Phone (temp)',note:'Address and hours will be announced.'},
-    sns:{h:'SNS',note:'We post works on SNS.'},
-    about:{h:'About'},
-    legal:'Company info and legal notice will be posted later.'
+    en: {
+      nav:{news:'News',price:'Price',how:'How to use',contact:'Contact',sns:'SNS',about:'About'},
+      news:{h:'News',note:'We update notices as needed.'},
+      cal:{h:'Calendar',note:'Updates reflect automatically via Google Calendar.'},
+      price:{h:'Price list (tax incl.)'},
+      how:{h:'How to use',shop:'In-store',post:'Mail-in',
+        shopLead:'Please bring your items to our address (TBD). We discuss the work, quote and lead time before starting.',
+        s:[
+          'Check-in & inspection',
+          'Quote, lead time & prepayment',
+          'Work (we notify via LINE/SMS/phone when completed)',
+          'Pickup'
+        ],
+        p:[
+          'Send photos and request via LINE or email',
+          'We reply with a rough quote and shipping address',
+          'Final quote after arrival → work after payment',
+          'Ship out as soon as completed'
+        ]
+      },
+      ct:{h:'Contact',mail:'Email',tel:'Phone (temp)',note:'Address and hours will be announced.'},
+      sns:{h:'SNS',note:'We post works on SNS.'},
+      about:{h:'About'},
+      legal:'Company info and legal notice will be posted later.'
+    }
+  };
+
+  /* 言語切替 */
+  let lang = 'ja';
+  const langBtn = document.getElementById('langBtn');
+  function i18nApply(){
+    const D = DATA[lang];
+    document.documentElement.lang = lang;
+    document.title = lang==='ja' ? 'Repair shop Beshoe｜靴修理・クリーニング' : 'Repair shop Beshoe｜Shoe Repair & Cleaning';
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+      const path = el.getAttribute('data-i18n').split('.');
+      let cur = D; for(const k of path) cur = cur?.[k];
+      if(typeof cur==='string') el.textContent = cur;
+    });
+    renderHow(); renderPostNote();
   }
-};
+  langBtn.addEventListener('click',()=>{ lang = (lang==='ja')?'en':'ja'; langBtn.textContent = (lang==='ja')?'EN':'日本語'; i18nApply(); });
 
-/* 言語切替 */
-let lang = 'ja';
-const langBtn = document.getElementById('langBtn');
-function i18nApply(){
-  const D = DATA[lang];
-  document.documentElement.lang = lang;
-  document.title = lang==='ja' ? 'Repair shop Beshoe｜靴修理・クリーニング' : 'Repair shop Beshoe｜Shoe Repair & Cleaning';
-  document.querySelectorAll('[data-i18n]').forEach(el=>{
-    const path = el.getAttribute('data-i18n').split('.');
-    let cur = D; for(const k of path) cur = cur?.[k];
-    if(typeof cur==='string') el.textContent = cur;
+  /* SPA切替 */
+  const sections = Array.from(document.querySelectorAll('main section'));
+  function switchTo(id){
+    sections.forEach(s=>s.classList.toggle('active', s.id===id));
+    document.querySelectorAll('#nav a').forEach(a=>a.classList.toggle('active', a.getAttribute('href')==='#'+id));
+  }
+  document.getElementById('nav').addEventListener('click', (e)=>{
+    if(e.target.tagName==='A'){ e.preventDefault(); switchTo(e.target.getAttribute('href').slice(1)); }
   });
-  renderHow(); renderPostNote();
-}
-langBtn.addEventListener('click',()=>{ lang = (lang==='ja')?'en':'ja'; langBtn.textContent = (lang==='ja')?'EN':'日本語'; i18nApply(); });
 
-/* SPA切替 */
-const sections = Array.from(document.querySelectorAll('main section'));
-function switchTo(id){
-  sections.forEach(s=>s.classList.toggle('active', s.id===id));
-  document.querySelectorAll('#nav a').forEach(a=>a.classList.toggle('active', a.getAttribute('href')==='#'+id));
-}
-document.getElementById('nav').addEventListener('click', (e)=>{
-  if(e.target.tagName==='A'){ e.preventDefault(); switchTo(e.target.getAttribute('href').slice(1)); }
-});
-
-/* 利用方法描画（辞書駆動） */
-function renderHow(){
-  const D = DATA[lang].how;
-  document.getElementById('howShop').innerHTML = D.s.map(x=>`<li>${x}</li>`).join('');
-  document.getElementById('howPost').innerHTML = D.p.map(x=>`<li>${x}</li>`).join('');
-}
-function renderPostNote(){
-  const txt_ja = '※写真だけでは判断が難しく、文章のみでリスクや仕上がりの説明が困難な作業はお受けできない場合があります。店頭にお持ちいただければ対応可能な場合もありますので、お気軽にご相談ください。';
-  const txt_en = 'Note: Some requests are hard to assess from photos and text alone. We may decline in such cases. Bringing items in-store may make them possible. Feel free to ask.';
-  const el = document.getElementById('postNote');
-  if(el) el.textContent = (lang==='ja')?txt_ja:txt_en;
-}
-
-/* お知らせ（news.json）— セール強調＋キャッシュ無視 */
-async function loadNews(){
-  try{
-    const r = await fetch('news.json?v=' + Date.now(), {cache:'no-store'});
-    const list = await r.json();
-    const el = document.getElementById('newsList');
-    el.innerHTML = list.map(n=>{
-      const isSale = /セール|SALE/i.test(n.title||'');
-      return `
-        <div style="
-          margin:10px 0;padding:18px;border-radius:16px;
-          background:${isSale ? '#0ea5ff10' : 'var(--paper2)'};
-          border:${isSale ? '3px solid #0ea5ff' : 'none'};
-          box-shadow:${isSale ? '0 0 14px rgba(14,165,255,.35)' : '0 6px 18px rgba(17,24,39,.05)'};text-align:${isSale?'center':'left'}">
-          <div style="font-size:${isSale?'22px':'18px'};font-weight:800;color:${isSale?'#0e1a2a':'inherit'};">${n.title||''}</div>
-          <div class="note" style="font-size:${isSale?'15px':'13px'};margin-top:6px">${n.text||''}</div>
-          ${isSale ? `<a href="https://page.line.me/981xrswf" target="_blank" rel="noopener" class="btn" style="margin-top:12px;background:#06C755;color:#fff;text-decoration:none;padding:8px 14px;border-radius:10px;display:inline-block">LINEでお申し込み</a>` : ''}
-          <div class="note" style="margin-top:6px">${n.date||''}</div>
-        </div>`;
-    }).join('');
-  }catch(e){
-    document.getElementById('newsList').innerHTML = '<p class="note">お知らせを読み込めませんでした。</p>';
+  /* 利用方法（描画） */
+  function renderHow(){
+    const D = DATA[lang].how;
+    document.getElementById('howShop').innerHTML = D.s.map(x=>`<li>${x}</li>`).join('');
+    document.getElementById('howPost').innerHTML = D.p.map(x=>`<li>${x}</li>`).join('');
   }
-}
+  function renderPostNote(){
+    const txt_ja = '※写真だけでは判断が難しく、文章のみでリスクや仕上がりの説明が難しい作業はお受けできない場合があります。店頭にお持ちいただければ対応可能な場合もありますので、お気軽にご相談ください。';
+    const txt_en = 'Note: Some requests are hard to assess from photos and text alone. We may decline in such cases. Bringing items in-store may make them possible. Feel free to ask.';
+    const el = document.getElementById('postNote');
+    if(el) el.textContent = (lang==='ja')?txt_ja:txt_en;
+  }
 
-/* 初期化 */
-i18nApply(); loadNews(); switchTo('news');
+  /* お知らせ（news.json）— セール強調＋キャッシュ無視 */
+  async function loadNews(){
+    try{
+      const r = await fetch('news.json?v=' + Date.now(), {cache:'no-store'});
+      const list = await r.json();
+      const el = document.getElementById('newsList');
+      el.innerHTML = list.map(n=>{
+        const isSale = /セール|SALE/i.test(n.title||'');
+        return `
+          <div style="margin:10px 0;padding:18px;border-radius:16px;background:${isSale ? '#0ea5ff10' : 'var(--paper2)'};border:${isSale ? '3px solid #0ea5ff' : 'none'};box-shadow:${isSale ? '0 0 14px rgba(14,165,255,.35)' : '0 6px 18px rgba(17,24,39,.05)'};text-align:${isSale?'center':'left'}">
+            <div style="font-size:${isSale?'22px':'18px'};font-weight:800;color:${isSale?'#0e1a2a':'inherit'};">${n.title||''}</div>
+            <div class="note" style="font-size:${isSale?'15px':'13px'};margin-top:6px">${n.text||''}</div>
+            ${isSale ? `<a href="https://page.line.me/981xrswf" target="_blank" rel="noopener" class="btn" style="margin-top:12px;background:#06C755;color:#fff;text-decoration:none;padding:8px 14px;border-radius:10px;display:inline-block">LINEでお申し込み</a>` : ''}
+            <div class="note" style="margin-top:6px">${n.date||''}</div>
+          </div>`;
+      }).join('');
+    }catch(e){
+      document.getElementById('newsList').innerHTML = '<p class="note">お知らせを読み込めませんでした。</p>';
+    }
+  }
+
+  // 初期化
+  i18nApply(); loadNews(); switchTo('news');
 </script>
 </body>
 </html>
