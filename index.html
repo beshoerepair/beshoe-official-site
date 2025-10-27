@@ -20,16 +20,17 @@
     a:hover{opacity:.9}
     .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
 
-    /* ヘッダー＋ブランド（右に日本語名） */
+    /* ヘッダー */
     header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.86);backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid rgba(0,0,0,.06)}
-    .nav{height:78px;display:flex;align-items:center;justify-content:space-between;position:relative}
-    .brand{display:flex;align-items:flex-end;justify-content:space-between;width:100%}
+    .nav{height:78px;display:flex;align-items:center;justify-content:space-between;position:relative;flex-wrap:nowrap}
+    .brand{display:flex;align-items:flex-end;justify-content:space-between;width:auto}
     .brand-left{display:flex;flex-direction:column;align-items:flex-start}
-    .brand-top{font-family:'Shippori Mincho','Noto Serif JP',serif;font-size:16px;color:#000;letter-spacing:.05em}
-    .brand-main{font-family:'Shippori Mincho','Noto Serif JP',serif;font-size:clamp(36px,6vw,48px);font-weight:800;letter-spacing:.04em;color:var(--ink)}
-    .brand-sub{font-family:'Dela Gothic One','Yu Mincho',serif;font-size:13px;color:#000;align-self:flex-end;margin-bottom:6px}
+    .brand-top{font-family:'Shippori Mincho','Noto Serif JP',serif;font-size:14px;color:#000;letter-spacing:.05em}
+    .brand-main{font-family:'Shippori Mincho','Noto Serif JP',serif;font-size:clamp(34px,4.5vw,44px);font-weight:800;letter-spacing:.04em;color:var(--ink)}
+    .brand-sub{font-family:'Dela Gothic One','Yu Mincho',serif;font-size:13px;color:#000;margin-left:12px;white-space:nowrap}
 
-    .menu{display:flex;gap:10px;align-items:center;flex-wrap:nowrap}
+    .menu{display:flex;gap:10px;align-items:center;flex-wrap:nowrap;white-space:nowrap}
+    #nav a{white-space:nowrap}
     .menu a,.menu button{padding:8px 12px;border-radius:10px;background:transparent;cursor:pointer;text-decoration:none;color:var(--ink)}
     .menu a:hover,.menu button:hover{background:#efede7}
     .lang{border:1px solid #ddd;background:#fff}
@@ -52,10 +53,10 @@
     .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
     .strip{height:22vw;max-height:260px;min-height:120px;margin:18px 0;border-radius:12px}
 
-    /* ヒーロー：切らずに表示 */
+    /* ヒーロー */
     .hero{display:flex;justify-content:center;align-items:center;margin:14px 0 0}
-    .hero-img{width:100%;max-width:1100px;height:auto;max-height:min(62vh,640px);object-fit:contain;object-position:center center;display:block;margin:0 auto;border-radius:14px;box-shadow:0 6px 18px rgba(17,24,39,.06);background:#fff}
-    @media (max-width:840px){.hero-img{max-height:58vh;object-position:center top}}
+    .hero-img{width:100%;max-width:1100px;height:clamp(380px,58vh,560px);object-fit:cover;object-position:left center;display:block;margin:0 auto;border-radius:14px;box-shadow:0 6px 18px rgba(17,24,39,.06);background:#fff}
+    @media (max-width:840px){.hero-img{height:54vh;object-position:left 35%}}
 
     /* SNS */
     .sns-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
@@ -87,14 +88,15 @@
     /* 概要：画像＋文章を同じ白面で囲う。スマホは画像非表示 */
     .about-wrap{background:rgba(255,255,255,0.92);padding:24px;border-radius:16px;box-shadow:0 6px 18px rgba(0,0,0,.05)}
     .about-grid{display:grid;grid-template-columns:0.9fr 1.1fr;align-items:center;gap:24px;max-width:1000px;margin:0 auto}
-    .about-visual{width:100%;max-width:580px;height:auto;object-fit:contain;border-radius:12px}
+    .about-visual{width:100%;max-width:620px;height:auto;object-fit:contain;border-radius:12px}
     .about-text{line-height:2.1;text-align:center}
     .emph{font-size:200%;font-weight:900;display:inline-block;margin-left:4px;letter-spacing:.04em;color:var(--ink);font-family:'Shippori Mincho','Noto Serif JP',serif}
     .emph-note{font-size:12px;color:#555;display:block;margin-top:6px}
 
     footer{padding:36px 0;color:var(--muted);text-align:center}
 
-    /* モバイル最適化＋ハンバーガー */
+    /* レスポンシブ */
+    @media (max-width:1100px){ .brand-sub{display:none} }
     @media (max-width:840px){
       .wrap{padding:0 14px}
       header .nav{height:auto;gap:10px;padding:10px 12px}
@@ -138,7 +140,7 @@
 <main class="wrap">
   <!-- ヒーロー -->
   <div class="hero" aria-label="hero image">
-    <img src="IMG_0099_hero.jpg?v=2" alt="Hero image" class="hero-img">
+    <img src="IMG_0099_hero.jpg" alt="Hero image" class="hero-img">
   </div>
 
   <!-- お知らせ＋カレンダー -->
@@ -420,7 +422,7 @@
         s:['Visit & inspection','Quote, lead time & prepayment','Work (we notify via LINE/SMS/phone when completed)','Pickup'],
         p:['Send photos and request via LINE or email','We reply with a rough quote and shipping address','Final quote after arrival → work after payment','Ship out as soon as completed']
       },
-      ct:{h:'Contact',linebtn:'Official LINE',linesub:'↑ Deals and updates here ↑',mail:'Email',tel:'Phone (temp)',note:'Address and hours will be announced.'},
+      ct:{h:'Contact',linebtn:'Official LINE',linesub:'↑ Deals and updates here ↑',mail:'Email',tel:'Phone (temp)',note:'Address and hours will be posted later.'},
       sns:{h:'SNS',note:'We post works on SNS.'},
       about:{h:'About',
         p1:'With hands and eyes trained in making things, we help you keep your items in use for longer.',
@@ -473,7 +475,7 @@
     if(e.target.tagName==='A'){
       e.preventDefault();
       const id = e.target.getAttribute('href').slice(1);
-      location.hash = id; // ハッシュに保存
+      location.hash = id;
     }
   });
   function initSection(){
@@ -513,10 +515,7 @@
 
   /* お知らせ：news.json 読込（英語は *_en 優先）＋セール強調 */
   function enFallback(t){
-    return t.replace('開店前セールのお知らせ','Pre-opening Sale Notice')
-            .replace('開店前セール','Pre-opening Sale')
-            .replace('受付中','Now accepting')
-            .replace('限定メニュー','Limited menu');
+    return t.replace('開店前セールのお知らせ','Pre-opening Sale Notice').replace('開店前セール','Pre-opening Sale').replace('受付中','Now accepting').replace('限定メニュー','Limited menu');
   }
   async function loadNews(){
     try{
@@ -540,10 +539,9 @@
     }
   }
 
-  /* 初期化：言語適用→料金等描画→ハッシュからセクション表示 */
+  /* 初期化 */
   i18nApply();
   initSection();
 </script>
 </body>
 </html>
-a
