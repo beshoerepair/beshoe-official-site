@@ -4,9 +4,12 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Repair shop Beshoe｜靴修理・クリーニング</title>
-<meta name="description" content="Repair shop Beshoe｜靴修理・クリーニング。お知らせ＋営業日カレンダーをトップ表示。料金・利用方法はデータ駆動。英語切替対応。" />
+<meta name="description" content="Repair shop Beshoe｜靴修理・クリーニング。お知らせ＋営業日カレンダーをトップ表示。料金はカテゴリ別に整理。英語切替対応。" />
 <meta name="theme-color" content="#0f172a" />
-<link href="https://fonts.googleapis.com/css2?family=Corporate+Logo&family=Shippori+Mincho:wght@500;700&display=swap" rel="stylesheet">
+
+<!-- フォント：Corporate Logo（CDN）＋見出し用 -->
+<link href="https://cdn.jsdelivr.net/gh/qrac/fonts-corporate-logo@latest/corporate-logo.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&display=swap" rel="stylesheet">
 
 <style>
 :root{
@@ -44,13 +47,17 @@ header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.82);backdro
 .lang{border:1px solid #ddd;background:#fff}
 
 /* 見出し */
-h1,h2,h3{font-family:"Shippori Mincho","Noto Serif JP",serif;color:var(--ink);margin:0 0 14px;text-align:center;letter-spacing:.04em}
+h1,h2,h3,h4{
+  font-family:"Shippori Mincho","Noto Serif JP",serif;
+  color:var(--ink);margin:0 0 14px;text-align:center;letter-spacing:.04em
+}
 h1{font-size:clamp(28px,5.2vw,48px)}
 h2{font-size:clamp(22px,3.6vw,32px)}
 h3{font-size:clamp(20px,3vw,26px)}
+h4{font-size:clamp(18px,2.4vw,22px);margin-top:8px}
 .note{color:var(--muted);font-size:13px;text-align:center}
 
-/* セクションとカード（枠線なし） */
+/* セクションとカード */
 main{padding:12px 0 40px}
 section{display:none;padding:28px 0}
 section.active{display:block}
@@ -83,29 +90,44 @@ section.active{display:block}
 .lineicon{width:20px;height:20px;vertical-align:middle}
 .linesub{font-size:11px;color:#fff;opacity:.95;line-height:1.4;margin-top:2px}
 
-/* 利用方法：縦配置＋丸数字＋下矢印＋中央揃え */
+/* 利用方法：中央配置 + 左揃え + 数字縦揃え */
 #how .grid-2{grid-template-columns:1fr}
 #how h3{font-size:clamp(24px,4.4vw,30px)}
 #how .card{padding:30px 24px}
-.steps{counter-reset:step;margin:0 auto;padding:0;max-width:760px;text-align:center}
+.steps{
+  counter-reset:step; max-width:760px; margin:0 auto; padding:0; text-align:left;
+}
 .steps li{
-  list-style:none;counter-increment:step;position:relative;margin:26px 0;line-height:2.0
+  list-style:none; counter-increment:step; margin:26px 0; line-height:2.0;
+  display:grid; grid-template-columns:36px 1fr; column-gap:12px; align-items:start;
 }
 .steps li::before{
-  content:counter(step);display:inline-flex;align-items:center;justify-content:center;
-  width:36px;height:36px;border-radius:50%;background:var(--deepgreen);color:#fff;font-weight:800;margin-right:10px
+  content:counter(step);
+  grid-column:1; grid-row:1;
+  display:flex; align-items:center; justify-content:center;
+  width:36px; height:36px; border-radius:50%;
+  background:var(--deepgreen); color:#fff; font-weight:800;
 }
-.steps li:not(:last-child)::after{content:"↓";display:block;color:var(--deepgreen);font-weight:800;margin-top:14px}
+.steps li:not(:last-child)::after{
+  content:"↓"; grid-column:1 / -1; justify-self:center;
+  color:var(--deepgreen); font-weight:800; margin-top:14px;
+}
 
-/* 概要：画像と文章を一体の白背景で囲う */
+/* 概要：画像と文章を同一白面で囲う＋画像大型化 */
 .about-wrap{
   background:rgba(255,255,255,0.88);padding:24px;border-radius:16px;box-shadow:0 6px 18px rgba(0,0,0,.05)
 }
 .about-grid{display:grid;grid-template-columns:0.9fr 1.1fr;align-items:center;gap:24px;max-width:1000px;margin:0 auto}
-.about-visual{width:100%;max-height:520px;object-fit:cover;border-radius:12px}
+.about-visual{width:100%;height:100%;max-height:none;object-fit:cover;border-radius:12px}
 .emph{font-size:250%;font-weight:900;display:inline-block;margin-left:4px;letter-spacing:.04em;color:var(--ink);font-family:"Shippori Mincho","Noto Serif JP",serif}
 
+/* 料金：ブロック表示 */
+.price-block{background:var(--paper);border:none;border-radius:14px;padding:20px;box-shadow:0 6px 18px rgba(17,24,39,.06);margin:14px 0}
+.price-block ul{margin:8px 0 0 0;padding-left:1.2em}
+.price-block li{margin:6px 0}
+.price-block p{margin:8px 0}
 footer{padding:36px 0;color:var(--muted);text-align:center}
+
 @media (max-width:980px){
   .grid-2,.grid-3,.sns-grid{grid-template-columns:1fr}
   .about-grid{grid-template-columns:1fr}
@@ -154,14 +176,95 @@ footer{padding:36px 0;color:var(--muted);text-align:center}
     <div class="strip" style="background:url('https://images.unsplash.com/photo-1548095115-45697e51336b?auto=format&fit=crop&w=2400&q=80') center/cover no-repeat" aria-hidden="true"></div>
   </section>
 
-  <!-- 料金 -->
+  <!-- 料金（カテゴリー別レイアウト） -->
   <section id="price">
-    <h2 data-i18n="price.h">料金</h2>
-    <div id="priceCards" class="grid-3"></div>
+    <h2 data-i18n="price.h">料金表（税込）</h2>
+
+    <div class="price-block">
+      <h3>◎クリーニング</h3>
+
+      <h4>靴</h4>
+      <ul>
+        <li>スニーカークリーニング　スタンダード　¥5,500</li>
+        <li>厚底・コンビ素材　¥7,500</li>
+        <li>革靴　スタンダード　¥5,500</li>
+        <li>ブーツ　スタンダード　¥6,500</li>
+        <li>カビ取り　¥7,000</li>
+      </ul>
+
+      <p><strong>〜オプション〜</strong></p>
+      <ul>
+        <li>傷補修1箇所　¥2,000</li>
+        <li>カラー 部分補修　¥5,000</li>
+        <li>カラー 全体補修　¥7,000</li>
+        <li>パティーヌ：短靴 ¥15,000／ブーツ ¥20,000／バッグ ¥20,000</li>
+      </ul>
+
+      <h4>バッグ</h4>
+      <ul>
+        <li>スムース革　¥7,000</li>
+        <li>特殊素材　¥9,000</li>
+      </ul>
+
+      <p><strong>〜オプション〜</strong></p>
+      <ul>
+        <li>カラー 部分補修　¥8,000</li>
+        <li>カラー 全体補修　¥10,000</li>
+      </ul>
+    </div>
+
+    <div class="price-block">
+      <h3>◎オールソール</h3>
+
+      <h4>レザーオールソール</h4>
+      <p>（リフトはラバー Vibram5350 または革とのコンビリフト）</p>
+      <ul><li>¥18,000</li></ul>
+
+      <p><strong>〜オプション〜</strong></p>
+      <ul>
+        <li>ハーフソール　¥3,500</li>
+        <li>トゥスチール　¥3,700</li>
+        <li>ヒドゥンチャネル　¥4,000</li>
+        <li>半カラス　¥4,000</li>
+        <li>リウェルト　¥15,000</li>
+        <li>中底交換　¥13,000</li>
+        <li>先心抜き　¥12,000</li>
+        <li>ダブルソール　¥6,000</li>
+      </ul>
+
+      <h4>ラバーオールソール</h4>
+      <ul>
+        <li>クッションソール　¥16,000</li>
+        <li>ラバーソール　¥17,000</li>
+        <li>ミッドソール（合成ゴム）¥5,000／（革）¥6,000</li>
+      </ul>
+    </div>
+
+    <div class="price-block">
+      <h3>◎通常修理料金</h3>
+      <ul>
+        <li>ピンヒール　¥1,300</li>
+        <li>ヒールリフト小　¥1,500</li>
+        <li>ヒール巻き替え　¥9,000</li>
+        <li>ヒール取り替え　¥20,000</li>
+        <li>中敷交換 全敷 ¥4,000／半敷 ¥3,500</li>
+        <li>ヒールリフト 5〜6mm　¥3,500</li>
+        <li>ヒールリフト 8mm〜　¥5,000</li>
+        <li>ビブラム等 20mm　¥6,000</li>
+        <li>トゥスチール　¥3,700</li>
+        <li>スベリ革交換（革靴）¥6,000</li>
+        <li>ハーフラバーソール　¥3,500</li>
+        <li>かかとコーナー（傾斜）¥3,500</li>
+        <li>つま先 レザー ¥3,500／ラバー ¥3,000</li>
+        <li>フラットソール再接着（片足）¥6,000</li>
+        <li>カップソール再接着（片足）¥10,000</li>
+      </ul>
+    </div>
+
     <p class="note" data-i18n="price.ship">送料：返送は実費。2足同梱または税込¥5,000以上で返送無料（キャンペーンで変動）。</p>
   </section>
 
-  <!-- 利用方法（中央揃え＋文言修正） -->
+  <!-- 利用方法（中央配置＋左揃え＋縦揃え） -->
   <section id="how">
     <h2 data-i18n="how.h">利用方法</h2>
     <div class="grid-2">
@@ -178,7 +281,7 @@ footer{padding:36px 0;color:var(--muted);text-align:center}
     </div>
   </section>
 
-  <!-- 問い合わせ（中央揃え＋LINEボタン追加） -->
+  <!-- 問い合わせ（中央揃え） -->
   <section id="contact">
     <h2 data-i18n="ct.h">問い合わせ</h2>
     <div class="grid-2">
@@ -186,9 +289,10 @@ footer{padding:36px 0;color:var(--muted);text-align:center}
         <p>
           <a href="https://page.line.me/981xrswf" target="_blank" rel="noopener"
              style="display:inline-block;background-color:#06C755;color:#fff;font-weight:700;padding:12px 20px;border-radius:12px;text-align:center;text-decoration:none;">
-            LINEでお申し込み
+            公式LINEはこちら
           </a>
         </p>
+        <p style="font-size:11px;color:#2a2a2a;margin-top:-6px">↑お得なキャンペーン情報も↑</p>
         <p><strong data-i18n="ct.mail">メール</strong>：<a href="mailto:beshoe.repair@gmail.com">beshoe.repair@gmail.com</a></p>
         <p><strong data-i18n="ct.tel">電話（仮）</strong>：<a href="tel:000-0000-0000">000-0000-0000</a></p>
         <p class="note" data-i18n="ct.note">営業時間・所在地は決定次第お知らせします。</p>
@@ -200,26 +304,11 @@ footer{padding:36px 0;color:var(--muted);text-align:center}
   <section id="sns">
     <h2 data-i18n="sns.h">各SNS</h2>
     <div class="sns-grid">
-      <a class="sns ig" href="https://www.instagram.com/beshoe.repair" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm6.5-.9a1.1 1.1 0 1 0 0 2.2 1.1 1.1 0 0 0 0-2.2Z"/></svg>
-        Instagram
-      </a>
-      <a class="sns x" href="https://x.com/BeShoe_repair" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M4 3h4.6l4.6 6.6L18.8 3H22l-7.3 9.8L22 21h-4.6l-5-7-5 7H3l7.7-10.3L4 3Z"/></svg>
-        X
-      </a>
-      <a class="sns tt" href="https://www.tiktok.com/@beshoe.repair" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M14 3c1.2 1.8 2.8 3 5 3v3c-1.9 0-3.5-.6-5-1.7v6.7c0 3-2.5 5.5-5.5 5.5S3 17 3 14s2.5-5.5 5.5-5.5c.6 0 1.2.1 1.7.3v3a2.5 2.5 0 1 0 1.8 2.4V3h2Z"/></svg>
-        TikTok
-      </a>
-      <a class="sns yt" href="https://www.youtube.com/" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#f00" d="M23 7s-.2-1.4-.8-2c-.7-.8-1.6-.8-2-.9C17.8 3.7 12 3.7 12 3.7s-5.8 0-8.2.4c-.4.1-1.3.1-2 .9C1.2 5.6 1 7 1 7s-.2 1.8-.2 3.5v1.7C.8 14 1 15.8 1 15.8s.2 1.4.8 2c.7.8 1.6.8 2 .9 2.4.4 8.2.4 8.2.4s5.8 0 8.2-.4c.4-.1 1.3-.1 2-.9.6-.6.8-2 .8-2s.2-1.8.2-3.5v-1.7C23.2 8.8 23 7 23 7Z"/><path fill="#fff" d="M9.8 8.5v6.1l5.6-3.1-5.6-3Z"/></svg>
-        YouTube
-      </a>
-      <a class="sns fb" href="https://www.facebook.com/" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M13 22v-8h2.6l.4-3H13V9.1c0-.9.3-1.5 1.6-1.5H16V5.1C15.7 5.1 14.8 5 13.9 5c-2.5 0-3.9 1.5-3.9 4v2.9H7.5v3H10v8h3Z"/></svg>
-        Facebook
-      </a>
+      <a class="sns ig" href="https://www.instagram.com/beshoe.repair" target="_blank" rel="noopener">Instagram</a>
+      <a class="sns x" href="https://x.com/BeShoe_repair" target="_blank" rel="noopener">X</a>
+      <a class="sns tt" href="https://www.tiktok.com/@beshoe.repair" target="_blank" rel="noopener">TikTok</a>
+      <a class="sns yt" href="https://www.youtube.com/" target="_blank" rel="noopener">YouTube</a>
+      <a class="sns fb" href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook</a>
     </div>
     <p class="note" data-i18n="sns.note">施工事例は各SNSで発信します。</p>
   </section>
@@ -265,23 +354,13 @@ footer{padding:36px 0;color:var(--muted);text-align:center}
 <script>
 document.getElementById('year').textContent = new Date().getFullYear();
 
-/* 辞書＋データ */
+/* 多言語辞書（不足キー補完） */
 const DATA = {
   ja: {
     nav:{news:'お知らせ',price:'料金',how:'利用方法',contact:'問い合わせ',sns:'各SNS',about:'概要'},
     news:{h:'お知らせ',note:'最新のお知らせは随時更新します。'},
     cal:{h:'営業日カレンダー',note:'予定はカレンダー更新で自動反映されます。'},
-    price:{h:'料金',
-      ship:'送料：返送は実費。2足同梱または税込¥5,000以上で返送無料（キャンペーンで変動）。',
-      items:[
-        {title:'トップリフト交換', price:'¥3,500〜', note:'かかとのゴム交換。素材で金額変動。'},
-        {title:'ハーフソール貼り', price:'¥3,500〜', note:'前底のすり減り防止。薄さ選択可。'},
-        {title:'つま先補強',       price:'¥2,500〜', note:'ラバーまたは革で補強。'},
-        {title:'オールソール',     price:'¥12,000〜', note:'素材・製法で変動。見積提示後に作業。'},
-        {title:'靴クリーニング',   price:'¥5,000〜', note:'汚れ・におい除去。色補修は別見積。'},
-        {title:'スエードケア',     price:'¥4,000〜', note:'起毛の整えと防汚。'}
-      ]
-    },
+    price:{h:'料金表（税込）',ship:'送料：返送は実費。2足同梱または税込¥5,000以上で返送無料（キャンペーンで変動）。'},
     how:{h:'利用方法',shop:'店頭',post:'郵送',
       shopLead:'住所（仮）までお持ちください。作業内容やお見積もり、納期をご相談のうえで作業します。',
       s:[
@@ -306,20 +385,21 @@ const DATA = {
     nav:{news:'News',price:'Price',how:'How to use',contact:'Contact',sns:'SNS',about:'About'},
     news:{h:'News',note:'We update notices as needed.'},
     cal:{h:'Calendar',note:'Updates reflect automatically via Google Calendar.'},
-    price:{h:'Price',
-      ship:'Shipping: return at actual cost. Free for two pairs in one box or orders over ¥5,000 (campaign may vary).',
-      items:[
-        {title:'Top lift replacement', price:'¥3,500〜', note:'Heel rubber. Varies by material.'},
-        {title:'Half sole',            price:'¥3,500〜', note:'Front sole protection. Thickness selectable.'},
-        {title:'Toe protection',       price:'¥2,500〜', note:'Rubber or leather.'},
-        {title:'Full resole',          price:'¥12,000〜', note:'Depends on material/method. Quoted first.'},
-        {title:'Shoe cleaning',        price:'¥5,000〜', note:'Deodorizing and stain removal. Recolor separate.'},
-        {title:'Suede care',           price:'¥4,000〜', note:'Raise and protect the nap.'}
-      ]
-    },
+    price:{h:'Price list (tax incl.)',ship:'Shipping: return at cost. Free for two pairs in one box or orders over ¥5,000 (may vary by campaign).'},
     how:{h:'How to use',shop:'In-store',post:'Mail-in',
-      s:['Visit & inspection','Quote, lead time & prepayment','Work (notify via LINE/SMS/phone when done)','Pickup'],
-      p:['Send photos and request via LINE or email','We reply with rough quote and shipping address','Final quote after arrival → work after payment','Ship out as soon as completed']
+      shopLead:'Please bring your items to our address (TBD). We discuss the work, quote and lead time before starting.',
+      s:[
+        'Check-in & inspection',
+        'Quote, lead time & prepayment',
+        'Work (we notify via LINE/SMS/phone when completed)',
+        'Pickup'
+      ],
+      p:[
+        'Send photos and request via LINE or email',
+        'We reply with a rough quote and shipping address',
+        'Final quote after arrival → work after payment',
+        'Ship out as soon as completed'
+      ]
     },
     ct:{h:'Contact',mail:'Email',tel:'Phone (temp)',note:'Address and hours will be announced.'},
     sns:{h:'SNS',note:'We post works on SNS.'},
@@ -340,7 +420,7 @@ function i18nApply(){
     let cur = D; for(const k of path) cur = cur?.[k];
     if(typeof cur==='string') el.textContent = cur;
   });
-  renderPrice(); renderHow(); renderPostNote();
+  renderHow(); renderPostNote();
 }
 langBtn.addEventListener('click',()=>{ lang = (lang==='ja')?'en':'ja'; langBtn.textContent = (lang==='ja')?'EN':'日本語'; i18nApply(); });
 
@@ -354,19 +434,7 @@ document.getElementById('nav').addEventListener('click', (e)=>{
   if(e.target.tagName==='A'){ e.preventDefault(); switchTo(e.target.getAttribute('href').slice(1)); }
 });
 
-/* 料金カード */
-function renderPrice(){
-  const box = document.getElementById('priceCards');
-  const list = DATA[lang].price.items;
-  box.innerHTML = list.map(item=>`
-    <div class="card">
-      <h3>${item.title}</h3>
-      <p style="font-weight:800;font-size:18px;text-align:center">${item.price}</p>
-      <p class="note">${item.note}</p>
-    </div>`).join('');
-}
-
-/* 利用方法 */
+/* 利用方法描画（辞書駆動） */
 function renderHow(){
   const D = DATA[lang].how;
   document.getElementById('howShop').innerHTML = D.s.map(x=>`<li>${x}</li>`).join('');
@@ -375,7 +443,8 @@ function renderHow(){
 function renderPostNote(){
   const txt_ja = '※写真だけでは判断が難しく、文章のみでリスクや仕上がりの説明が困難な作業はお受けできない場合があります。店頭にお持ちいただければ対応可能な場合もありますので、お気軽にご相談ください。';
   const txt_en = 'Note: Some requests are hard to assess from photos and text alone. We may decline in such cases. Bringing items in-store may make them possible. Feel free to ask.';
-  document.getElementById('postNote').textContent = (lang==='ja')?txt_ja:txt_en;
+  const el = document.getElementById('postNote');
+  if(el) el.textContent = (lang==='ja')?txt_ja:txt_en;
 }
 
 /* お知らせ（news.json）— セール強調＋キャッシュ無視 */
