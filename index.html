@@ -12,7 +12,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Dela+Gothic+One&display=swap" rel="stylesheet">
 
   <style>
-    :root{--ink:#0e1a2a;--char:#222;--muted:#6b7280;--paper:#ffffff;--paper2:#fbf8f3;--deepgreen:#165b4a;--linegreen:#06C755}
+    html{scroll-padding-top:100px}
+:root{--ink:#0e1a2a;--char:#222;--muted:#6b7280;--paper:#ffffff;--paper2:#fbf8f3;--deepgreen:#165b4a;--linegreen:#06C755}
     *{box-sizing:border-box}
     html,body{margin:0;line-height:1.8;color:var(--char);font-family:'Corporate Logo','Noto Sans JP',sans-serif}
     body{background:url('alex-lvrs-Md6_qA-BMis-unsplash.jpg') center/cover fixed no-repeat}
@@ -22,15 +23,15 @@
 
     /* ヘッダー＋ブランド（右に日本語名） */
     header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.86);backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid rgba(0,0,0,.06)}
-    .nav{height:78px;display:flex;align-items:center;justify-content:space-between;position:relative}
+    .nav{height:auto;padding:14px 20px;gap:16px;display:flex;align-items:center;justify-content:space-between;position:relative}
     .brand{display:flex;align-items:flex-end;justify-content:space-between;width:100%}
     .brand-left{display:flex;flex-direction:column;align-items:flex-start}
     .brand-top{font-family:'Shippori Mincho','Noto Serif JP',serif;font-size:16px;color:#000;letter-spacing:.05em}
     .brand-main{font-family:'Shippori Mincho','Noto Serif JP',serif;font-size:clamp(36px,6vw,48px);font-weight:800;letter-spacing:.04em;color:var(--ink)}
     .brand-sub{font-family:'Dela Gothic One','Yu Mincho',serif;font-size:13px;color:#000;align-self:flex-end;margin-bottom:6px}
 
-    .menu{display:flex;gap:10px;align-items:center;flex-wrap:nowrap}
-    .menu a,.menu button{padding:8px 12px;border-radius:10px;background:transparent;cursor:pointer;text-decoration:none;color:var(--ink)}
+    .menu{display:flex;gap:12px;align-items:center;flex-wrap:nowrap}
+    .menu a,.menu button{padding:10px 14px;line-height:1;border-radius:10px;background:transparent;cursor:pointer;text-decoration:none;color:var(--ink)}
     .menu a:hover,.menu button:hover{background:#efede7}
     .lang{border:1px solid #ddd;background:#fff}
     .hamburger{display:none;border:1px solid #ddd;background:#fff;border-radius:10px;padding:8px 12px}
@@ -95,12 +96,11 @@
     footer{padding:36px 0;color:var(--muted);text-align:center}
 
     /* モバイル最適化＋ハンバーガー */
-    @media (max-width:840px){
-      .wrap{padding:0 14px}
-      header .nav{height:auto;gap:10px;padding:10px 12px}
-      .hamburger{display:inline-block}
-      .menu{display:none;position:absolute;right:12px;top:72px;flex-direction:column;gap:6px;background:#fff;padding:10px;border-radius:12px;box-shadow:0 12px 32px rgba(0,0,0,.12)}
-      .menu.open{display:flex}
+   @media (max-width:1100px){
+  .hamburger{display:inline-block}
+  .menu{display:none;position:absolute;right:12px;top:72px;flex-direction:column;gap:6px;background:#fff;padding:10px;border-radius:12px;box-shadow:0 12px 32px rgba(0,0,0,.12)}
+  .menu.open{display:flex}
+}
       .menu a,.menu button{padding:8px 12px;font-size:14px}
       h1{font-size:28px} h2{font-size:22px} h3{font-size:18px} h4{font-size:16px}
       .grid-2,.grid-3,.sns-grid{grid-template-columns:1fr}
