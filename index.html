@@ -7,15 +7,12 @@
   <meta name="description" content="Repair shop Beshoe｜靴修理・クリーニング。お知らせ＋営業日カレンダーをトップ表示。料金はカテゴリ別に整理。英語切替対応。" />
   <meta name="theme-color" content="#0f172a" />
 
-  <!-- フォント：Corporate Logo（本文）＋ Shippori Mincho（見出し）＋ Dela Gothic One（レトロ見出し用） -->
+  <!-- フォント -->
   <link href="https://cdn.jsdelivr.net/gh/qrac/fonts-corporate-logo@latest/corporate-logo.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Dela+Gothic+One&display=swap" rel="stylesheet">
 
   <style>
-    :root{
-      --ink:#0e1a2a; --char:#222; --muted:#6b7280;
-      --paper:#ffffff; --paper2:#fbf8f3; --deepgreen:#165b4a; --linegreen:#06C755;
-    }
+    :root{--ink:#0e1a2a;--char:#222;--muted:#6b7280;--paper:#ffffff;--paper2:#fbf8f3;--deepgreen:#165b4a;--linegreen:#06C755}
     *{box-sizing:border-box}
     html,body{margin:0;line-height:1.8;color:var(--char);font-family:'Corporate Logo','Noto Sans JP',sans-serif}
     body{background:url('alex-lvrs-Md6_qA-BMis-unsplash.jpg') center/cover fixed no-repeat}
@@ -23,17 +20,15 @@
     a:hover{opacity:.9}
     .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
 
-    /* ヘッダー */
+    /* ヘッダー＋ブランド（右に日本語名） */
     header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.86);backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid rgba(0,0,0,.06)}
     .nav{height:78px;display:flex;align-items:center;justify-content:space-between;position:relative}
+    .brand{display:flex;align-items:flex-end;justify-content:space-between;width:100%}
+    .brand-left{display:flex;flex-direction:column;align-items:flex-start}
+    .brand-top{font-family:'Shippori Mincho','Noto Serif JP',serif;font-size:16px;color:#000;letter-spacing:.05em}
+    .brand-main{font-family:'Shippori Mincho','Noto Serif JP',serif;font-size:clamp(36px,6vw,48px);font-weight:800;letter-spacing:.04em;color:var(--ink)}
+    .brand-sub{font-family:'Dela Gothic One','Yu Mincho',serif;font-size:13px;color:#000;align-self:flex-end;margin-bottom:6px}
 
-    /* ブランド表記：Beshoeと日本語を横並び、黒文字。Repair shop は非表示 */
-    .brand{display:flex;align-items:flex-end;justify-content:center;gap:8px;line-height:1.1}
-    .brand-top{display:none}
-    .brand-main{font-family:'Shippori Mincho','Noto Serif JP',serif;font-size:clamp(30px,6vw,46px);font-weight:800;letter-spacing:.04em;color:var(--ink);display:block}
-    .brand-sub{font-family:'Dela Gothic One','Yu Mincho',serif;font-size:13px;color:#000;margin-bottom:6px}
-
-    /* ナビ＋ハンバーガー */
     .menu{display:flex;gap:10px;align-items:center;flex-wrap:nowrap}
     .menu a,.menu button{padding:8px 12px;border-radius:10px;background:transparent;cursor:pointer;text-decoration:none;color:var(--ink)}
     .menu a:hover,.menu button:hover{background:#efede7}
@@ -45,7 +40,7 @@
     h1{font-size:clamp(28px,5.2vw,48px)}
     h2{font-size:clamp(22px,3.6vw,32px)}
     h3{font-size:clamp(20px,3vw,28px)}
-    h4{font-size:clamp(18px,2.4vw,22px);margin-top:8px}
+    h4{font-size:clamp(18px,2.4vw,22px);margin-top:8px;text-align:left}
     .note{color:var(--muted);font-size:13px;text-align:center}
 
     /* セクションとカード */
@@ -57,9 +52,10 @@
     .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
     .strip{height:22vw;max-height:260px;min-height:120px;margin:18px 0;border-radius:12px}
 
-    /* ヒーロー：IMG_0099 下余白をトリミングして中央寄せ */
+    /* ヒーロー：PC/スマホで見切れ最小化 */
     .hero{display:flex;justify-content:center;align-items:center;margin:14px 0 0}
-    .hero img{width:100%;max-width:1100px;height:500px;object-fit:cover;object-position:center top;display:block;border-radius:14px;box-shadow:0 6px 18px rgba(17,24,39,.06);background:#fff}
+    .hero-img{width:100%;max-width:1100px;height:clamp(380px,58vh,560px);object-fit:cover;object-position:left center;display:block;margin:0 auto;border-radius:14px;box-shadow:0 6px 18px rgba(17,24,39,.06);background:#fff}
+    @media (max-width:840px){.hero-img{height:54vh;object-position:left 35%}}
 
     /* SNS */
     .sns-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
@@ -78,6 +74,7 @@
     .price-block{background:var(--paper);border:none;border-radius:14px;padding:20px;box-shadow:0 6px 18px rgba(17,24,39,.06);margin:14px 0}
     .price-block ul{margin:6px 0;padding-left:1.2em}
     .price-block li{margin:6px 0}
+    .price-note-strong{font-size:16px;line-height:1.8;font-weight:500;text-align:center;color:#111;margin-top:28px}
 
     /* 利用方法：中央配置+左揃え+数字縦揃え */
     #how .grid-2{grid-template-columns:1fr}
@@ -87,10 +84,10 @@
     .steps li::before{content:counter(step);grid-column:1;grid-row:1;display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:var(--deepgreen);color:#fff;font-weight:800}
     .steps li:not(:last-child)::after{content:"↓";grid-column:1 / -1;justify-self:center;color:var(--deepgreen);font-weight:800;margin-top:14px}
 
-    /* 概要：画像＋文章を同じ白面で囲う。スマホは画像非表示で崩れ防止 */
+    /* 概要：画像＋文章を同じ白面で囲う。スマホは画像非表示 */
     .about-wrap{background:rgba(255,255,255,0.92);padding:24px;border-radius:16px;box-shadow:0 6px 18px rgba(0,0,0,.05)}
     .about-grid{display:grid;grid-template-columns:0.9fr 1.1fr;align-items:center;gap:24px;max-width:1000px;margin:0 auto}
-    .about-visual{width:100%;max-width:480px;height:auto;object-fit:contain;border-radius:12px}
+    .about-visual{width:100%;max-width:580px;height:auto;object-fit:contain;border-radius:12px}
     .about-text{line-height:2.1;text-align:center}
     .emph{font-size:200%;font-weight:900;display:inline-block;margin-left:4px;letter-spacing:.04em;color:var(--ink);font-family:'Shippori Mincho','Noto Serif JP',serif}
     .emph-note{font-size:12px;color:#555;display:block;margin-top:6px}
@@ -98,7 +95,7 @@
     footer{padding:36px 0;color:var(--muted);text-align:center}
 
     /* モバイル最適化＋ハンバーガー */
-    @media (max-width: 840px){
+    @media (max-width:840px){
       .wrap{padding:0 14px}
       header .nav{height:auto;gap:10px;padding:10px 12px}
       .hamburger{display:inline-block}
@@ -118,32 +115,34 @@
 <header>
   <div class="wrap nav">
     <div class="brand">
-      <span class="brand-top">Repair shop</span>
-      <span class="brand-main">Beshoe</span>
+      <div class="brand-left">
+        <span class="brand-top">Repair shop</span>
+        <span class="brand-main">Beshoe</span>
+      </div>
       <span class="brand-sub">リペアショップビシュー</span>
     </div>
 
     <button id="menuBtn" class="hamburger" aria-controls="nav" aria-expanded="false">☰</button>
     <nav class="menu" id="nav">
-      <a href="#news" data-i18n="nav.news" style="min-width:44px;display:inline-block">お知らせ</a>
-      <a href="#price" data-i18n="nav.price" style="min-width:44px;display:inline-block">料金</a>
-      <a href="#how" data-i18n="nav.how" style="min-width:44px;display:inline-block">利用方法</a>
-      <a href="#contact" data-i18n="nav.contact" style="min-width:44px;display:inline-block">問い合わせ</a>
-      <a href="#sns" data-i18n="nav.sns" style="min-width:44px;display:inline-block">各SNS</a>
-      <a href="#about" data-i18n="nav.about" style="min-width:44px;display:inline-block">概要</a>
+      <a href="#news" data-i18n="nav.news">お知らせ</a>
+      <a href="#price" data-i18n="nav.price">料金</a>
+      <a href="#how" data-i18n="nav.how">利用方法</a>
+      <a href="#contact" data-i18n="nav.contact">問い合わせ</a>
+      <a href="#sns" data-i18n="nav.sns">各SNS</a>
+      <a href="#about" data-i18n="nav.about">概要</a>
       <button class="lang" id="langBtn" aria-label="言語切替">EN</button>
     </nav>
   </div>
 </header>
 
 <main class="wrap">
-  <!-- ヒーロー（下余白トリミングで中央） -->
+  <!-- ヒーロー -->
   <div class="hero" aria-label="hero image">
-    <img src="IMG_0099.jpg" alt="Hero image">
+    <img src="IMG_0099_hero.jpg" alt="Hero image" class="hero-img">
   </div>
 
   <!-- お知らせ＋カレンダー -->
-  <section id="news" class="active">
+  <section id="news">
     <h1 data-i18n="news.h">お知らせ</h1>
     <div class="grid-2">
       <div class="card">
@@ -161,11 +160,11 @@
     <div class="strip" style="background:url('https://images.unsplash.com/photo-1548095115-45697e51336b?auto=format&fit=crop&w=2400&q=80') center/cover no-repeat" aria-hidden="true"></div>
   </section>
 
-  <!-- 料金（データ駆動） -->
+  <!-- 料金 -->
   <section id="price">
     <h2 data-i18n="price.h">料金表（税込）</h2>
     <div id="priceBlocks"></div>
-    <p class="note" data-i18n="price.noteExtra">※その他、表記されていないメニューや、どのメニューに該当するかわからない場合もお気軽にお問い合わせください。内容に応じて、関連分野の専門家と相談のうえ、適切な方法と料金でご提案いたします。</p>
+    <p class="price-note-strong" data-i18n="price.noteExtra">※その他、表記されていないメニューや、どのメニューに該当するかわからない場合もお気軽にお問い合わせください。内容に応じて、関連分野の専門家と相談のうえ、適切な方法と料金でご提案いたします。</p>
   </section>
 
   <!-- 利用方法 -->
@@ -185,7 +184,7 @@
     </div>
   </section>
 
-  <!-- 問い合わせ（中央揃え） -->
+  <!-- 問い合わせ -->
   <section id="contact">
     <h2 data-i18n="ct.h">問い合わせ</h2>
     <div class="card" style="text-align:center;max-width:680px;margin:0 auto">
@@ -215,7 +214,7 @@
     <p class="note" data-i18n="sns.note">施工事例は各SNSで発信します。</p>
   </section>
 
-  <!-- 概要（画像＋文章） -->
+  <!-- 概要 -->
   <section id="about">
     <h2 data-i18n="about.h">概要</h2>
     <div class="about-wrap">
@@ -258,66 +257,66 @@
           {title:'クリーニング',
            groups:[
             {subtitle:'靴', items:[
-              'スニーカークリーニング　スタンダード　¥5,500',
-              '厚底・コンビ素材　¥7,500',
-              '革靴　スタンダード　¥5,500',
-              'ブーツ　スタンダード　¥6,500',
-              'カビ取り　¥7,000'
+              'スニーカークリーニング　スタンダード　¥5,500（税込）',
+              '厚底・コンビ素材　¥7,500（税込）',
+              '革靴　スタンダード　¥5,500（税込）',
+              'ブーツ　スタンダード　¥6,500（税込）',
+              'カビ取り　¥7,000（税込）'
             ]},
             {subtitle:'オプション', items:[
-              '傷補修1箇所　¥2,000',
-              'カラー 部分補修　¥5,000',
-              'カラー 全体補修　¥7,000',
-              'パティーヌ：短靴 ¥15,000／ブーツ ¥20,000／バッグ ¥20,000'
+              '傷補修1箇所　¥2,000（税込）',
+              'カラー 部分補修　¥5,000（税込）',
+              'カラー 全体補修　¥7,000（税込）',
+              'パティーヌ：短靴 ¥15,000（税込）／ブーツ ¥20,000（税込）／バッグ ¥20,000（税込）'
             ]},
             {subtitle:'バッグ', items:[
-              'スムース革　¥7,000',
-              '特殊素材　¥9,000'
+              'スムース革　¥7,000（税込）',
+              '特殊素材　¥9,000（税込）'
             ]},
             {subtitle:'オプション', items:[
-              'カラー 部分補修　¥8,000',
-              'カラー 全体補修　¥10,000'
+              'カラー 部分補修　¥8,000（税込）',
+              'カラー 全体補修　¥10,000（税込）'
             ]}
            ]},
           {title:'オールソール',
            groups:[
             {subtitle:'レザーオールソール', items:[
               '（リフトはラバー Vibram5350 または革とのコンビリフト）',
-              '¥18,000'
+              '¥18,000（税込）'
             ]},
             {subtitle:'オプション', items:[
-              'ハーフソール　¥3,500',
-              'トゥスチール　¥3,700',
-              'ヒドゥンチャネル　¥4,000',
-              '半カラス　¥4,000',
-              'リウェルト　¥15,000',
-              '中底交換　¥13,000',
-              '先心抜き　¥12,000',
-              'ダブルソール　¥6,000'
+              'ハーフソール　¥3,500（税込）',
+              'トゥスチール　¥3,700（税込）',
+              'ヒドゥンチャネル　¥4,000（税込）',
+              '半カラス　¥4,000（税込）',
+              'リウェルト　¥15,000（税込）',
+              '中底交換　¥13,000（税込）',
+              '先心抜き　¥12,000（税込）',
+              'ダブルソール　¥6,000（税込）'
             ]},
             {subtitle:'ラバーオールソール', items:[
-              'クッションソール　¥16,000',
-              'ラバーソール　¥17,000',
-              'ミッドソール（合成ゴム）¥5,000／（革）¥6,000'
+              'クッションソール　¥16,000（税込）',
+              'ラバーソール　¥17,000（税込）',
+              'ミッドソール（合成ゴム）¥5,000（税込）／（革）¥6,000（税込）'
             ]}
            ]},
           {title:'通常修理料金',
            groups:[{subtitle:'', items:[
-              'ピンヒール　¥1,300',
-              'ヒールリフト小　¥1,500',
-              'ヒール巻き替え　¥9,000',
-              'ヒール取り替え　¥20,000',
-              '中敷交換 全敷 ¥4,000／半敷 ¥3,500',
-              'ヒールリフト 5〜6mm　¥3,500',
-              'ヒールリフト 8mm〜　¥5,000',
-              'ビブラム等 20mm　¥6,000',
-              'トゥスチール　¥3,700',
-              'スベリ革交換（革靴）¥6,000',
-              'ハーフラバーソール　¥3,500',
-              'かかとコーナー（傾斜）¥3,500',
-              'つま先 レザー ¥3,500／ラバー ¥3,000',
-              'フラットソール再接着（片足）¥6,000',
-              'カップソール再接着（片足）¥10,000'
+              'ピンヒール　¥1,300（税込）',
+              'ヒールリフト小　¥1,500（税込）',
+              'ヒール巻き替え　¥9,000（税込）',
+              'ヒール取り替え　¥20,000（税込）',
+              '中敷交換 全敷 ¥4,000（税込）／半敷 ¥3,500（税込）',
+              'ヒールリフト 5〜6mm　¥3,500（税込）',
+              'ヒールリフト 8mm〜　¥5,000（税込）',
+              'ビブラム等 20mm　¥6,000（税込）',
+              'トゥスチール　¥3,700（税込）',
+              'スベリ革交換（革靴）¥6,000（税込）',
+              'ハーフラバーソール　¥3,500（税込）',
+              'かかとコーナー（傾斜）¥3,500（税込）',
+              'つま先 レザー ¥3,500（税込）／ラバー ¥3,000（税込）',
+              'フラットソール再接着（片足）¥6,000（税込）',
+              'カップソール再接着（片足）¥10,000（税込）'
             ]}]
           }
         ],
@@ -450,7 +449,6 @@
     document.documentElement.lang = lang;
     document.title = lang==='ja' ? 'Repair shop Beshoe｜靴修理・クリーニング' : 'Repair shop Beshoe｜Shoe Repair & Cleaning';
     document.querySelectorAll('[data-i18n]').forEach(el=>{ el.textContent = i18nText(el.getAttribute('data-i18n')); });
-    // 英語時は「美醜」の英語説明を追記
     const bi = document.getElementById('biShuNote');
     if(bi){ bi.style.display = (lang==='en')?'inline-block':'none'; if(lang==='en'){ bi.textContent = 'This means beauty and ugliness.'; } }
     renderPrice(); renderHow(); renderPostNote(); loadNews();
@@ -465,17 +463,26 @@
     menuBtn.setAttribute('aria-expanded', open?'true':'false');
   });
 
-  /* SPA切替 */
+  /* SPA：セクション切替＋URLハッシュ保持 */
   const sections = Array.from(document.querySelectorAll('main section'));
   function switchTo(id){
     sections.forEach(s=>s.classList.toggle('active', s.id===id));
     document.querySelectorAll('#nav a').forEach(a=>a.classList.toggle('active', a.getAttribute('href')==='#'+id));
   }
   document.getElementById('nav').addEventListener('click', (e)=>{
-    if(e.target.tagName==='A'){ e.preventDefault(); switchTo(e.target.getAttribute('href').slice(1)); const nav=document.getElementById('nav'); nav.classList.remove('open'); menuBtn.setAttribute('aria-expanded','false'); }
+    if(e.target.tagName==='A'){
+      e.preventDefault();
+      const id = e.target.getAttribute('href').slice(1);
+      location.hash = id; // ハッシュに保存
+    }
   });
+  function initSection(){
+    const id = (location.hash || '#news').slice(1);
+    switchTo(id);
+  }
+  window.addEventListener('hashchange', initSection);
 
-  /* 料金：データ駆動描画 */
+  /* 料金描画 */
   function renderPrice(){
     const box = document.getElementById('priceBlocks');
     const B = DATA[lang].price.blocks;
@@ -486,7 +493,6 @@
       `).join('');
       return `<div class="price-block"><h3>${b.title}</h3>${groups}</div>`;
     }).join('');
-    // 追記の補足文
     const extra = document.querySelector('[data-i18n="price.noteExtra"]');
     if(extra){ extra.textContent = DATA[lang].price.noteExtra; }
   }
@@ -505,22 +511,17 @@
     if(el) el.textContent = (lang==='ja')?txt_ja:txt_en;
   }
 
-  /* お知らせ（news.json）：英語切替時の自動置換＋title_en/text_en 優先。セールは強調。 */
+  /* お知らせ：news.json 読込（英語は *_en 優先）＋セール強調 */
   function enFallback(t){
-    // よく使う日本語→英語の簡易置換
-    return t
-      .replace('開店前セールのお知らせ','Pre-opening Sale Notice')
-      .replace('開店前セール','Pre-opening Sale')
-      .replace('受付中','Now accepting')
-      .replace('限定メニュー','Limited menu');
+    return t.replace('開店前セールのお知らせ','Pre-opening Sale Notice').replace('開店前セール','Pre-opening Sale').replace('受付中','Now accepting').replace('限定メニュー','Limited menu');
   }
   async function loadNews(){
     try{
-      const r = await fetch('news.json?v=' + Date.now(), {cache:'no-store'});
+      const r = await fetch('news.json?v='+Date.now(), {cache:'no-store'});
       const list = await r.json();
       const el = document.getElementById('newsList');
       el.innerHTML = list.map(n=>{
-        let title = n.title||''; let text = n.text||'';
+        let title = n.title||''; let text = n.text||n.text_ja||'';
         if(lang==='en'){ title = n.title_en || enFallback(title); text = n.text_en || enFallback(text); }
         const isSale = /セール|SALE|offer|discount|Pre-opening/i.test(title);
         return `
@@ -536,10 +537,9 @@
     }
   }
 
-  // 初期化
-  document.getElementById('year').textContent = new Date().getFullYear();
+  /* 初期化：言語適用→料金等描画→ハッシュからセクション表示 */
   i18nApply();
-  switchTo('news');
+  initSection();
 </script>
 </body>
 </html>
