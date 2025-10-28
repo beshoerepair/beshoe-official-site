@@ -12,26 +12,27 @@
   <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Dela+Gothic+One&display=swap" rel="stylesheet">
 
   <style>
-    html{scroll-padding-top:100px}
-:root{--ink:#0e1a2a;--char:#222;--muted:#6b7280;--paper:#ffffff;--paper2:#fbf8f3;--deepgreen:#165b4a;--linegreen:#06C755}
+    :root{--ink:#0e1a2a;--char:#222;--muted:#6b7280;--paper:#ffffff;--paper2:#fbf8f3;--deepgreen:#165b4a;--linegreen:#06C755}
     *{box-sizing:border-box}
     html,body{margin:0;line-height:1.8;color:var(--char);font-family:'Corporate Logo','Noto Sans JP',sans-serif}
+    html{scroll-padding-top:100px}
     body{background:url('alex-lvrs-Md6_qA-BMis-unsplash.jpg') center/cover fixed no-repeat}
     a{color:#0f3b84;text-decoration:underline;text-underline-offset:3px}
     a:hover{opacity:.9}
     .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
 
-    /* ヘッダー＋ブランド（右に日本語名） */
-    header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.86);backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid rgba(0,0,0,.06)}
+    /* ヘッダー＋ブランド */
+    header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.95);backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid rgba(0,0,0,.06)}
     .nav{height:auto;padding:14px 20px;gap:16px;display:flex;align-items:center;justify-content:space-between;position:relative}
-    .brand{display:flex;align-items:flex-end;gap:8px}  /* 下端を揃える */                 /* Beshoeの真横に日本語を配置 */
-    .brand-left{display:flex;flex-direction:column;align-items:flex-start;margin-right:0}
-    .brand-top{font-family:'Shippori Mincho','Noto Serif JP',serif;font-size:16px;color:#000;letter-spacing:.05em}
-    .brand-main{font-family:'Shippori Mincho','Noto Serif JP',serif;font-size:clamp(36px,6vw,48px);font-weight:800;letter-spacing:.04em;color:var(--ink)}
-    .brand-sub{font-family:'Dela Gothic One','Yu Mincho',serif;font-size:15px;color:#000;
-           white-space:nowrap;align-self:flex-end;margin:0 0 2px 6px}  /* Beshoe の底線に合わせる */
+    .brand{display:flex;align-items:flex-end;gap:10px}
+    .brand-logo{width:48px;height:48px;object-fit:contain;border-radius:50%;flex-shrink:0}
+    .brand-left{display:flex;flex-direction:column;align-items:flex-start}
+    .brand-top{font-family:'Shippori Mincho','Noto Serif JP',serif;font-size:16px;color:#000;letter-spacing:.05em;line-height:1}
+    .brand-main{font-family:'Shippori Mincho','Noto Serif JP',serif;font-size:clamp(36px,6vw,48px);font-weight:800;letter-spacing:.04em;color:var(--ink);line-height:1.1}
+    .brand-sub{font-family:'Dela Gothic One','Yu Mincho',serif;font-size:15px;color:#000;white-space:nowrap;align-self:flex-end;margin:0 0 2px 6px}
 
-    .menu{display:flex;gap:12px;align-items:center;flex-wrap:nowrap}
+    .menu{display:flex;gap:12px;align-items:center;flex-wrap:nowrap;white-space:nowrap;flex:1;justify-content:flex-end;min-width:0}
+    #nav a{white-space:nowrap}
     .menu a,.menu button{padding:10px 14px;line-height:1;border-radius:10px;background:transparent;cursor:pointer;text-decoration:none;color:var(--ink)}
     .menu a:hover,.menu button:hover{background:#efede7}
     .lang{border:1px solid #ddd;background:#fff}
@@ -45,6 +46,12 @@
     h4{font-size:clamp(18px,2.4vw,22px);margin-top:8px;text-align:left}
     .note{color:var(--muted);font-size:13px;text-align:center}
 
+    /* ボタン共通 */
+    .btn{display:inline-block;padding:12px 20px;border-radius:12px;font-weight:700;text-decoration:none}
+    .btn-line{background:#06C755;color:#fff}
+    .btn-form{background:#111;color:#fff}
+    .btn-wrap{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:8px 0 12px}
+
     /* セクションとカード */
     main{padding:12px 0 40px}
     section{display:none;padding:28px 0}
@@ -54,10 +61,10 @@
     .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
     .strip{height:22vw;max-height:260px;min-height:120px;margin:18px 0;border-radius:12px}
 
-    /* ヒーロー：切らずに表示 */
+    /* ヒーロー：切れない表示 */
     .hero{display:flex;justify-content:center;align-items:center;margin:14px 0 0}
-    .hero-img{width:100%;max-width:1100px;height:auto;max-height:min(62vh,640px);object-fit:contain;object-position:center center;display:block;margin:0 auto;border-radius:14px;box-shadow:0 6px 18px rgba(17,24,39,.06);background:#fff}
-    @media (max-width:840px){.hero-img{max-height:58vh;object-position:center top}}
+    .hero-frame{width:100%;max-width:1100px;background:#fff;border-radius:14px;box-shadow:0 6px 18px rgba(17,24,39,.06);padding:14px}
+    .hero-img{width:100%;height:auto;display:block;object-fit:contain;object-position:center}
 
     /* SNS */
     .sns-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
@@ -89,25 +96,29 @@
     /* 概要：画像＋文章を同じ白面で囲う。スマホは画像非表示 */
     .about-wrap{background:rgba(255,255,255,0.92);padding:24px;border-radius:16px;box-shadow:0 6px 18px rgba(0,0,0,.05)}
     .about-grid{display:grid;grid-template-columns:0.9fr 1.1fr;align-items:center;gap:24px;max-width:1000px;margin:0 auto}
-    .about-visual{width:100%;max-width:580px;height:auto;object-fit:contain;border-radius:12px}
+    .about-visual{width:100%;max-width:620px;height:auto;object-fit:contain;border-radius:12px}
     .about-text{line-height:2.1;text-align:center}
     .emph{font-size:200%;font-weight:900;display:inline-block;margin-left:4px;letter-spacing:.04em;color:var(--ink);font-family:'Shippori Mincho','Noto Serif JP',serif}
-    .emph-note{font-size:12px;color:#555;display:block;margin-top:6px}
+    .emph-note{font-size:12px;color:var(--char);display:block;margin-top:6px}
 
     footer{padding:36px 0;color:var(--muted);text-align:center}
 
-    /* モバイル最適化＋ハンバーガー */
-   @media (max-width:1100px){
-  .hamburger{display:inline-block}
-  .menu{display:none;position:absolute;right:12px;top:72px;flex-direction:column;gap:6px;background:#fff;padding:10px;border-radius:12px;box-shadow:0 12px 32px rgba(0,0,0,.12)}
-  .menu.open{display:flex}
-}
+    /* モバイル：ハンバーガー */
+    @media (max-width:1100px){
+      .hamburger{display:inline-block}
+      .menu{display:none;position:absolute;right:12px;top:72px;flex-direction:column;gap:6px;background:#fff;padding:10px;border-radius:12px;box-shadow:0 12px 32px rgba(0,0,0,.12)}
+      .menu.open{display:flex}
+    }
+    @media (max-width:840px){
+      .wrap{padding:0 14px}
+      header .nav{height:auto;gap:10px;padding:10px 12px}
       .menu a,.menu button{padding:8px 12px;font-size:14px}
       h1{font-size:28px} h2{font-size:22px} h3{font-size:18px} h4{font-size:16px}
       .grid-2,.grid-3,.sns-grid{grid-template-columns:1fr}
       .card{padding:16px;border-radius:12px}
       .about-grid{grid-template-columns:1fr;gap:14px}
       .about-visual{display:none}
+      .brand-logo{width:36px;height:36px}
       body{padding-bottom:88px}
     }
   </style>
@@ -117,7 +128,7 @@
   <div class="wrap nav">
     <div class="brand">
       <img src="logo-mark.jpg" alt="Beshoe Logo" class="brand-logo">
-<div class="brand-left">
+      <div class="brand-left">
         <span class="brand-top">Repair shop</span>
         <span class="brand-main">Beshoe</span>
       </div>
@@ -140,7 +151,9 @@
 <main class="wrap">
   <!-- ヒーロー -->
   <div class="hero" aria-label="hero image">
-    <img src="IMG_0099_hero.jpg?v=2" alt="Hero image" class="hero-img">
+    <div class="hero-frame">
+      <img src="IMG_0099_hero.jpg" alt="Hero image" class="hero-img">
+    </div>
   </div>
 
   <!-- お知らせ＋カレンダー -->
@@ -172,6 +185,13 @@
   <!-- 利用方法 -->
   <section id="how">
     <h2 data-i18n="how.h">利用方法</h2>
+
+    <!-- 追加：利用方法セクション上部にボタン列 -->
+    <div class="btn-wrap">
+      <a href="https://page.line.me/981xrswf" target="_blank" rel="noopener" class="btn btn-line">公式LINEはこちら</a>
+      <a href="https://forms.gle/your_form_id" target="_blank" rel="noopener" class="btn btn-form">Googleフォーム</a>
+    </div>
+
     <div class="grid-2">
       <div class="card" style="text-align:center">
         <h3 data-i18n="how.shop">店頭</h3>
@@ -192,7 +212,7 @@
     <div class="card" style="text-align:center;max-width:680px;margin:0 auto">
       <p>
         <a href="https://page.line.me/981xrswf" target="_blank" rel="noopener"
-           style="display:inline-block;background:#06C755;color:#fff;font-weight:700;padding:12px 20px;border-radius:12px;text-align:center;text-decoration:none;min-width:200px;">
+           class="btn btn-line" style="min-width:200px">
           <span data-i18n="ct.linebtn">公式LINEはこちら</span>
         </a>
       </p>
@@ -200,6 +220,18 @@
       <p><strong data-i18n="ct.mail">メール</strong>：<a href="mailto:beshoe.repair@gmail.com">beshoe.repair@gmail.com</a></p>
       <p><strong data-i18n="ct.tel">電話（仮）</strong>：<a href="tel:000-0000-0000">000-0000-0000</a></p>
       <p class="note" data-i18n="ct.note">営業時間・所在地は決定次第お知らせします。</p>
+    </div>
+
+    <!-- 追加：問い合わせページにもGoogleフォーム（埋め込み or ボタン） -->
+    <div class="card" style="text-align:center;max-width:800px;margin:16px auto 0">
+      <!-- 埋め込み：FORM_ID を実際のIDに置換 -->
+      <iframe src="https://docs.google.com/forms/d/e/FORM_ID/viewform?embedded=true"
+              width="100%" height="820" frameborder="0" marginheight="0" marginwidth="0">
+        Loading…
+      </iframe>
+      <!-- 埋め込みではなくリンクだけにする場合は下を使用
+      <a href="https://forms.gle/your_form_id" target="_blank" rel="noopener" class="btn btn-form" style="margin-top:12px">Googleフォームを開く</a>
+      -->
     </div>
   </section>
 
@@ -248,7 +280,7 @@
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  /* データ：多言語辞書＋料金表 */
+  /* データ：多言語辞書＋料金表（税込併記・改定反映） */
   const DATA = {
     ja: {
       nav:{news:'お知らせ',price:'料金',how:'利用方法',contact:'問い合わせ',sns:'各SNS',about:'概要'},
@@ -259,66 +291,66 @@
           {title:'クリーニング',
            groups:[
             {subtitle:'靴', items:[
-              'スニーカークリーニング　スタンダード　¥5,500（税込）',
-              '厚底・コンビ素材　¥7,500（税込）',
-              '革靴　スタンダード　¥5,500（税込）',
-              'ブーツ　スタンダード　¥6,500（税込）',
-              'カビ取り　¥7,000（税込）'
+              'スニーカークリーニング　スタンダード　¥5,500(¥6,050)',
+              '厚底・コンビ素材　¥7,500(¥8,250)',
+              '革靴　スタンダード　¥5,500(¥6,050)',
+              'ブーツ　スタンダード　¥6,500(¥7,150)',
+              'カビ取り　¥7,000(¥7,700)'
             ]},
             {subtitle:'オプション', items:[
-              '傷補修1箇所　¥2,000（税込）',
-              'カラー 部分補修　¥5,000（税込）',
-              'カラー 全体補修　¥7,000（税込）',
-              'パティーヌ：短靴 ¥15,000（税込）／ブーツ ¥20,000（税込）／バッグ ¥20,000（税込）'
+              '傷補修1箇所　¥2,000(¥2,200)',
+              'カラー 部分補修　¥5,000(¥5,500)',
+              'カラー 全体補修　¥7,000(¥7,700)',
+              'パティーヌ：短靴 ¥15,000(¥16,500)／ブーツ ¥20,000(¥22,000)／バッグ ¥20,000(¥22,000)'
             ]},
             {subtitle:'バッグ', items:[
-              'スムース革　¥7,000（税込）',
-              '特殊素材　¥9,000（税込）'
+              'スムース革　¥7,000(¥7,700)',
+              '特殊素材　¥9,000(¥9,900)'
             ]},
             {subtitle:'オプション', items:[
-              'カラー 部分補修　¥8,000（税込）',
-              'カラー 全体補修　¥10,000（税込）'
+              'カラー 部分補修　¥8,000(¥8,800)',
+              'カラー 全体補修　¥10,000(¥11,000)'
             ]}
            ]},
           {title:'オールソール',
            groups:[
             {subtitle:'レザーオールソール', items:[
               '（リフトはラバー Vibram5350 または革とのコンビリフト）',
-              '¥18,000（税込）'
+              '¥18,000(¥19,800)'
             ]},
             {subtitle:'オプション', items:[
-              'ハーフソール　¥3,500（税込）',
-              'トゥスチール　¥3,700（税込）',
-              'ヒドゥンチャネル　¥4,000（税込）',
-              '半カラス　¥4,000（税込）',
-              'リウェルト　¥15,000（税込）',
-              '中底交換　¥13,000（税込）',
-              '先心抜き　¥12,000（税込）',
-              'ダブルソール　¥6,000（税込）'
+              'ハーフソール　¥3,500(¥3,850)',
+              'トゥスチール　¥3,700(¥4,070)',
+              'ヒドゥンチャネル　¥4,000(¥4,400)',
+              '半カラス　¥4,000(¥4,400)',
+              'リウェルト　¥15,000(¥16,500)',
+              '中底交換　¥13,000(¥14,300)',
+              '先心抜き　¥12,000(¥13,200)',
+              'ダブルソール　¥6,000(¥6,600)'
             ]},
             {subtitle:'ラバーオールソール', items:[
-              'クッションソール　¥16,000（税込）',
-              'ラバーソール　¥17,000（税込）',
-              'ミッドソール（合成ゴム）¥5,000（税込）／（革）¥6,000（税込）'
+              'クッションソール　¥16,000(¥17,600)',
+              'ラバーソール　¥17,000(¥18,700)',
+              'ミッドソール（合成ゴム）¥5,000(¥5,500)／（革）¥6,000(¥6,600)'
             ]}
            ]},
           {title:'通常修理料金',
            groups:[{subtitle:'', items:[
-              'ピンヒール　¥1,300（税込）',
-              'ヒールリフト小　¥1,500（税込）',
-              'ヒール巻き替え　¥9,000（税込）',
-              'ヒール取り替え　¥20,000（税込）',
-              '中敷交換 全敷 ¥4,000（税込）／半敷 ¥3,500（税込）',
-              'ヒールリフト 5〜6mm　¥3,500（税込）',
-              'ヒールリフト 8mm〜　¥5,000（税込）',
-              'ビブラム等 20mm　¥6,000（税込）',
-              'トゥスチール　¥3,700（税込）',
-              'スベリ革交換（革靴）¥6,000（税込）',
-              'ハーフラバーソール　¥3,500（税込）',
-              'かかとコーナー（傾斜）¥3,500（税込）',
-              'つま先 レザー ¥3,500（税込）／ラバー ¥3,000（税込）',
-              'フラットソール再接着（片足）¥6,000（税込）',
-              'カップソール再接着（片足）¥10,000（税込）'
+              'ピンヒール　¥1,200(¥1,320)',
+              'ヒールリフト小　¥1,400(¥1,540)',
+              'ヒール巻き替え　¥9,000(¥9,900)',
+              'ヒール取り替え　¥20,000(¥22,000)',
+              '中敷交換 全敷 ¥4,000(¥4,400)／半敷 ¥3,500(¥3,850)',
+              'ヒールリフト 5〜6mm　¥3,300(¥3,630)',
+              'ヒールリフト 8mm〜　¥4,300(¥4,730)',
+              'ビブラム等 20mm　¥5,000(¥5,500)',
+              'トゥスチール　¥3,700(¥4,070)',
+              'スベリ革交換（革靴）¥6,000(¥6,600)',
+              'ハーフラバーソール　¥3,300(¥3,630)',
+              'かかとコーナー（傾斜）¥3,000(¥3,300)',
+              'つま先 レザー ¥3,000(¥3,300)／ラバー ¥2,500(¥2,750)',
+              'フラットソール再接着（片足）¥6,000(¥6,600)',
+              'カップソール再接着（片足）¥10,000(¥11,000)'
             ]}]
           }
         ],
@@ -327,7 +359,7 @@
       how:{h:'利用方法',shop:'店頭',post:'郵送',
         shopLead:'住所（仮）までお持ちください。作業内容やお見積もり、納期をご相談のうえで作業します。',
         s:['来店・状態確認','見積・納期案内・お支払い（前払いになります）','作業（完了次第公式LINE、SMS、お電話等でお知らせいたします）','受け取り'],
-        p:['LINEまたはメールで写真と希望内容を送信','概算見積と発送先をご案内','到着後に本見積→入金確認後に作業','完了次第順次配送']
+        p:['LINEまたはGoogleフォーム（メール）から写真と希望内容を送信','概算見積と発送先をご案内','到着後に本見積→入金確認後に作業','完了次第順次配送']
       },
       ct:{h:'問い合わせ',linebtn:'公式LINEはこちら',linesub:'↑お得なキャンペーン情報も↑',mail:'メール',tel:'電話（仮）',note:'営業時間・所在地は決定次第お知らせします。'},
       sns:{h:'各SNS',note:'施工事例は各SNSで発信します。'},
@@ -352,66 +384,66 @@
           {title:'Cleaning',
            groups:[
             {subtitle:'Shoes', items:[
-              'Sneaker cleaning – standard ¥5,500',
-              'Thick sole / mixed materials ¥7,500',
-              'Leather shoes – standard ¥5,500',
-              'Boots – standard ¥6,500',
-              'Mold removal ¥7,000'
+              'Sneaker cleaning – standard ¥5,500(¥6,050)',
+              'Thick sole / mixed materials ¥7,500(¥8,250)',
+              'Leather shoes – standard ¥5,500(¥6,050)',
+              'Boots – standard ¥6,500(¥7,150)',
+              'Mold removal ¥7,000(¥7,700)'
             ]},
             {subtitle:'Options', items:[
-              'Scratch repair (per spot) ¥2,000',
-              'Color touch-up (partial) ¥5,000',
-              'Full recolor ¥7,000',
-              'Patina: shoes ¥15,000 / boots ¥20,000 / bags ¥20,000'
+              'Scratch repair (per spot) ¥2,000(¥2,200)',
+              'Color touch-up (partial) ¥5,000(¥5,500)',
+              'Full recolor ¥7,000(¥7,700)',
+              'Patina: shoes ¥15,000(¥16,500) / boots ¥20,000(¥22,000) / bags ¥20,000(¥22,000)'
             ]},
             {subtitle:'Bags', items:[
-              'Smooth leather ¥7,000',
-              'Special materials ¥9,000'
+              'Smooth leather ¥7,000(¥7,700)',
+              'Special materials ¥9,000(¥9,900)'
             ]},
             {subtitle:'Options', items:[
-              'Color touch-up (partial) ¥8,000',
-              'Full recolor ¥10,000'
+              'Color touch-up (partial) ¥8,000(¥8,800)',
+              'Full recolor ¥10,000(¥11,000)'
             ]}
            ]},
           {title:'Full Sole Replacement',
            groups:[
             {subtitle:'Leather full sole', items:[
               'Lift: rubber Vibram 5350 or leather combo',
-              '¥18,000'
+              '¥18,000(¥19,800)'
             ]},
             {subtitle:'Options', items:[
-              'Half sole ¥3,500',
-              'Toe steel ¥3,700',
-              'Hidden channel ¥4,000',
-              'Half black waist ¥4,000',
-              'Re-welting ¥15,000',
-              'Insole replacement ¥13,000',
-              'Toe puff removal ¥12,000',
-              'Double sole ¥6,000'
+              'Half sole ¥3,500(¥3,850)',
+              'Toe steel ¥3,700(¥4,070)',
+              'Hidden channel ¥4,000(¥4,400)',
+              'Half black waist ¥4,000(¥4,400)',
+              'Re-welting ¥15,000(¥16,500)',
+              'Insole replacement ¥13,000(¥14,300)',
+              'Toe puff removal ¥12,000(¥13,200)',
+              'Double sole ¥6,000(¥6,600)'
             ]},
             {subtitle:'Rubber full sole', items:[
-              'Cushion sole ¥16,000',
-              'Rubber sole ¥17,000',
-              'Midsole (synthetic) ¥5,000 / (leather) ¥6,000'
+              'Cushion sole ¥16,000(¥17,600)',
+              'Rubber sole ¥17,000(¥18,700)',
+              'Midsole (synthetic) ¥5,000(¥5,500) / (leather) ¥6,000(¥6,600)'
             ]}
            ]},
           {title:'Standard Repairs',
            groups:[{subtitle:'', items:[
-              'Pin heel ¥1,300',
-              'Small heel lift ¥1,500',
-              'Heel wrap replacement ¥9,000',
-              'Heel block replacement ¥20,000',
-              'Insole replace full ¥4,000 / half ¥3,500',
-              'Heel lift 5–6mm ¥3,500',
-              'Heel lift 8mm+ ¥5,000',
-              'Vibram etc. 20mm ¥6,000',
-              'Toe steel ¥3,700',
-              'Lining patch at heel (leather shoes) ¥6,000',
-              'Half rubber sole ¥3,500',
-              'Heel corner bevel ¥3,500',
-              'Toe patch leather ¥3,500 / rubber ¥3,000',
-              'Flat sole re-glue (per foot) ¥6,000',
-              'Cup sole re-glue (per foot) ¥10,000'
+              'Pin heel ¥1,200(¥1,320)',
+              'Small heel lift ¥1,400(¥1,540)',
+              'Heel wrap replacement ¥9,000(¥9,900)',
+              'Heel block replacement ¥20,000(¥22,000)',
+              'Insole replace full ¥4,000(¥4,400) / half ¥3,500(¥3,850)',
+              'Heel lift 5–6mm ¥3,300(¥3,630)',
+              'Heel lift 8mm+ ¥4,300(¥4,730)',
+              'Vibram etc. 20mm ¥5,000(¥5,500)',
+              'Toe steel ¥3,700(¥4,070)',
+              'Lining patch at heel (leather shoes) ¥6,000(¥6,600)',
+              'Half rubber sole ¥3,300(¥3,630)',
+              'Heel corner bevel ¥3,000(¥3,300)',
+              'Toe patch leather ¥3,000(¥3,300) / rubber ¥2,500(¥2,750)',
+              'Flat sole re-glue (per foot) ¥6,000(¥6,600)',
+              'Cup sole re-glue (per foot) ¥10,000(¥11,000)'
             ]}]
           }
         ],
@@ -420,9 +452,9 @@
       how:{h:'How to Use',shop:'In-store',post:'Mail-in',
         shopLead:'Please bring your items to our address (TBD). We discuss the work, quote and lead time before starting.',
         s:['Visit & inspection','Quote, lead time & prepayment','Work (we notify via LINE/SMS/phone when completed)','Pickup'],
-        p:['Send photos and request via LINE or email','We reply with a rough quote and shipping address','Final quote after arrival → work after payment','Ship out as soon as completed']
+        p:['Send photos and request via LINE or Google Form (email)','We reply with a rough quote and shipping address','Final quote after arrival → work after payment','Ship out as soon as completed']
       },
-      ct:{h:'Contact',linebtn:'Official LINE',linesub:'↑ Deals and updates here ↑',mail:'Email',tel:'Phone (temp)',note:'Address and hours will be announced.'},
+      ct:{h:'Contact',linebtn:'Official LINE',linesub:'↑ Deals and updates here ↑',mail:'Email',tel:'Phone (temp)',note:'Address and hours will be posted later.'},
       sns:{h:'SNS',note:'We post works on SNS.'},
       about:{h:'About',
         p1:'With hands and eyes trained in making things, we help you keep your items in use for longer.',
@@ -475,7 +507,7 @@
     if(e.target.tagName==='A'){
       e.preventDefault();
       const id = e.target.getAttribute('href').slice(1);
-      location.hash = id; // ハッシュに保存
+      location.hash = id;
     }
   });
   function initSection(){
@@ -515,10 +547,7 @@
 
   /* お知らせ：news.json 読込（英語は *_en 優先）＋セール強調 */
   function enFallback(t){
-    return t.replace('開店前セールのお知らせ','Pre-opening Sale Notice')
-            .replace('開店前セール','Pre-opening Sale')
-            .replace('受付中','Now accepting')
-            .replace('限定メニュー','Limited menu');
+    return t.replace('開店前セールのお知らせ','Pre-opening Sale Notice').replace('開店前セール','Pre-opening Sale').replace('受付中','Now accepting').replace('限定メニュー','Limited menu');
   }
   async function loadNews(){
     try{
@@ -533,7 +562,7 @@
           <div style="margin:10px 0;padding:18px;border-radius:16px;background:${isSale ? '#0ea5ff10' : 'var(--paper2)'};border:${isSale ? '3px solid #0ea5ff' : 'none'};box-shadow:${isSale ? '0 0 14px rgba(14,165,255,.35)' : '0 6px 18px rgba(17,24,39,.05)'};text-align:${isSale?'center':'left'}">
             <div style="font-size:${isSale?'22px':'18px'};font-weight:800;color:${isSale?'#0e1a2a':'inherit'};">${title}</div>
             <div class="note" style="font-size:${isSale?'15px':'13px'};margin-top:6px">${text}</div>
-            ${isSale ? `<a href=\"https://page.line.me/981xrswf\" target=\"_blank\" rel=\"noopener\" class=\"btn\" style=\"margin-top:12px;background:#06C755;color:#fff;text-decoration:none;padding:8px 14px;border-radius:10px;display:inline-block\">${lang==='ja'?'LINEでお申し込み':'Apply via LINE'}</a>` : ''}
+            ${isSale ? `<a href=\"https://page.line.me/981xrswf\" target=\"_blank\" rel=\"noopener\" class=\"btn btn-line\" style=\"margin-top:12px;display:inline-block\">${lang==='ja'?'LINEでお申し込み':'Apply via LINE'}</a>` : ''}
             <div class="note" style="margin-top:6px">${n.date||''}</div>
           </div>`;
       }).join('');
@@ -542,7 +571,7 @@
     }
   }
 
-  /* 初期化：言語適用→料金等描画→ハッシュからセクション表示 */
+  /* 初期化 */
   i18nApply();
   initSection();
 </script>
