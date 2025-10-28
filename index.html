@@ -24,13 +24,12 @@
     /* ヘッダー＋ブランド */
     header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.95);backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid rgba(0,0,0,.06)}
     .nav{height:auto;padding:14px 20px;gap:16px;display:flex;align-items:center;justify-content:space-between;position:relative}
-    .brand{display:flex;align-items:flex-end;gap:10px}
+    .brand{display:flex;align-items:flex-end;gap:10px;min-width:0}
     .brand-logo{width:64px;height:64px;object-fit:contain;border-radius:50%;flex-shrink:0}
     .brand-left{display:flex;flex-direction:column;align-items:flex-start}
     .brand-top{font-family:'Shippori Mincho','Noto Serif JP',serif;font-size:16px;color:#000;letter-spacing:.05em;line-height:1}
     .brand-main{font-family:'Shippori Mincho','Noto Serif JP',serif;font-size:clamp(36px,6vw,48px);font-weight:800;letter-spacing:.04em;color:var(--ink);line-height:1.1}
-    .brand-sub{font-family:'Dela Gothic One','Yu Mincho',serif;font-size:15px;color:#000;white-space:nowrap;align-self:flex-end;margin:0 0 2px 6px;transform:translateY(2px)}
-
+    .brand-sub{font-family:'Dela Gothic One','Yu Mincho',serif;font-size:15px;color:#000;white-space:normal;align-self:flex-end;margin:0 0 2px 6px;transform:translateY(2px)}
     .menu{display:flex;gap:12px;align-items:center;flex-wrap:nowrap;white-space:nowrap;flex:1;justify-content:flex-end;min-width:0}
     #nav a{white-space:nowrap}
     .menu a,.menu button{padding:10px 14px;line-height:1;border-radius:10px;background:transparent;cursor:pointer;text-decoration:none;color:var(--ink)}
@@ -103,22 +102,23 @@
 
     footer{padding:36px 0;color:var(--muted);text-align:center}
 
-    /* モバイル：ハンバーガー */
+    /* モバイル：ハンバーガーとレイアウト調整 */
     @media (max-width:1100px){
-      .hamburger{display:inline-block}
-      .menu{display:none;position:absolute;right:12px;top:72px;flex-direction:column;gap:6px;background:#fff;padding:10px;border-radius:12px;box-shadow:0 12px 32px rgba(0,0,0,.12)}
+      .hamburger{display:inline-block;position:absolute;right:10px;top:12px;transform:none}
+      .menu{display:none;position:absolute;right:12px;top:56px;flex-direction:column;gap:6px;background:#fff;padding:10px;border-radius:12px;box-shadow:0 12px 32px rgba(0,0,0,.12)}
       .menu.open{display:flex}
     }
     @media (max-width:840px){
       .wrap{padding:0 14px}
       header .nav{height:auto;gap:10px;padding:10px 12px}
+      .brand-logo{width:48px;height:48px}
+      .brand-sub{font-size:14px}
       .menu a,.menu button{padding:8px 12px;font-size:14px}
       h1{font-size:28px} h2{font-size:22px} h3{font-size:18px} h4{font-size:16px}
       .grid-2,.grid-3,.sns-grid{grid-template-columns:1fr}
       .card{padding:16px;border-radius:12px}
       .about-grid{grid-template-columns:1fr;gap:14px}
       .about-visual{display:none}
-      .brand-logo{width:48px;height:48px}
       body{padding-bottom:88px}
     }
   </style>
@@ -132,7 +132,7 @@
         <span class="brand-top">Repair shop</span>
         <span class="brand-main">Beshoe</span>
       </div>
-      <span class="brand-sub">リペアショップビシュー</span>
+      <span class="brand-sub">リペアショップ<br>ビシュー</span>
     </div>
 
     <button id="menuBtn" class="hamburger" aria-controls="nav" aria-expanded="false">☰</button>
@@ -210,24 +210,17 @@
   <section id="contact">
     <h2 data-i18n="ct.h">問い合わせ</h2>
     <div class="card" style="text-align:center;max-width:680px;margin:0 auto">
-      <p>
-        <a href="https://page.line.me/981xrswf" target="_blank" rel="noopener"
-           class="btn btn-line" style="min-width:200px">
+      <div class="btn-wrap" style="margin-top:0">
+        <a href="https://page.line.me/981xrswf" target="_blank" rel="noopener" class="btn btn-line">
           <span data-i18n="ct.linebtn">公式LINEはこちら</span>
         </a>
-      </p>
+        <a href="https://forms.gle/c5QKS9W8DizzxTtMA" target="_blank" rel="noopener" class="btn btn-form">
+          Googleフォーム
+        </a>
+      </div>
       <p style="font-size:11px;color:#2a2a2a;margin-top:-6px" data-i18n="ct.linesub">↑お得なキャンペーン情報も↑</p>
-      <p><strong data-i18n="ct.mail">メール</strong>：<a href="mailto:beshoe.repair@gmail.com">beshoe.repair@gmail.com</a></p>
       <p><strong data-i18n="ct.tel">電話（仮）</strong>：<a href="tel:000-0000-0000">000-0000-0000</a></p>
       <p class="note" data-i18n="ct.note">営業時間・所在地は決定次第お知らせします。</p>
-    </div>
-
-    <!-- Googleフォーム埋め込み -->
-    <div class="card" style="text-align:center;max-width:800px;margin:16px auto 0">
-      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf9o97G87u-Xt7iC8LCMYAIL1PdNBX6ff00Y-rm0viorL61Rw/viewform?embedded=true"
-              width="100%" height="820" frameborder="0" marginheight="0" marginwidth="0" style="border-radius:12px">
-        読み込んでいます…
-      </iframe>
     </div>
   </section>
 
@@ -273,10 +266,54 @@
   </div>
 </footer>
 
+<!-- セール詳細モーダル -->
+<div id="saleModal" style="display:none;position:fixed;left:0;top:0;right:0;bottom:0;z-index:80;background:rgba(0,0,0,.35)">
+  <div style="position:relative;max-width:900px;margin:6vh auto;background:#fff;border-radius:16px;box-shadow:0 20px 40px rgba(0,0,0,.25);padding:22px">
+    <button id="saleClose" aria-label="閉じる" style="position:absolute;right:12px;top:10px;border:none;background:#eee;border-radius:8px;padding:6px 10px;cursor:pointer">閉じる</button>
+    <div id="saleBody" style="white-space:pre-wrap;line-height:2"></div>
+  </div>
+</div>
+
+<!-- 開店前セール本文（日本語） -->
+<script type="application/json" id="saleDetailJa">
+BeShoeでは、正式な店舗オープンに先立ち、期間限定の開店前セールを開催しています。
+
+作業環境が整った今、開店準備期間中にしかできない特別価格で、靴・鞄の修理やクリーニングをお試しいただけます。
+
+ピンヒール修理・リフト交換・ハーフラバー・靴クリーニング（スタンダード）は
+通常価格の50％OFF、その他すべてのメニューも30％OFF。
+
+さらに、
+
+4点以上のご依頼で「返送料無料」
+
+8,000円以上のご利用で「往復送料無料」
+
+現在は埼玉県・越谷駅周辺の作業拠点にて対応しております。
+お近くの方は、**直接のお持ち込みも可能（現状：木曜日のみ）**です。
+
+郵送でのご依頼も承っており、郵送先も埼玉県・越谷駅周辺の作業拠点となります。
+お客様ご自身でご用意いただいた箱・袋に梱包のうえお送りください。
+修理完了後は、お送りいただいた梱包材を再利用して返送いたします。
+
+修理のご依頼は、公式LINEまたはGoogleフォームから受け付けています。
+初回の方はどなたでもセール割引をご利用いただけます。
+2回目以降も割引を継続して利用できるのは、LINE公式アカウントにご登録のうえ、初回ご利用後のアンケートにご協力いただいた方のみとなります。
+
+仕上がりの品質向上と開業後の参考事例づくりのため、
+施工過程や仕上がりをSNS等で紹介させていただくことをご了承の上での受付となります。
+（個人が特定される内容は掲載いたしません）
+
+一点ずつ丁寧に対応いたします。
+この機会にぜひお試しください。
+
+※郵送修理の場合、写真だけでは判断が難しく、文章のみでリスクや仕上がりの説明が難しい作業はお受けできない場合があります。
+</script>
+
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  /* データ：多言語辞書＋料金表 */
+  /* 多言語データ */
   const DATA = {
     ja: {
       nav:{news:'お知らせ',price:'料金',how:'利用方法',contact:'問い合わせ',sns:'各SNS',about:'概要'},
@@ -541,9 +578,12 @@
     if(el) el.textContent = (lang==='ja')?txt_ja:txt_en;
   }
 
-  /* お知らせ：news.json 読込（英語は *_en 優先）＋セール強調 */
+  /* お知らせ：news.json 読込＋セール強調＋モーダル */
   function enFallback(t){
-    return t.replace('開店前セールのお知らせ','Pre-opening Sale Notice').replace('開店前セール','Pre-opening Sale').replace('受付中','Now accepting').replace('限定メニュー','Limited menu');
+    return t.replace('開店前セールのお知らせ','Pre-opening Sale Notice')
+            .replace('開店前セール','Pre-opening Sale')
+            .replace('受付中','Now accepting')
+            .replace('限定メニュー','Limited menu');
   }
   async function loadNews(){
     try{
@@ -554,18 +594,36 @@
         let title = n.title||''; let text = n.text||n.text_ja||'';
         if(lang==='en'){ title = n.title_en || enFallback(title); text = n.text_en || enFallback(text); }
         const isSale = /セール|SALE|offer|discount|Pre-opening/i.test(title);
+        const more = isSale ? `<a href="#" class="sale-more" style="margin-left:8px">詳しくはこちら</a>` : '';
         return `
           <div style="margin:10px 0;padding:18px;border-radius:16px;background:${isSale ? '#0ea5ff10' : 'var(--paper2)'};border:${isSale ? '3px solid #0ea5ff' : 'none'};box-shadow:${isSale ? '0 0 14px rgba(14,165,255,.35)' : '0 6px 18px rgba(17,24,39,.05)'};text-align:${isSale?'center':'left'}">
-            <div style="font-size:${isSale?'22px':'18px'};font-weight:800;color:${isSale?'#0e1a2a':'inherit'};">${title}</div>
+            <div style="font-size:${isSale?'22px':'18px'};font-weight:800;color:${isSale?'#0e1a2a':'inherit'};">
+              ${title}${more}
+            </div>
             <div class="note" style="font-size:${isSale?'15px':'13px'};margin-top:6px">${text}</div>
-            ${isSale ? `<a href=\"https://page.line.me/981xrswf\" target=\"_blank\" rel=\"noopener\" class=\"btn btn-line\" style=\"margin-top:12px;display:inline-block\">${lang==='ja'?'LINEでお申し込み':'Apply via LINE'}</a>` : ''}
+            ${isSale ? `<a href="https://page.line.me/981xrswf" target="_blank" rel="noopener" class="btn btn-line" style="margin-top:12px;display:inline-block">${lang==='ja'?'LINEでお申し込み':'Apply via LINE'}</a>` : ''}
             <div class="note" style="margin-top:6px">${n.date||''}</div>
           </div>`;
       }).join('');
+
+      // モーダル制御
+      document.querySelectorAll('.sale-more').forEach(a=>{
+        a.addEventListener('click',(e)=>{
+          e.preventDefault();
+          const ja = document.getElementById('saleDetailJa')?.textContent?.trim() || '';
+          const extraJa = ''; // 既に本文末尾に追記済み
+          const extraEn = '\n\nNote for mail-in repairs: Some jobs are hard to judge from photos and text alone. In such cases we may decline.';
+          const body = document.getElementById('saleBody');
+          body.innerHTML = (lang==='ja') ? (ja + extraJa) : (enFallback('開店前セールの詳細') + '\n\n' + (ja) + extraEn);
+          document.getElementById('saleModal').style.display = 'block';
+        });
+      });
     }catch(e){
       document.getElementById('newsList').innerHTML = '<p class="note">'+(lang==='ja'?'お知らせを読み込めませんでした。':'Failed to load news.')+'</p>';
     }
   }
+  document.getElementById('saleClose').addEventListener('click',()=>{ document.getElementById('saleModal').style.display='none'; });
+  document.getElementById('saleModal').addEventListener('click',(e)=>{ if(e.target.id==='saleModal') document.getElementById('saleModal').style.display='none'; });
 
   /* 初期化 */
   i18nApply();
