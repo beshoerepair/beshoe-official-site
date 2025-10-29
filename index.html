@@ -440,21 +440,30 @@ function renderPostNote(){
 }
 
 async function loadNews(){
-  const el=document.getElementById('newsList');
   try{
-    const r=await fetch('news.json?v='+Date.now(),{cache:'no-store'});
-    const list=await r.json();
-    el.innerHTML=list.map(n=>{
-      let title=n.title||'', text=n.text||n.text_ja||'';
-      if(lang==='en'){ title=n.title_en||title; text=n.text_en||text; }
-      return `<div class="card" style="text-align:left">
-        <div style="font-weight:800">${title}</div>
-        <div class="note" style="text-align:left">${text}</div>
+    const r = await fetch('news.json?v='+Date.now(), {cache:'no-store'});
+    const list = await r.json();
+
+    // 「開店前セール」などを除外
+    const filtered = list.filter(n=>{
+      const t = (n.title||'') + ' ' + (n.text||n.text_ja||'') + ' ' + (n.title_en||'') + ' ' + (n.text_en||'');
+      return !/(開店前セール|Pre[- ]?opening Sale|セール\b|SALE\b)/i.test(t);
+    });
+
+    const el = document.getElementById('newsList');
+    el.innerHTML = filtered.map(n=>`
+      <div style="margin:10px 0;padding:18px;border-radius:16px;background:var(--paper2);box-shadow:0 6px 18px rgba(17,24,39,.05)">
+        <div style="font-weight:800">${n.title||''}</div>
+        <div class="note" style="margin-top:6px">${n.text||n.text_ja||''}</div>
         <div class="note" style="margin-top:6px">${n.date||''}</div>
-      </div>`;
-    }).join('');
-  }catch{
-    el.innerHTML='<p class="note">'+(lang==='ja'?'お知らせを読み込めませんでした。':'Failed to load news.')+'</p>';
+      </div>
+    `).join('');
+
+    if (!filtered.length) {
+      el.innerHTML = '<p class="note">'+(lang==='ja'?'最新のお知らせは随時更新します。':'Latest updates will appear here.')+'</p>';
+    }
+  }catch(e){
+    document.getElementById('newsList').innerHTML = '<p class="note">お知らせを読み込めませんでした。</p>';
   }
 }
 
