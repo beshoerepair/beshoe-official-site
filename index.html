@@ -590,6 +590,18 @@ document.getElementById('toggleSale').addEventListener('click',()=>{
 
     const hero = document.getElementById('heroImage');
     if(hero){ hero.src = (lang==='en') ? 'IMG_0099_hero.png' : 'IMG_0099_hero.jpg'; }
+    
+// 英語版では日本語ロゴと sale.png を非表示にする
+const jpLogo = document.querySelector('.brand-sub');
+const saleImg = document.querySelector('img[alt="開店前セール"]');
+
+if (lang === 'en') {
+  if (jpLogo) jpLogo.style.display = 'none';
+  if (saleImg) saleImg.style.display = 'none';
+} else {
+  if (jpLogo) jpLogo.style.display = '';
+  if (saleImg) saleImg.style.display = '';
+}
 
     renderPrice(); renderHow(); renderPostNote(); loadNews(); renderSale(); attachFormLinks();
   }
