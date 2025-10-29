@@ -6,15 +6,11 @@
 <title>Repair shop Beshoe｜靴修理・クリーニング</title>
 <meta name="theme-color" content="#0e1a2a" />
 
-<!-- フォント -->
 <link href="https://cdn.jsdelivr.net/gh/qrac/fonts-corporate-logo@latest/corporate-logo.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Dela+Gothic+One&display=swap" rel="stylesheet">
 
 <style>
-:root{
-  --ink:#0e1a2a; --muted:#6b7280; --paper:#fff; --paper2:#fbf8f3;
-  --green:#06C755; --blue:#0ea5ff; --deep:#165b4a;
-}
+:root{--ink:#0e1a2a;--muted:#6b7280;--paper:#fff;--paper2:#fbf8f3;--green:#06C755;--blue:#0ea5ff;--deep:#165b4a}
 *{box-sizing:border-box}
 html,body{margin:0;line-height:1.8;color:#222;font-family:'Corporate Logo','Noto Sans JP',sans-serif}
 body{background:url('alex-lvrs-Md6_qA-BMis-unsplash.jpg') center/cover fixed no-repeat}
@@ -37,7 +33,7 @@ header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.86);backdro
 .lang{border:1px solid #ddd;background:#fff}
 .hamburger{display:none;border:1px solid #ddd;background:#fff;border-radius:10px;padding:8px 12px}
 
-/* セクション */
+/* SPAセクション */
 main section{display:none;padding:22px 0}
 main section.active{display:block}
 
@@ -110,12 +106,12 @@ footer{padding:32px 0;color:var(--muted);text-align:center}
     </div>
     <button id="menuBtn" class="hamburger" aria-controls="nav" aria-expanded="false">☰</button>
     <nav class="menu" id="nav">
-      <a href="#news" data-i18n="nav.news">お知らせ</a>
-      <a href="#price" data-i18n="nav.price">料金</a>
-      <a href="#how" data-i18n="nav.how">利用方法</a>
-      <a href="#contact" data-i18n="nav.contact">問い合わせ</a>
-      <a href="#sns" data-i18n="nav.sns">各SNS</a>
-      <a href="#about" data-i18n="nav.about">概要</a>
+      <a href="#news"   data-i18n="nav.news">お知らせ</a>
+      <a href="#price"  data-i18n="nav.price">料金</a>
+      <a href="#how"    data-i18n="nav.how">利用方法</a>
+      <a href="#contact"data-i18n="nav.contact">問い合わせ</a>
+      <a href="#sns"    data-i18n="nav.sns">各SNS</a>
+      <a href="#about"  data-i18n="nav.about">概要</a>
       <button class="lang" id="langBtn">EN</button>
     </nav>
   </div>
@@ -128,7 +124,7 @@ footer{padding:32px 0;color:var(--muted);text-align:center}
   </div>
 
   <!-- お知らせ -->
-  <section id="news" class="active">
+  <section id="news">
     <h1 data-i18n="news.h">お知らせ</h1>
 
     <!-- 開店前セール（単一・青枠・折りたたみ詳細） -->
@@ -150,7 +146,6 @@ footer{padding:32px 0;color:var(--muted);text-align:center}
       </div>
     </div>
 
-    <!-- 任意の通常お知らせ（news.json） -->
     <div class="card" style="margin-top:14px">
       <div id="newsList"></div>
       <p class="note" data-i18n="news.note">最新のお知らせは随時更新します。</p>
@@ -190,13 +185,9 @@ footer{padding:32px 0;color:var(--muted);text-align:center}
   <section id="contact">
     <h2 data-i18n="ct.h">問い合わせ</h2>
     <div class="card" style="text-align:center;max-width:720px;margin:0 auto">
-      <p>
-        <a class="btn" href="https://page.line.me/981xrswf" target="_blank" rel="noopener" data-i18n="ct.linebtn">公式LINEはこちら</a>
-      </p>
+      <p><a class="btn" href="https://page.line.me/981xrswf" target="_blank" rel="noopener" data-i18n="ct.linebtn">公式LINEはこちら</a></p>
       <p style="font-size:11px;margin-top:-6px" data-i18n="ct.linesub">↑お得なキャンペーン情報も↑</p>
-      <p>
-        <a class="btn dark" href="https://docs.google.com/forms/d/e/1FAIpQLSf9o97G87u-Xt7iC8LCMYAIL1PdNBX6ff00Y-rm0viorL61Rw/viewform?usp=dialog" target="_blank" rel="noopener" data-i18n="ct.formbtn">Googleフォーム</a>
-      </p>
+      <p><a class="btn dark" href="https://docs.google.com/forms/d/e/1FAIpQLSf9o97G87u-Xt7iC8LCMYAIL1PdNBX6ff00Y-rm0viorL61Rw/viewform?usp=dialog" target="_blank" rel="noopener" data-i18n="ct.formbtn">Googleフォーム</a></p>
       <p><strong data-i18n="ct.tel">電話（仮）</strong>：<a href="tel:000-0000-0000">000-0000-0000</a></p>
     </div>
   </section>
@@ -265,25 +256,13 @@ nav.addEventListener('click',e=>{
   if(e.target.tagName==='A'){
     e.preventDefault();
     const id=e.target.getAttribute('href').slice(1);
-    location.hash=id;       // ハッシュ更新
+    location.hash=id;       // ハッシュ更新（hashchangeで切替）
     nav.classList.remove('open');
     menuBtn.setAttribute('aria-expanded','false');
   }
 });
 
-/* SPA：セクション切替＋ハッシュ保持 */
-const sections=[...document.querySelectorAll('main section')];
-function show(id){sections.forEach(s=>s.classList.toggle('active',s.id===id));}
-function initSection(){show((location.hash||'#news').slice(1));}
-window.addEventListener('hashchange',initSection);
-
-/* 開店前セール：折りたたみ */
-document.getElementById('saleToggle').addEventListener('click',()=>{
-  const box=document.getElementById('saleDetail');
-  box.style.display=(box.style.display==='block')?'none':'block';
-});
-
-/* 料金：括弧内に税込み（10%）を自動追記。既に()があればスキップ */
+/* ---------- データ ---------- */
 function withTaxStr(line){
   if(/\(¥/.test(line)) return line;
   return line.replace(/¥([0-9,]+)(?![^/]*¥)/,(_,n)=>{
@@ -293,7 +272,6 @@ function withTaxStr(line){
   });
 }
 
-/* データ：多言語＋料金ブロック */
 const DATA={
   ja:{
     nav:{news:'お知らせ',price:'料金',how:'利用方法',contact:'問い合わせ',sns:'各SNS',about:'概要'},
@@ -305,12 +283,8 @@ const DATA={
       line:'LINEでお申し込み',
       form:'フォームからお申し込み',
       body:`BeShoeでは、正式な店舗オープンに先立ち、期間限定の開店前セールを開催しています。<br><br>
-作業環境が整った今、開店準備期間中にしかできない特別価格で、靴・鞄の修理やクリーニングをお試しいただけます。<br><br>
 ピンヒール修理・リフト交換・ハーフラバー・靴クリーニング（スタンダード）は通常価格の50％OFF、その他すべてのメニューも30％OFF。<br><br>
 4点以上のご依頼で「返送料無料」／8,000円以上のご利用で「往復送料無料」。<br><br>
-現在は埼玉県・越谷駅周辺の作業拠点にて対応しております。お近くの方は、<b>直接のお持ち込みも可能（現状：木曜日のみ）</b>です。<br><br>
-郵送でのご依頼も承っており、郵送先も埼玉県・越谷駅周辺の作業拠点となります。<br>
-修理のご依頼は、公式LINEまたはGoogleフォームから受け付けています。<br><br>
 ※郵送修理の場合、写真だけでは判断が難しく、文章のみでリスクや仕上がりの説明が難しい作業はお受けできない場合があります。`
     },
     price:{h:'料金表',
@@ -393,8 +367,6 @@ const DATA={
       body:`We are running a limited pre-opening sale.<br><br>
 Pin-heel repair, heel lift, half rubber sole, and standard shoe cleaning are 50% OFF. All other services 30% OFF.<br><br>
 Free return shipping with 4+ items, or free round-trip shipping for orders over ¥8,000.<br><br>
-Drop-off on Thursdays near Koshigaya Sta. in Saitama, or mail-in accepted.<br><br>
-Apply via Official LINE or Google Form.<br><br>
 *Some mail-in requests are hard to assess from photos/text and may be declined.*`
     },
     price:{h:'Price list',
@@ -421,45 +393,20 @@ Apply via Official LINE or Google Form.<br><br>
     }
   }
 };
-/* EN 料金 = JAを複製 */
 DATA.en.price.blocks = JSON.parse(JSON.stringify(DATA.ja.price.blocks));
 
-/* 言語反映 */
+/* ---------- 言語・描画 ---------- */
 let lang='ja';
-const langBtn==document.getElementById('langBtn');
+const langBtn=document.getElementById('langBtn');
 function t(path){const D=DATA[lang];return path.split('.').reduce((o,k)=>o&&o[k],D)||'';}
-function applyI18n(){
-  document.documentElement.lang=lang;
-  document.title = (lang==='ja') ? 'Repair shop Beshoe｜靴修理・クリーニング' : 'Repair shop Beshoe｜Shoe Repair & Cleaning';
-  document.querySelectorAll('[data-i18n]').forEach(el=>{ el.textContent=t(el.getAttribute('data-i18n')); });
-  // セール本文
-  document.getElementById('saleText').innerHTML = DATA[lang].sale.body;
-  // 料金
-  renderPrice();
-  // 利用方法
-  renderHow();
-  // 注記
-  renderPostNote();
-  // お知らせJSON
-  loadNews();
-  // About補足（美醜の英語注記）
-  const bi=document.getElementById('biShuNote');
-  bi.textContent = (lang==='en') ? 'This means beauty and ugliness.' : '';
-}
-langBtn.addEventListener('click',()=>{
-  lang=(lang==='ja')?'en':'ja';
-  langBtn.textContent=(lang==='ja')?'EN':'日本語';
-  applyI18n();
-});
 
-/* 料金描画（括弧税込を自動付与） */
 function renderPrice(){
   const order=DATA[lang].price.order;
-  const blocks=(lang==='ja')?DATA.ja.price.blocks:DATA.en.price.blocks;
   const J=DATA.ja.price.blocks;
+  const blocks=(lang==='ja')?J:DATA.en.price.blocks;
   const box=document.getElementById('priceBlocks');
   box.innerHTML = order.map(key=>{
-    const src=(lang==='ja')?J[key]:blocks[key];
+    const src=J[key];
     const title=(lang==='ja')?src.title:(key==='std'?'Standard Repairs':key==='clean'?'Cleaning':'Full Sole Replacement');
     const groups=src.groups.map(g=>{
       let sub=g.subtitle;
@@ -479,21 +426,19 @@ function renderPrice(){
   document.getElementById('priceExtra').textContent = (lang==='ja')?DATA.ja.price.extra:DATA.en.price.extra;
 }
 
-/* 利用方法描画 */
 function renderHow(){
   const D=DATA[lang].how;
   document.getElementById('howShop').innerHTML=D.s.map(x=>`<li>${x}</li>`).join('');
   document.getElementById('howPost').innerHTML=D.p.map(x=>`<li>${x}</li>`).join('');
   document.querySelector('[data-i18n="how.shopLead"]').textContent=D.shopLead;
 }
-/* 郵送注記 */
+
 function renderPostNote(){
   const ja='※写真だけでは判断が難しく、文章のみでリスクや仕上がりの説明が難しい作業はお受けできない場合があります。店頭にお持ちいただければ対応可能な場合もあります。';
   const en='Note: Some requests are hard to assess from photos/text alone and may be declined. In-store inspection may make them possible.';
   const el=document.getElementById('postNote'); if(el) el.textContent=(lang==='ja')?ja:en;
 }
 
-/* news.json 表示（英語は *_en 優先） */
 async function loadNews(){
   const el=document.getElementById('newsList');
   try{
@@ -513,14 +458,40 @@ async function loadNews(){
   }
 }
 
-/* 初期化 */
-document.getElementById('saleText').innerHTML = DATA.ja.sale.body;
-applyI18n();
-initSection();
+/* i18n適用 */
+function applyI18n(){
+  document.documentElement.lang=lang;
+  document.title = (lang==='ja') ? 'Repair shop Beshoe｜靴修理・クリーニング' : 'Repair shop Beshoe｜Shoe Repair & Cleaning';
+  document.querySelectorAll('[data-i18n]').forEach(el=>{ el.textContent=t(el.getAttribute('data-i18n')); });
+  document.getElementById('saleText').innerHTML = DATA[lang].sale.body;
+  renderPrice(); renderHow(); renderPostNote(); loadNews();
+  document.getElementById('biShuNote').textContent = (lang==='en') ? 'This means beauty and ugliness.' : '';
+}
+langBtn.addEventListener('click',()=>{
+  lang=(lang==='ja')?'en':'ja';
+  langBtn.textContent=(lang==='ja')?'EN':'日本語';
+  applyI18n();
+});
 
-/* 画像ロード後の見切れ対策（contain固定） */
-document.querySelector('.hero-img')?.addEventListener('load',e=>{ e.target.style.objectFit='contain'; });
+/* ---------- SPA初期化（順序が重要） ---------- */
+const sections=[...document.querySelectorAll('main section')];
+function show(id){ sections.forEach(s=>s.classList.toggle('active', s.id===id)); }
+function initSection(){
+  // 初回: ハッシュ→表示。未指定ならnews
+  const id=(location.hash||'#news').slice(1);
+  show(id);
+}
+window.addEventListener('hashchange',()=>show((location.hash||'#news').slice(1)));
+
+/* 開店前セール：折りたたみ */
+document.getElementById('saleToggle').addEventListener('click',()=>{
+  const box=document.getElementById('saleDetail');
+  box.style.display=(box.style.display==='block')?'none':'block';
+});
+
+/* 初期化の実行順 */
+applyI18n();      // テキスト・リスト描画
+initSection();    // セクションの表示
 </script>
 </body>
 </html>
-```0
