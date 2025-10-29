@@ -191,7 +191,10 @@
           詳しくはこちら
         </button>
 
-        <div id="saleDetail" style="display:none;margin-top:14px;text-align:left;white-space:pre-line;">
+       <div id="saleDetail" style="display:none;margin-top:14px;text-align:left;white-space:pre-line;">
+
+  <!-- 本文を囲む -->
+  <div id="saleText">
 BeShoeでは、正式な店舗オープンに先立ち、期間限定の開店前セールを開催しています。
 
 作業環境が整った今、開店準備期間中にしかできない特別価格で、靴・鞄の修理やクリーニングをお試しいただけます。
@@ -200,7 +203,7 @@ BeShoeでは、正式な店舗オープンに先立ち、期間限定の開店�
 ・リフト交換
 ・ハーフラバー
 ・革靴・スニーカークリーニング（スタンダード）は通常価格の50％OFF！
-          
+
 その他すべてのメニューも30％OFF！！
 （50%OFFと30%OFFのメニューを組み合わせた修理の際は、それぞれ該当する割引額の合計となります）
 
@@ -212,7 +215,7 @@ BeShoeでは、正式な店舗オープンに先立ち、期間限定の開店�
 お近くの方は、直接のお持ち込みも可能（現状：木曜日のみ）です。
 郵送先は靴クリーニングは東京都、その他のメニューは埼玉県・越谷駅周辺の作業拠点となります。
 お客様ご自身でご用意いただいた箱・袋に梱包のうえお送りください。
-お見積もり、納期等にご納得いただけましたら詳しい郵送先お伝えいたします
+お見積もり、納期等にご納得いただけましたら詳しい郵送先お伝えいたします。
 修理完了後は、お送りいただいた梱包材を再利用して返送いたします。
 
 修理のご依頼は、公式LINEまたはGoogleフォームから受け付けています。
@@ -228,18 +231,22 @@ BeShoeでは、正式な店舗オープンに先立ち、期間限定の開店�
 ※原則店舗物件が決まり次第（都内予定・時期未定）終了となりますが、実験的かつ出血大キャンペーンのため、
 想像以上の反響をいただいた場合や、予期せぬトラブル、物理的に店主から血が出た場合は、
 早期の終了、内容変更をいたします。
+  </div>
 
-<div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:16px;">
-  <a href="https://page.line.me/981xrswf" target="_blank" rel="noopener"
-     style="background:#06C755;color:#fff;font-weight:700;padding:10px 16px;border-radius:10px;text-decoration:none;">
-     LINEでお申し込み
-  </a>
-  <a href="https://docs.google.com/forms/d/e/1FAIpQLSf9o97G87u-Xt7iC8LCMYAIL1PdNBX6ff00Y-rm0viorL61Rw/viewform?usp=dialog"
-     target="_blank" rel="noopener"
-     style="background:#111;color:#fff;font-weight:700;padding:10px 16px;border-radius:10px;text-decoration:none;">
-     フォームからお申し込み
-  </a>
+  <!-- ボタン部分は触らない -->
+  <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:16px;">
+    <a id="saleLineBtn" href="https://page.line.me/981xrswf" target="_blank" rel="noopener"
+       style="background:#06C755;color:#fff;font-weight:700;padding:10px 16px;border-radius:10px;text-decoration:none;">
+       LINEでお申し込み
+    </a>
+    <a id="saleFormBtn" href="https://docs.google.com/forms/d/e/1FAIpQLSf9o97G87u-Xt7iC8LCMYAIL1PdNBX6ff00Y-rm0viorL61Rw/viewform?usp=dialog"
+       target="_blank" rel="noopener"
+       style="background:#111;color:#fff;font-weight:700;padding:10px 16px;border-radius:10px;text-decoration:none;">
+       フォームからお申し込み
+    </a>
+  </div>
 </div>
+
         </div><!-- /#saleDetail -->
       </div><!-- /青枠 -->
     </div><!-- /左カラム.card -->
