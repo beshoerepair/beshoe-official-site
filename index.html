@@ -593,23 +593,24 @@ document.getElementById('toggleSale').addEventListener('click',()=>{
     const hero = document.getElementById('heroImage');
     if(hero){ hero.src = (lang==='en') ? 'IMG_0099_hero.png' : 'IMG_0099_hero.jpg'; }
     
-// 英語版では日本語ロゴと sale.png を非表示にする
-    // 開店前セール（英語化対応）
-const st  = document.querySelector('h3'); // 開店前セールのタイトル
-const sl  = document.querySelector('#toggleSale')?.previousElementSibling; // タイトル直下の説明
-const tgl = document.getElementById('toggleSale'); // ボタン
-const det = document.getElementById('saleDetail'); // 詳細本文
-const bl  = det?.querySelector('a[href*="line.me"]'); // LINEボタン
-const bf  = det?.querySelector('a[href*="docs.google"]'); // フォームボタン
+// --- セール枠 多言語切替（本文だけ差し替え／ボタンは残す） ---
+const st  = document.getElementById('saleTitle');   // 見出し
+const sl  = document.getElementById('saleLead');    // リード文
+const tgl = document.getElementById('toggleSale');  // 「詳しくはこちら」
+const det = document.getElementById('saleDetail');  // 詳細全体
+const txt = document.getElementById('saleText');    // ← 詳細の本文だけ
+const bl  = document.getElementById('saleLineBtn'); // LINEボタン
+const bf  = document.getElementById('saleFormBtn'); // フォームボタン
 
-if (st && sl && tgl && det && bl && bf) {
+if (st && sl && tgl && det && txt) {
   if (lang === 'en') {
     st.textContent  = 'Pre-opening Sale Notice';
     sl.textContent  = 'Limited menu at half price. Supporters can use the same discount two more times after opening. Apply via LINE or the form.';
     tgl.textContent = (det.style.display === 'block') ? 'Close' : 'See details';
-    bl.textContent  = 'Apply via LINE';
-    bf.textContent  = 'Apply via form';
-    det.textContent =
+    if (bl) bl.textContent = 'Apply via LINE';
+    if (bf) bf.textContent = 'Apply via form';
+
+    txt.textContent =
 `We are running a limited pre-opening sale.
 
 Now that our setup is ready, you can try shoe and bag repair/cleaning at special prices available only during our preparation period.
@@ -645,19 +646,70 @@ We handle each item carefully. Please take this opportunity to try our service.
     st.textContent  = '開店前セールのお知らせ';
     sl.textContent  = '限定メニューを通常の半額で受付中。協力者はオープン後も同条件であと2回まで利用可能。受付はLINEまたはGoogleフォームにて。';
     tgl.textContent = (det.style.display === 'block') ? '閉じる' : '詳しくはこちら';
-    bl.textContent  = 'LINEでお申し込み';
-    bf.textContent  = 'フォームからお申し込み';
+    if (bl) bl.textContent = 'LINEでお申し込み';
+    if (bf) bf.textContent = 'フォームからお申し込み';
+
+    // 日本語本文（元の長文）をそのまま戻す
+    txt.textContent =
+`BeShoeでは、正式な店舗オープンに先立ち、期間限定の開店前セールを開催しています。
+
+作業環境が整った今、開店準備期間中にしかできない特別価格で、靴・鞄の修理やクリーニングをお試しいただけます。
+
+・ピンヒール修理
+・リフト交換
+・ハーフラバー
+・革靴・スニーカークリーニング（スタンダード）は通常価格の50％OFF！
+
+その他すべてのメニューも30％OFF！！
+（50%OFFと30%OFFのメニューを組み合わせた修理の際は、それぞれ該当する割引額の合計となります）
+
+さらに、
+・4点以上のご依頼で「返送料無料」
+・8,000円以上のご利用で「往復送料無料」
+
+現在は埼玉県・越谷駅周辺の作業拠点にて対応しております。
+お近くの方は、直接のお持ち込みも可能（現状：木曜日のみ）です。
+郵送先は靴クリーニングは東京都、その他のメニューは埼玉県・越谷駅周辺の作業拠点となります。
+お客様ご自身でご用意いただいた箱・袋に梱包のうえお送りください。
+お見積もり、納期等にご納得いただけましたら詳しい郵送先お伝えいたします。
+修理完了後は、お送りいただいた梱包材を再利用して返送いたします。
+
+修理のご依頼は、公式LINEまたはGoogleフォームから受け付けています。
+初回の方はどなたでもセール割引をご利用いただけます。
+2回目以降も割引を継続して利用できるのは、LINE公式アカウントにご登録のうえ、初回ご利用後のアンケートにご協力いただいた方のみとなります。
+
+仕上がりの品質向上と開業後の参考事例づくりのため、
+施工過程や仕上がりをSNS等で紹介させていただくことをご了承の上での受付となります。
+（個人が特定される内容は掲載いたしません）
+
+一点ずつ丁寧に対応いたします。この機会にぜひお試しください。
+
+※原則店舗物件が決まり次第（都内予定・時期未定）終了となりますが、実験的かつ出血大キャンペーンのため、
+想像以上の反響をいただいた場合や、予期せぬトラブル、物理的に店主から血が出た場合は、
+早期の終了、内容変更をいたします。`;
   }
 }
-const jpLogo = document.querySelector('.brand-sub');
-const saleImg = document.querySelector('img[alt="開店前セール"]');
 
+// --- 英語時に日本語ロゴと sale.png を隠す ---
+const jpLogo = document.querySelector('.brand-sub');
+const saleImg = document.getElementById('saleImage'); // id指定が安全
 if (lang === 'en') {
-  if (jpLogo) jpLogo.style.display = 'none';
+  if (jpLogo)  jpLogo.style.display  = 'none';
   if (saleImg) saleImg.style.display = 'none';
 } else {
-  if (jpLogo) jpLogo.style.display = '';
+  if (jpLogo)  jpLogo.style.display  = '';
   if (saleImg) saleImg.style.display = '';
+}
+
+// --- セールボタンの英語表記（ボタンは常に表示） ---
+const saleLineBtn = document.getElementById('saleLineBtn');
+const saleFormBtn = document.getElementById('saleFormBtn');
+if (lang === 'en') {
+  if (saleLineBtn) saleLineBtn.textContent = 'Apply via LINE';
+  if (saleFormBtn) saleFormBtn.textContent = 'Apply via form';
+} else {
+  if (saleLineBtn) saleLineBtn.textContent = 'LINEでお申し込み';
+  if (saleFormBtn) saleFormBtn.textContent = 'フォームからお申し込み';
 }
 
     renderPrice(); renderHow(); renderPostNote(); loadNews(); renderSale(); attachFormLinks();
