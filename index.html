@@ -174,16 +174,34 @@
   </div>
 
   <!-- News + Calendar -->
-  <section id="news" class="active">
+<section id="news" class="active">
   <h1 data-i18n="news.h">お知らせ</h1>
-  <div class="grid-2">
-    <!-- 左カラム：開店前セール -->
+
+  <div class="grid-2"><!-- ← 親：左右2カラム -->
+
+    <!-- 左カラム：セール -->
     <div class="card" style="text-align:center">
       <img src="sale.png" alt="開店前セール" style="width:100%;border-radius:12px;margin-bottom:16px;">
       <div style="background:#e6f0ff;border:2px solid #3b82f6;border-radius:12px;padding:18px;">
         <h3>開店前セールのお知らせ</h3>
         <p>限定メニューを通常の半額で受付中。協力者はオープン後も同条件であと2回まで利用可能。受付はLINEまたはGoogleフォームにて。</p>
-        <button id="toggleSale" style="margin-top:10px;padding:8px 14px;border:none;border-radius:8px;background:#3b82f6;color:white;font-weight:700;">詳しくはこちら</button>
+
+        <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:8px 0 12px">
+          <a href="https://page.line.me/981xrswf" target="_blank" rel="noopener"
+             style="background:#06C755;color:#fff;font-weight:700;padding:10px 16px;border-radius:10px;text-decoration:none;">
+             LINEでお申し込み
+          </a>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSf9o97G87u-Xt7iC8LCMYAIL1PdNBX6ff00Y-rm0viorL61Rw/viewform?usp=dialog"
+             target="_blank" rel="noopener"
+             style="background:#111;color:#fff;font-weight:700;padding:10px 16px;border-radius:10px;text-decoration:none;">
+             フォームからお申し込み
+          </a>
+        </div>
+
+        <button id="toggleSale" style="margin-top:2px;padding:8px 14px;border:none;border-radius:8px;background:#3b82f6;color:#fff;font-weight:700;">
+          詳しくはこちら
+        </button>
+
         <div id="saleDetail" style="display:none;margin-top:14px;text-align:left;white-space:pre-line;">
 BeShoeでは、正式な店舗オープンに先立ち、期間限定の開店前セールを開催しています。
 
@@ -231,17 +249,24 @@ BeShoeでは、正式な店舗オープンに先立ち、期間限定の開店�
      フォームからお申し込み
   </a>
 </div>
-</div>   <!-- ← saleDetailの青枠を閉じる -->
-</div>   <!-- ← これを新規で入れる：左カラム .card を閉じる -->
-<!-- 右カラム：営業日カレンダー -->
-<div class="card">
-      <h3 data-i18n="cal.h">営業日カレンダー</h3>
-      <iframe title="calendar" src="https://calendar.google.com/calendar/embed?src=beshoe.repair%40gmail.com&ctz=Asia%2FTokyo" style="border:0;width:100%;height:420px;border-radius:12px" loading="lazy"></iframe>
-      <p class="note" data-i18n="cal.note">予定はカレンダー更新で自動反映されます。</p>
-    </div>
-  </div>
-</section>
+        </div><!-- /#saleDetail -->
+      </div><!-- /青枠 -->
+    </div><!-- /左カラム.card -->
 
+    <!-- 右カラム：カレンダー -->
+    <div class="card">
+      <h3 data-i18n="cal.h">営業日カレンダー</h3>
+      <div style="aspect-ratio:4/3;max-height:520px">
+        <iframe title="calendar"
+          src="https://calendar.google.com/calendar/embed?src=beshoe.repair%40gmail.com&ctz=Asia%2FTokyo"
+          style="border:0;width:100%;height:100%;border-radius:12px" loading="lazy"></iframe>
+      </div>
+      <p class="note" data-i18n="cal.note">予定はカレンダー更新で自動反映されます。</p>
+    </div><!-- /右カラム.card -->
+
+  </div><!-- /.grid-2 -->
+</section>
+  
 <script>
 document.getElementById('toggleSale').addEventListener('click',()=>{
   const d = document.getElementById('saleDetail');
