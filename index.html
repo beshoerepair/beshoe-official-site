@@ -120,7 +120,7 @@ footer{padding:32px 0;color:var(--muted);text-align:center}
 <main class="wrap">
   <!-- ヒーロー -->
   <div class="hero">
-    <img src="./IMG_0099_hero.jpg?v=4" alt="main visual" class="hero-img">
+    <img id="heroImage" src="IMG_0099_hero.jpg" alt="Hero image" class="hero-img">
   </div>
 
   <!-- お知らせ -->
@@ -475,6 +475,10 @@ function applyI18n(){
   document.title = (lang==='ja') ? 'Repair shop Beshoe｜靴修理・クリーニング' : 'Repair shop Beshoe｜Shoe Repair & Cleaning';
   document.querySelectorAll('[data-i18n]').forEach(el=>{ el.textContent=t(el.getAttribute('data-i18n')); });
   document.getElementById('saleText').innerHTML = DATA[lang].sale.body;
+  const hero = document.getElementById('heroImage');
+if (hero) {
+  hero.src = (lang === 'en') ? 'IMG_0099_hero.png' : 'IMG_0099_hero.jpg';
+}
   renderPrice(); renderHow(); renderPostNote(); loadNews();
   document.getElementById('biShuNote').textContent = (lang==='en') ? 'This means beauty and ugliness.' : '';
 }
