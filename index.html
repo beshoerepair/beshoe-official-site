@@ -594,6 +594,61 @@ document.getElementById('toggleSale').addEventListener('click',()=>{
     if(hero){ hero.src = (lang==='en') ? 'IMG_0099_hero.png' : 'IMG_0099_hero.jpg'; }
     
 // 英語版では日本語ロゴと sale.png を非表示にする
+    // 開店前セール（英語化対応）
+const st  = document.querySelector('h3'); // 開店前セールのタイトル
+const sl  = document.querySelector('#toggleSale')?.previousElementSibling; // タイトル直下の説明
+const tgl = document.getElementById('toggleSale'); // ボタン
+const det = document.getElementById('saleDetail'); // 詳細本文
+const bl  = det?.querySelector('a[href*="line.me"]'); // LINEボタン
+const bf  = det?.querySelector('a[href*="docs.google"]'); // フォームボタン
+
+if (st && sl && tgl && det && bl && bf) {
+  if (lang === 'en') {
+    st.textContent  = 'Pre-opening Sale Notice';
+    sl.textContent  = 'Limited menu at half price. Supporters can use the same discount two more times after opening. Apply via LINE or the form.';
+    tgl.textContent = (det.style.display === 'block') ? 'Close' : 'See details';
+    bl.textContent  = 'Apply via LINE';
+    bf.textContent  = 'Apply via form';
+    det.textContent =
+`We are running a limited pre-opening sale.
+
+Now that our setup is ready, you can try shoe and bag repair/cleaning at special prices available only during our preparation period.
+
+• Pin heel repair
+• Heel lift
+• Half rubber sole
+• Shoe cleaning (standard)
+→ 50% OFF the regular price
+
+All other menus → 30% OFF
+(When combining 50%-off and 30%-off items, each discount applies to its item and is summed.)
+
+More benefits:
+• Free return shipping for 4+ items
+• Free round-trip shipping for orders over ¥8,000
+
+We currently operate near Koshigaya Station, Saitama.
+Direct drop-off is available (currently Thursdays only).
+
+For mail-in: please pack items in a box or bag you provide and ship to our worksite near Koshigaya Station. We will reuse your packing materials for the return.
+
+Requests are accepted via Official LINE or the Google Form.
+Anyone can use the sale discount for the first order.
+For continued discounts from the second time onward, please register our Official LINE and answer the post-service survey.
+
+For quality improvement and reference cases after opening, we may introduce the process and results on SNS. We will not post any personally identifiable information.
+
+We handle each item carefully. Please take this opportunity to try our service.
+
+*This campaign will basically end when our store location is fixed (planned in Tokyo; date TBD). Due to its experimental nature, if response is beyond expectation or unexpected issues occur, we may end or change the contents earlier.*`;
+  } else {
+    st.textContent  = '開店前セールのお知らせ';
+    sl.textContent  = '限定メニューを通常の半額で受付中。協力者はオープン後も同条件であと2回まで利用可能。受付はLINEまたはGoogleフォームにて。';
+    tgl.textContent = (det.style.display === 'block') ? '閉じる' : '詳しくはこちら';
+    bl.textContent  = 'LINEでお申し込み';
+    bf.textContent  = 'フォームからお申し込み';
+  }
+}
 const jpLogo = document.querySelector('.brand-sub');
 const saleImg = document.querySelector('img[alt="開店前セール"]');
 
