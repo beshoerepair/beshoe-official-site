@@ -655,5 +655,35 @@ document.getElementById('toggleSale').addEventListener('click',()=>{
   function boot(){ i18nApply(); initSection(); }
   boot();
 </script>
+  <script>
+const nav = document.getElementById('nav');
+nav.addEventListener('click', (e)=>{
+  if(e.target.tagName==='A'){
+    e.preventDefault();
+    const id = e.target.getAttribute('href').slice(1);
+    location.hash = id;
+    nav.classList.remove('open');
+    document.getElementById('menuBtn')?.setAttribute('aria-expanded','false');
+  }
+});
+</script>
+<script>
+const sections = Array.from(document.querySelectorAll('main section'));
+
+function switchTo(id){
+  sections.forEach(s => s.classList.toggle('active', s.id===id));
+  document.querySelectorAll('#nav a').forEach(a=>{
+    a.classList.toggle('active', a.getAttribute('href')==='#'+id);
+  });
+}
+
+function initSection(){
+  const id = (location.hash || '#news').slice(1);
+  switchTo(id);
+}
+
+window.addEventListener('hashchange', initSection);
+window.addEventListener('DOMContentLoaded', initSection, {once:true});
+</script>
 </body>
 </html>
