@@ -188,9 +188,52 @@
 
     <div class="grid-2">
       <div class="card">
-        <div id="newsList"></div>
-        <p class="note" data-i18n="news.note">最新のお知らせは随時更新します。</p>
+  <!-- 開店前セール（左カラム内） -->
+  <div id="saleBox" class="sale-box">
+    <h3 style="margin:0 0 6px">開店前セールのお知らせ</h3>
+    <p style="margin:0 0 10px">限定メニューを通常の半額で受付中。協力者はオープン後も同条件であと2回まで利用可能。受付はLINEまたはメールにて。</p>
+
+    <button id="saleToggle" class="btn-ghost">詳しくはこちら ▾</button>
+
+    <div id="saleDetail" class="sale-detail" hidden>
+      <img src="sale.png" alt="開店前セール" class="sale-img">
+
+      <div class="sale-text">
+        <p>BeShoeでは、正式な店舗オープンに先立ち、期間限定の開店前セールを開催しています。</p>
+        <p>作業環境が整った今、開店準備期間中にしかできない特別価格で、靴・鞄の修理やクリーニングをお試しいただけます。</p>
+
+        <p>・ピンヒール修理<br>・リフト交換<br>・ハーフラバー<br>・靴クリーニング（スタンダード）は<br><strong>通常価格の50％OFF！</strong></p>
+        <p>その他すべてのメニューも<strong>30％OFF！！</strong><br><small>（50%OFFと30%OFFのメニューを組み合わせた修理の際は、それぞれ該当する割引額の合計となります）</small></p>
+
+        <p><strong>さらに</strong><br>・4点以上のご依頼で「返送料無料」<br>・8,000円以上のご利用で「往復送料無料」</p>
+
+        <p>現在は埼玉県・越谷駅周辺の作業拠点にて対応しております。お近くの方は、<strong>直接のお持ち込みも可能（現状：木曜日のみ）</strong>です。</p>
+
+        <p>郵送先も埼玉県・越谷駅周辺の作業拠点となります。お客様ご自身でご用意いただいた箱・袋に梱包のうえお送りください。修理完了後は、お送りいただいた梱包材を再利用して返送いたします。</p>
+
+        <p>修理のご依頼は、公式LINEまたはGoogleフォームから受け付けています。初回の方はどなたでもセール割引をご利用いただけます。</p>
+
+        <p>2回目以降も割引を継続して利用できるのは、LINE公式アカウントにご登録のうえ、初回ご利用後のアンケートにご協力いただいた方のみとなります。</p>
+
+        <p>仕上がりの品質向上と開業後の参考事例づくりのため、施工過程や仕上がりをSNS等で紹介させていただくことをご了承の上での受付となります。（個人が特定される内容は掲載いたしません）</p>
+
+        <p>一点ずつ丁寧に対応いたします。この機会にぜひお試しください。</p>
+
+        <p><small>※原則店舗物件が決まり次第（都内予定・時期未定）終了となりますが、実験的かつ出血大キャンペーンのため、想像以上の反響をいただいた場合や、予期せぬトラブル、物理的に店主から血が出た場合は早期の終了・内容変更を行います。</small></p>
+
+        <div class="sale-cta">
+          <a class="btn-line" href="https://page.line.me/981xrswf" target="_blank" rel="noopener">LINEでお申し込み</a>
+          <a class="btn-dark" href="https://docs.google.com/forms/d/e/1FAIpQLSf9o97G87u-Xt7iC8LCMYAIL1PdNBX6ff00Y-rm0viorL61Rw/viewform?usp=dialog" target="_blank" rel="noopener">フォームからお申し込み</a>
+        </div>
       </div>
+    </div>
+  </div>
+
+  <!-- 通常のお知らせ一覧 -->
+  <div id="newsList" style="margin-top:14px"></div>
+  <p class="note" id="newsNote">最新のお知らせは随時更新します。</p>
+</div>
+
       <div class="card">
         <h3 data-i18n="cal.h">営業日カレンダー</h3>
         <div style="aspect-ratio:4/3;max-height:520px">
