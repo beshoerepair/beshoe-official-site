@@ -440,8 +440,11 @@ function renderPostNote(){
 }
 
 async function loadNews(){
+  const el = document.getElementById('newsList');
+  const note = document.querySelector('#news [data-i18n="news.note"]');
+
   try{
-    const r = await fetch('news.json?v='+Date.now(), {cache:'no-store'});
+    const r = await fetch('news.json?v=' + Date.now(), {cache:'no-store'});
     const list = await r.json();
 
     // 「開店前セール」などを除外
@@ -450,7 +453,13 @@ async function loadNews(){
       return !/(開店前セール|Pre[- ]?opening Sale|セール\b|SALE\b)/i.test(t);
     });
 
-    const el = document.getElementById('newsList');
+    if(filtered.length === 0){
+      el.innerHTML = ''; // 固定文だけ残す
+      if(note) note.style.display = 'block';
+      return;
+    }
+
+    // 通常表示
     el.innerHTML = filtered.map(n=>`
       <div style="margin:10px 0;padding:18px;border-radius:16px;background:var(--paper2);box-shadow:0 6px 18px rgba(17,24,39,.05)">
         <div style="font-weight:800">${n.title||''}</div>
@@ -459,11 +468,14 @@ async function loadNews(){
       </div>
     `).join('');
 
-    if (!filtered.length) {
-      el.innerHTML = '<p class="note">'+(lang==='ja'?'最新のお知らせは随時更新します。':'Latest updates will appear here.')+'</p>';
-    }
+    if(note) note.style.display = 'none'; // リストがある場合は固定文を非表示
+
   }catch(e){
-    document.getElementById('newsList').innerHTML = '<p class="note">お知らせを読み込めませんでした。</p>';
+    el.innerHTML = '';
+    if(note){
+      note.textContent = (lang==='ja' ? 'お知らせを読み込めませんでした。' : 'Failed to load news.');
+      note.style.display = 'block';
+    }
   }
 }
 
