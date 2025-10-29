@@ -1,19 +1,27 @@
 <!doctype html>
 <html lang="ja">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Repair shop Beshoe｜靴修理・クリーニング</title>
-<meta name="theme-color" content="#0e1a2a">
+<meta name="theme-color" content="#0e1a2a" />
+
+<!-- フォント -->
 <link href="https://cdn.jsdelivr.net/gh/qrac/fonts-corporate-logo@latest/corporate-logo.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Dela+Gothic+One&display=swap" rel="stylesheet">
+
 <style>
-:root{--ink:#0e1a2a;--muted:#6b7280;--paper:#fff;--paper2:#fbf8f3;--green:#06C755;--blue:#0ea5ff}
+:root{
+  --ink:#0e1a2a; --muted:#6b7280; --paper:#fff; --paper2:#fbf8f3;
+  --green:#06C755; --blue:#0ea5ff; --deep:#165b4a;
+}
 *{box-sizing:border-box}
 html,body{margin:0;line-height:1.8;color:#222;font-family:'Corporate Logo','Noto Sans JP',sans-serif}
 body{background:url('alex-lvrs-Md6_qA-BMis-unsplash.jpg') center/cover fixed no-repeat}
 a{color:#0f3b84;text-decoration:underline;text-underline-offset:3px}
 .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+
+/* ヘッダー */
 header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.86);backdrop-filter:blur(10px)}
 .nav{display:flex;justify-content:space-between;align-items:flex-end;padding:12px 16px;gap:10px;position:relative}
 .brand{display:flex;align-items:flex-end;gap:10px}
@@ -22,26 +30,71 @@ header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.86);backdro
 .brand-top{font-family:'Shippori Mincho','Noto Serif JP',serif;font-size:15px;color:#000}
 .brand-main{font-family:'Shippori Mincho','Noto Serif JP',serif;font-size:clamp(36px,5.6vw,48px);font-weight:800;color:var(--ink);line-height:1}
 .brand-sub{font-family:'Dela Gothic One','Yu Mincho',serif;font-size:13px;color:#000;margin-left:6px;align-self:flex-end;transform:translateY(6px)}
+
 .menu{display:flex;gap:10px;align-items:center}
 .menu a,.menu button{padding:8px 10px;border-radius:10px;background:transparent;border:none;color:var(--ink);text-decoration:none;cursor:pointer}
 .menu a:hover{background:#efede7}
 .lang{border:1px solid #ddd;background:#fff}
 .hamburger{display:none;border:1px solid #ddd;background:#fff;border-radius:10px;padding:8px 12px}
-main section{display:none;padding:20px 0}
+
+/* セクション */
+main section{display:none;padding:22px 0}
 main section.active{display:block}
+
+/* ヒーロー */
 .hero{display:flex;justify-content:center;margin:10px 0 0}
-.hero-img{width:100%;max-width:1100px;height:clamp(360px,56vh,560px);object-fit:contain;object-position:center;background:#fff;border-radius:14px}
+.hero-img{width:100%;max-width:1100px;height:clamp(360px,56vh,560px);object-fit:contain;object-position:center;background:#fff;border-radius:14px;box-shadow:0 6px 18px rgba(17,24,39,.06)}
+
+/* カード/レイアウト */
+.card{background:var(--paper);border:none;border-radius:14px;padding:20px;box-shadow:0 6px 18px rgba(17,24,39,.06)}
+.grid-2{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.note{color:var(--muted);font-size:13px;text-align:center}
+h1,h2,h3,h4{font-family:'Shippori Mincho','Noto Serif JP',serif;color:var(--ink);margin:0 0 12px;text-align:center}
+h3{text-align:left}
+
+/* 開店前セール（単一枠＋折りたたみ） */
 .sale-box{border:3px solid var(--blue);border-radius:16px;background:#eaf6ff;padding:18px;margin-top:10px}
 .sale-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:10px}
 .btn{background:var(--green);color:#fff;text-decoration:none;padding:10px 16px;border-radius:10px;font-weight:700;display:inline-block}
 .btn.dark{background:#111}
-.note{color:var(--muted);font-size:13px;text-align:center}
-footer{padding:32px 0;color:var(--muted);text-align:center}
-@media(max-width:840px){
-.hamburger{display:inline-block;position:absolute;top:10px;right:12px}
-.menu{display:none;position:absolute;right:12px;top:56px;flex-direction:column;background:#fff;padding:10px;border-radius:12px;box-shadow:0 12px 32px rgba(0,0,0,.12)}
-.menu.open{display:flex}
+
+/* 料金 */
+#price{text-align:left}
+.price-block{background:#fff;border-radius:14px;padding:18px;box-shadow:0 6px 18px rgba(17,24,39,.06);margin:14px 0}
+#price h3{margin:6px 0 10px;color:var(--deep)}
+#price h4{margin:10px 0 6px}
+
+/* 利用方法：中央配置+左揃え+番号縦揃え */
+.steps{counter-reset:step;max-width:780px;margin:0 auto;padding:0;text-align:left}
+.steps li{list-style:none;counter-increment:step;margin:22px 0;display:grid;grid-template-columns:36px 1fr;column-gap:12px;line-height:2}
+.steps li::before{content:counter(step);width:36px;height:36px;border-radius:50%;background:var(--deep);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800}
+.steps li:not(:last-child)::after{content:"↓";grid-column:1/-1;justify-self:center;color:var(--deep);margin-top:10px}
+.cta-row{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:8px}
+
+/* 概要：画像＋文章を同一白面で囲う */
+.about-wrap{background:rgba(255,255,255,.92);padding:22px;border-radius:16px;box-shadow:0 6px 18px rgba(0,0,0,.05)}
+.about-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:20px;align-items:center}
+.about-visual{width:100%;max-width:600px;height:auto;object-fit:contain;border-radius:12px}
+.emph{font-size:180%;font-weight:900;display:inline-block;margin-left:4px}
+
+/* SNS */
+.sns-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.sns-btn{display:flex;align-items:center;justify-content:center;padding:10px;border-radius:10px;color:#fff;font-weight:700;text-decoration:none}
+.sns-btn img{width:20px;height:20px;margin-right:6px}
+.ig{background:#E4405F}.x{background:#000}.tt{background:#000}.yt{background:#FF0000}.fb{background:#1877F2}
+
+/* モバイル */
+@media (max-width:840px){
+  .wrap{padding:0 14px}
+  .grid-2,.grid-3{grid-template-columns:1fr}
+  .about-grid{grid-template-columns:1fr}
+  .about-visual{display:none}
+  .hamburger{display:inline-block;position:absolute;top:10px;right:12px}
+  .menu{display:none;position:absolute;right:12px;top:56px;flex-direction:column;background:#fff;padding:10px;border-radius:12px;box-shadow:0 12px 32px rgba(0,0,0,.12)}
+  .menu.open{display:flex}
 }
+footer{padding:32px 0;color:var(--muted);text-align:center}
 </style>
 </head>
 <body>
@@ -69,6 +122,7 @@ footer{padding:32px 0;color:var(--muted);text-align:center}
 </header>
 
 <main class="wrap">
+  <!-- ヒーロー -->
   <div class="hero">
     <img src="./IMG_0099_hero.jpg?v=4" alt="main visual" class="hero-img">
   </div>
@@ -77,7 +131,7 @@ footer{padding:32px 0;color:var(--muted);text-align:center}
   <section id="news" class="active">
     <h1 data-i18n="news.h">お知らせ</h1>
 
-    <!-- 開店前セール -->
+    <!-- 開店前セール（単一・青枠・折りたたみ詳細） -->
     <div class="sale-box" id="saleBox">
       <div style="text-align:center;font-weight:800;font-size:20px" data-i18n="sale.h">開店前セールのお知らせ</div>
       <p style="text-align:center;margin:6px 0" data-i18n="sale.short">
@@ -95,13 +149,101 @@ footer{padding:32px 0;color:var(--muted);text-align:center}
         </div>
       </div>
     </div>
+
+    <!-- 任意の通常お知らせ（news.json） -->
+    <div class="card" style="margin-top:14px">
+      <div id="newsList"></div>
+      <p class="note" data-i18n="news.note">最新のお知らせは随時更新します。</p>
+    </div>
   </section>
 
-  <section id="price"><h2>料金表</h2></section>
-  <section id="how"><h2>利用方法</h2></section>
-  <section id="contact"><h2>問い合わせ</h2></section>
-  <section id="sns"><h2>各SNS</h2></section>
-  <section id="about"><h2>概要</h2></section>
+  <!-- 料金 -->
+  <section id="price">
+    <h2 data-i18n="price.h">料金表</h2>
+    <div id="priceBlocks"></div>
+    <p id="priceExtra" class="card" style="text-align:center;font-size:16px;font-weight:500"></p>
+  </section>
+
+  <!-- 利用方法 -->
+  <section id="how">
+    <h2 data-i18n="how.h">利用方法</h2>
+    <div class="grid-2">
+      <div class="card" style="text-align:center">
+        <h3 data-i18n="how.shop">店頭</h3>
+        <p data-i18n="how.shopLead">住所（仮）までお持ちください。作業内容やお見積もり、納期をご相談のうえで作業します。</p>
+        <ol id="howShop" class="steps"></ol>
+      </div>
+      <div class="card" style="text-align:center">
+        <h3 data-i18n="how.post">郵送</h3>
+        <ol id="howPost" class="steps"></ol>
+        <!-- 4番の直後にCTA -->
+        <div id="mailCtas" class="cta-row" style="margin-top:0">
+          <a class="btn" href="https://page.line.me/981xrswf" target="_blank" rel="noopener" data-i18n="ct.linebtn">公式LINEはこちら</a>
+          <a class="btn dark" href="https://docs.google.com/forms/d/e/1FAIpQLSf9o97G87u-Xt7iC8LCMYAIL1PdNBX6ff00Y-rm0viorL61Rw/viewform?usp=dialog" target="_blank" rel="noopener" data-i18n="ct.formbtn">Googleフォーム</a>
+        </div>
+        <p class="note" id="postNote"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 問い合わせ -->
+  <section id="contact">
+    <h2 data-i18n="ct.h">問い合わせ</h2>
+    <div class="card" style="text-align:center;max-width:720px;margin:0 auto">
+      <p>
+        <a class="btn" href="https://page.line.me/981xrswf" target="_blank" rel="noopener" data-i18n="ct.linebtn">公式LINEはこちら</a>
+      </p>
+      <p style="font-size:11px;margin-top:-6px" data-i18n="ct.linesub">↑お得なキャンペーン情報も↑</p>
+      <p>
+        <a class="btn dark" href="https://docs.google.com/forms/d/e/1FAIpQLSf9o97G87u-Xt7iC8LCMYAIL1PdNBX6ff00Y-rm0viorL61Rw/viewform?usp=dialog" target="_blank" rel="noopener" data-i18n="ct.formbtn">Googleフォーム</a>
+      </p>
+      <p><strong data-i18n="ct.tel">電話（仮）</strong>：<a href="tel:000-0000-0000">000-0000-0000</a></p>
+    </div>
+  </section>
+
+  <!-- SNS -->
+  <section id="sns">
+    <h2 data-i18n="sns.h">各SNS</h2>
+    <div class="sns-grid">
+      <a class="sns-btn ig" href="https://www.instagram.com/beshoe.repair" target="_blank" rel="noopener">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="">Instagram
+      </a>
+      <a class="sns-btn x" href="https://x.com/BeShoe_repair" target="_blank" rel="noopener">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" alt="">X
+      </a>
+      <a class="sns-btn tt" href="https://www.tiktok.com/@beshoe.repair" target="_blank" rel="noopener">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/tiktok.svg" alt="">TikTok
+      </a>
+      <a class="sns-btn yt" href="https://www.youtube.com/" target="_blank" rel="noopener">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="">YouTube
+      </a>
+      <a class="sns-btn fb" href="https://www.facebook.com/" target="_blank" rel="noopener">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="">Facebook
+      </a>
+    </div>
+    <p class="note" data-i18n="sns.note">施工事例は各SNSで発信します。</p>
+  </section>
+
+  <!-- 概要 -->
+  <section id="about">
+    <h2 data-i18n="about.h">概要</h2>
+    <div class="about-wrap">
+      <div class="about-grid">
+        <img src="./IMG_0098_trimmed.png?v=2" alt="about visual" class="about-visual">
+        <div>
+          <p data-i18n="about.p1">長年ものづくりの現場で磨いた手と目で、大切なものを長く愛して使っていくためのお手伝いさせていただきます。</p>
+          <p data-i18n="about.p2">各分野のスペシャリストから学んだ靴や足の構造・手製靴作成の基礎を土台に、修理とクリーニングを丁寧に行います。</p>
+          <p><span class="emph" data-i18n="about.k1">「Beshoe（ビシュー）」</span><span data-i18n="about.k1b">には</span></p>
+          <p data-i18n="about.p3">またあなたの靴（shoe）になる（Be）という意味や</p>
+          <p><span data-i18n="about.jp">日本語の </span><span class="emph" data-i18n="about.k2">「美醜」</span><span id="biShuNote" class="note" style="display:block;margin-top:6px"></span></p>
+          <p data-i18n="about.p4">一見対立した言葉のように感じますが、美しさと醜さは共存関係にあると考えます。</p>
+          <p data-i18n="about.p5">新品の美しさを保って丁寧に使ったり、醜く汚れてしまったモノでもまた美しく。</p>
+          <p data-i18n="about.p6">たとえ傷やヘタリが見られても、値段や価値では測れない持ち主の歴史や思い出を刻んだ本当の美しさというものを大切にしていきたい。</p>
+          <p data-i18n="about.p7">という思いが込められています</p>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
 
 <footer>
@@ -111,83 +253,177 @@ footer{padding:32px 0;color:var(--muted);text-align:center}
 <script>
 document.getElementById('year').textContent=new Date().getFullYear();
 
-// ハンバーガーメニュー
+/* ハンバーガー */
 const menuBtn=document.getElementById('menuBtn');
 const nav=document.getElementById('nav');
 menuBtn.addEventListener('click',()=>{
   const open=nav.classList.toggle('open');
   menuBtn.setAttribute('aria-expanded',open?'true':'false');
 });
+/* メニューから移動したら閉じる（スマホ） */
 nav.addEventListener('click',e=>{
-  if(e.target.tagName==='A'){ // セクション切替後閉じる
+  if(e.target.tagName==='A'){
     e.preventDefault();
     const id=e.target.getAttribute('href').slice(1);
-    show(id);
+    location.hash=id;       // ハッシュ更新
     nav.classList.remove('open');
     menuBtn.setAttribute('aria-expanded','false');
-    location.hash=id;
   }
 });
 
-// セクション切替
+/* SPA：セクション切替＋ハッシュ保持 */
 const sections=[...document.querySelectorAll('main section')];
 function show(id){sections.forEach(s=>s.classList.toggle('active',s.id===id));}
 function initSection(){show((location.hash||'#news').slice(1));}
 window.addEventListener('hashchange',initSection);
 
-// 開店前セール 詳細展開
+/* 開店前セール：折りたたみ */
 document.getElementById('saleToggle').addEventListener('click',()=>{
   const box=document.getElementById('saleDetail');
-  box.style.display = (box.style.display==='block')?'none':'block';
+  box.style.display=(box.style.display==='block')?'none':'block';
 });
 
-// 言語切替
-const DATA={
- ja:{
-  sale:{
-    h:'開店前セールのお知らせ',
-    short:'限定メニューを通常の半額で受付中。協力者はオープン後も同条件であと2回まで利用可能。受付はLINEまたはメールにて。',
-    toggle:'詳しくはこちら ∨',
-    line:'LINEでお申し込み',
-    form:'フォームからお申し込み',
-    body:`BeShoeでは正式オープンに先立ち、期間限定の開店前セールを開催中です。<br><br>
-ピンヒール修理・リフト交換・ハーフラバー・靴クリーニング（スタンダード）は通常価格の50％OFF、その他すべてのメニューも30％OFF。<br><br>
-4点以上のご依頼で返送料無料、8,000円以上のご利用で往復送料無料。<br><br>
-※郵送修理の場合、写真だけでは判断が難しく、文章のみで説明が難しい作業はお受けできない場合があります。`
-  }
- },
- en:{
-  sale:{
-    h:'Pre-opening Sale',
-    short:'Limited items are 50% OFF. Supporters can reuse same offer twice after opening. Apply via LINE or email.',
-    toggle:'Details ∨',
-    line:'Apply via LINE',
-    form:'Apply via Form',
-    body:`We are holding a limited pre-opening sale.<br><br>
-Pin-heel repair, heel lift, half rubber sole, and standard cleaning are 50% OFF. Others 30% OFF.<br><br>
-Free return shipping for 4+ items or free round-trip shipping for orders over ¥8,000.<br><br>
-*Mail-in repairs that cannot be properly assessed from photos/text may be declined.*`
-  }
- }
-};
-let lang='ja';
-const langBtn=document.getElementById('langBtn');
-function applyLang(){
-  document.documentElement.lang=lang;
-  document.querySelectorAll('[data-i18n]').forEach(el=>{
-    const path=el.getAttribute('data-i18n').split('.');
-    let val=DATA[lang];
-    path.forEach(p=>{val=val&&val[p];});
-    if(val)el.textContent=val;
+/* 料金：括弧内に税込み（10%）を自動追記。既に()があればスキップ */
+function withTaxStr(line){
+  if(/\(¥/.test(line)) return line;
+  return line.replace(/¥([0-9,]+)(?![^/]*¥)/,(_,n)=>{
+    const v=parseInt(n.replace(/,/g,''),10);
+    const tax=Math.round(v*1.10);
+    return `¥${n}(¥${tax.toLocaleString()})`;
   });
-  document.getElementById('saleText').innerHTML=DATA[lang].sale.body;
 }
-langBtn.addEventListener('click',()=>{
-  lang=(lang==='ja')?'en':'ja';
-  langBtn.textContent=(lang==='ja')?'EN':'日本語';
-  applyLang();
-});
-applyLang();initSection();
-</script>
-</body>
-</html>
+
+/* データ：多言語＋料金ブロック */
+const DATA={
+  ja:{
+    nav:{news:'お知らせ',price:'料金',how:'利用方法',contact:'問い合わせ',sns:'各SNS',about:'概要'},
+    news:{h:'お知らせ',note:'最新のお知らせは随時更新します。'},
+    sale:{
+      h:'開店前セールのお知らせ',
+      short:'限定メニューを通常の半額で受付中。協力者はオープン後も同条件であと2回まで利用可能。受付はLINEまたはメールにて。',
+      toggle:'詳しくはこちら ∨',
+      line:'LINEでお申し込み',
+      form:'フォームからお申し込み',
+      body:`BeShoeでは、正式な店舗オープンに先立ち、期間限定の開店前セールを開催しています。<br><br>
+作業環境が整った今、開店準備期間中にしかできない特別価格で、靴・鞄の修理やクリーニングをお試しいただけます。<br><br>
+ピンヒール修理・リフト交換・ハーフラバー・靴クリーニング（スタンダード）は通常価格の50％OFF、その他すべてのメニューも30％OFF。<br><br>
+4点以上のご依頼で「返送料無料」／8,000円以上のご利用で「往復送料無料」。<br><br>
+現在は埼玉県・越谷駅周辺の作業拠点にて対応しております。お近くの方は、<b>直接のお持ち込みも可能（現状：木曜日のみ）</b>です。<br><br>
+郵送でのご依頼も承っており、郵送先も埼玉県・越谷駅周辺の作業拠点となります。<br>
+修理のご依頼は、公式LINEまたはGoogleフォームから受け付けています。<br><br>
+※郵送修理の場合、写真だけでは判断が難しく、文章のみでリスクや仕上がりの説明が難しい作業はお受けできない場合があります。`
+    },
+    price:{h:'料金表',
+      order:['std','clean','sole'],
+      blocks:{
+        std:{title:'通常修理料金',groups:[{subtitle:'',items:[
+          'ピンヒール　¥1,200',
+          'ヒールリフト小　¥1,400',
+          'ヒール巻き替え　¥9,000',
+          'ヒール取り替え　¥20,000',
+          '中敷交換 全敷 ¥4,000／半敷 ¥3,500',
+          'ヒールリフト 5〜6mm　¥3,300',
+          'ヒールリフト 8mm〜　¥4,300',
+          'ビブラム等 20mm　¥5,000',
+          'トゥスチール　¥3,700',
+          'スベリ革交換（革靴）¥6,000',
+          'ハーフラバーソール　¥3,300',
+          'かかとコーナー（傾斜）¥3,000',
+          'つま先 レザー ¥3,000／ラバー ¥2,500',
+          'フラットソール再接着（片足）¥6,000',
+          'カップソール再接着（片足）¥10,000'
+        ]}]},
+        clean:{title:'クリーニング',groups:[
+          {subtitle:'靴',items:[
+            'スニーカークリーニング スタンダード ¥5,500',
+            '厚底・コンビ素材 ¥7,500',
+            '革靴 スタンダード ¥5,500',
+            'ブーツ スタンダード ¥6,500',
+            'カビ取り ¥7,000'
+          ]},
+          {subtitle:'オプション',items:[
+            '傷補修1箇所 ¥2,000',
+            'カラー 部分補修 ¥5,000',
+            'カラー 全体補修 ¥7,000',
+            'パティーヌ：短靴 ¥15,000／ブーツ ¥20,000／バッグ ¥20,000'
+          ]},
+          {subtitle:'バッグ',items:['スムース革 ¥7,000','特殊素材 ¥9,000']},
+          {subtitle:'オプション',items:['カラー 部分補修 ¥8,000','カラー 全体補修 ¥10,000']}
+        ]},
+        sole:{title:'オールソール',groups:[
+          {subtitle:'レザーオールソール',items:['（リフトはラバー Vibram5350 または革とのコンビ）','¥18,000']},
+          {subtitle:'オプション',items:[
+            'ハーフソール ¥3,500','トゥスチール ¥3,700','ヒドゥンチャネル ¥4,000','半カラス ¥4,000',
+            'リウェルト ¥15,000','中底交換 ¥13,000','先心抜き ¥12,000','ダブルソール ¥6,000'
+          ]},
+          {subtitle:'ラバーオールソール',items:[
+            'クッションソール ¥16,000','ラバーソール ¥17,000','ミッドソール（合成）¥5,000／（革）¥6,000'
+          ]}
+        ]}
+      },
+      extra:'※その他、表記されていないメニューや、どのメニューに該当するかわからない場合もお気軽にお問い合わせください。内容に応じて、関連分野の専門家と相談のうえ、適切な方法と料金でご提案いたします。'
+    },
+    how:{h:'利用方法',shop:'店頭',post:'郵送',
+      shopLead:'住所（仮）までお持ちください。作業内容やお見積もり、納期をご相談のうえで作業します。',
+      s:['来店・状態確認','見積・納期案内・お支払い（前払いになります）','作業（完了次第公式LINE、SMS、お電話等でお知らせいたします）','受け取り'],
+      p:['LINEまたはGoogleフォームから写真と希望内容を送信','概算見積と発送先をご案内','到着後に本見積→入金確認後に作業','完了次第順次配送']
+    },
+    ct:{h:'問い合わせ',tel:'電話（仮）',linebtn:'公式LINEはこちら',linesub:'↑お得なキャンペーン情報も↑',formbtn:'Googleフォーム'},
+    sns:{h:'各SNS',note:'施工事例は各SNSで発信します。'},
+    about:{h:'概要',
+      p1:'長年ものづくりの現場で磨いた手と目で、大切なものを長く愛して使っていくためのお手伝いさせていただきます。',
+      p2:'各分野のスペシャリストから学んだ靴や足の構造・手製靴作成の基礎を土台に、修理とクリーニングを丁寧に行います。',
+      k1:'「Beshoe（ビシュー）」',k1b:'には',k2:'「美醜」',jp:'日本語の ',
+      p3:'またあなたの靴（shoe）になる（Be）という意味や',
+      p4:'一見対立した言葉のように感じますが、美しさと醜さは共存関係にあると考えます。',
+      p5:'新品の美しさを保って丁寧に使ったり、醜く汚れてしまったモノでもまた美しく。',
+      p6:'たとえ傷やヘタリが見られても、値段や価値では測れない持ち主の歴史や思い出を刻んだ本当の美しさというものを大切にしていきたい。',
+      p7:'という思いが込められています'
+    }
+  },
+  en:{
+    nav:{news:'News',price:'Price',how:'How to Use',contact:'Contact',sns:'SNS',about:'About'},
+    news:{h:'News',note:'Latest updates will appear here.'},
+    sale:{
+      h:'Pre-opening Sale',
+      short:'Limited items are 50% OFF. Supporters can reuse same offer twice after opening. Apply via LINE or email.',
+      toggle:'Details ∨',
+      line:'Apply via LINE',
+      form:'Apply via Form',
+      body:`We are running a limited pre-opening sale.<br><br>
+Pin-heel repair, heel lift, half rubber sole, and standard shoe cleaning are 50% OFF. All other services 30% OFF.<br><br>
+Free return shipping with 4+ items, or free round-trip shipping for orders over ¥8,000.<br><br>
+Drop-off on Thursdays near Koshigaya Sta. in Saitama, or mail-in accepted.<br><br>
+Apply via Official LINE or Google Form.<br><br>
+*Some mail-in requests are hard to assess from photos/text and may be declined.*`
+    },
+    price:{h:'Price list',
+      order:['std','clean','sole'],
+      blocks:{}, /* clone later */
+      extra:'*If a service is not listed or you are unsure, contact us. We will consult specialists and propose the best method and fair pricing.*'
+    },
+    how:{h:'How to Use',shop:'In-store',post:'Mail-in',
+      shopLead:'Bring items to our address (TBD). We discuss work, quote and lead time before starting.',
+      s:['Visit & inspection','Quote, lead time & prepayment','Work (we notify via LINE/SMS/phone upon completion)','Pickup'],
+      p:['Send photos and request via LINE or Google Form','We reply with a rough quote and shipping address','Final quote after arrival → work after payment','Ship out as soon as completed']
+    },
+    ct:{h:'Contact',tel:'Phone (temp)',linebtn:'Official LINE',linesub:'↑ Deals and updates here ↑',formbtn:'Google Form'},
+    sns:{h:'SNS',note:'We post works on SNS.'},
+    about:{h:'About',
+      p1:'With hands and eyes trained in craft, we help you keep items in use for longer.',
+      p2:'Based on fundamentals of foot/shoe structure and hand-made shoemaking learned from specialists, we repair and clean with care.',
+      k1:'“Beshoe”',k1b:'means',k2:'美醜',jp:'',
+      p3:'“Be” your “shoe” again is one meaning,',
+      p4:'We value the idea that beauty and ugliness coexist.',
+      p5:'Keep pristine items beautiful, and restore unsightly ones back to beauty.',
+      p6:'We honor the true beauty that holds memories beyond price.',
+      p7:'That is the idea behind the name.'
+    }
+  }
+};
+/* EN 料金 = JAを複製 */
+DATA.en.price.blocks = JSON.parse(JSON.stringify(DATA.ja.price.blocks));
+
+/* 言語反映 */
+let lang='ja';
+const langBtn=
