@@ -172,37 +172,70 @@
   </div>
 
   <!-- News + Calendar -->
-  <section id="news" class="active">
-    <h1 data-i18n="news.h">お知らせ</h1>
+  <section id="news">
+  <h1 data-i18n="news.h">お知らせ</h1>
+  <div class="grid-2">
+    <!-- 左カラム：開店前セール -->
+    <div class="card" style="text-align:center">
+      <img src="sale.png" alt="開店前セール" style="width:100%;border-radius:12px;margin-bottom:16px;">
+      <div style="background:#e6f0ff;border:2px solid #3b82f6;border-radius:12px;padding:18px;">
+        <h3>開店前セールのお知らせ</h3>
+        <p>限定メニューを通常の半額で受付中。協力者はオープン後も同条件であと2回まで利用可能。受付はLINEまたはメールにて。</p>
+        <button id="toggleSale" style="margin-top:10px;padding:8px 14px;border:none;border-radius:8px;background:#3b82f6;color:white;font-weight:700;">詳しくはこちら</button>
+        <div id="saleDetail" style="display:none;margin-top:14px;text-align:left;white-space:pre-line;">
+BeShoeでは、正式な店舗オープンに先立ち、期間限定の開店前セールを開催しています。
 
-    <!-- Sale (single block with image + toggle) -->
-    <div class="sale-box" id="saleBox">
-      <img src="sale.png?v=2" alt="sale" style="width:100%;border-radius:10px;margin-bottom:10px">
-      <div style="font-size:22px;font-weight:800;color:#0e1a2a" data-i18n="sale.h">開店前セールのお知らせ</div>
-      <button id="saleToggle" class="sale-toggle" data-i18n="sale.toggle">詳しくはこちら ∨</button>
-      <div id="saleDetail" style="display:none;margin-top:12px">
-        <div id="saleText" class="note" style="text-align:left"></div>
-        <div class="sale-actions">
-          <a href="https://page.line.me/981xrswf" target="_blank" rel="noopener" class="btn-line" data-i18n="sale.line">LINEでお申し込み</a>
-          <a id="saleFormBtn" href="#" target="_blank" rel="noopener" class="btn-form" data-i18n="sale.form">フォームからお申し込み</a>
+作業環境が整った今、開店準備期間中にしかできない特別価格で、靴・鞄の修理やクリーニングをお試しいただけます。
+
+・ピンヒール修理
+・リフト交換
+・ハーフラバー
+・靴クリーニング（スタンダード）は通常価格の50％OFF！
+その他すべてのメニューも30％OFF！！
+（50%OFFと30%OFFのメニューを組み合わせた修理の際は、それぞれ該当する割引額の合計となります）
+
+さらに、
+・4点以上のご依頼で「返送料無料」
+・8,000円以上のご利用で「往復送料無料」
+
+現在は埼玉県・越谷駅周辺の作業拠点にて対応しております。
+お近くの方は、直接のお持ち込みも可能（現状：木曜日のみ）です。
+郵送先も埼玉県・越谷駅周辺の作業拠点となります。
+お客様ご自身でご用意いただいた箱・袋に梱包のうえお送りください。
+修理完了後は、お送りいただいた梱包材を再利用して返送いたします。
+
+修理のご依頼は、公式LINEまたはGoogleフォームから受け付けています。
+初回の方はどなたでもセール割引をご利用いただけます。
+2回目以降も割引を継続して利用できるのは、LINE公式アカウントにご登録のうえ、初回ご利用後のアンケートにご協力いただいた方のみとなります。
+
+仕上がりの品質向上と開業後の参考事例づくりのため、
+施工過程や仕上がりをSNS等で紹介させていただくことをご了承の上での受付となります。
+（個人が特定される内容は掲載いたしません）
+
+一点ずつ丁寧に対応いたします。この機会にぜひお試しください。
+
+※原則店舗物件が決まり次第（都内予定・時期未定）終了となりますが、実験的かつ出血大キャンペーンのため、
+想像以上の反響をいただいた場合や、予期せぬトラブル、物理的に店主から血が出た場合は、
+早期の終了、内容変更をいたします。
         </div>
       </div>
     </div>
 
-    <div class="grid-2">
-      <div class="card">
-        <div id="newsList"></div>
-        <p class="note" data-i18n="news.note">最新のお知らせは随時更新します。</p>
-      </div>
-      <div class="card">
-        <h3 data-i18n="cal.h">営業日カレンダー</h3>
-        <div style="aspect-ratio:4/3;max-height:520px">
-          <iframe title="calendar" src="https://calendar.google.com/calendar/embed?src=beshoe.repair%40gmail.com&ctz=Asia%2FTokyo" style="border:0;width:100%;height:100%;border-radius:12px" loading="lazy"></iframe>
-        </div>
-        <p class="note" data-i18n="cal.note">予定はカレンダー更新で自動反映されます。</p>
-      </div>
+    <!-- 右カラム：営業日カレンダー -->
+    <div class="card">
+      <h3 data-i18n="cal.h">営業日カレンダー</h3>
+      <iframe title="calendar" src="https://calendar.google.com/calendar/embed?src=beshoe.repair%40gmail.com&ctz=Asia%2FTokyo" style="border:0;width:100%;height:420px;border-radius:12px" loading="lazy"></iframe>
+      <p class="note" data-i18n="cal.note">予定はカレンダー更新で自動反映されます。</p>
     </div>
-  </section>
+  </div>
+</section>
+
+<script>
+document.getElementById('toggleSale').addEventListener('click',()=>{
+  const d = document.getElementById('saleDetail');
+  d.style.display = (d.style.display==='none'||d.style.display==='')?'block':'none';
+});
+</script>
 
   <!-- Price -->
   <section id="price">
