@@ -130,14 +130,11 @@ footer{padding:32px 0;color:var(--muted);text-align:center}
     <!-- 開店前セール（単一・青枠・折りたたみ詳細） -->
     <div class="sale-box" id="saleBox">
       <div style="text-align:center;font-weight:800;font-size:20px" data-i18n="sale.h">開店前セールのお知らせ</div>
-      <p style="text-align:center;margin:6px 0" data-i18n="sale.short">
-        限定メニューを通常の半額で受付中。協力者はオープン後も同条件であと2回まで利用可能。受付はLINEまたはメールにて。
-      </p>
       <div style="text-align:center;margin-top:6px">
+        <img src="./sale.png?v=2" alt="sale" style="width:100%;border-radius:10px;margin:10px 0">
         <button id="saleToggle" style="border:none;background:#fff;padding:8px 14px;border-radius:10px;cursor:pointer" data-i18n="sale.toggle">詳しくはこちら ∨</button>
       </div>
       <div id="saleDetail" style="display:none;margin-top:10px">
-        <img src="./sale.png?v=2" alt="sale" style="width:100%;border-radius:10px;margin-bottom:10px">
         <div class="card" id="saleText"></div>
         <div class="sale-actions">
           <a class="btn" href="https://page.line.me/981xrswf" target="_blank" rel="noopener" data-i18n="sale.line">LINEでお申し込み</a>
@@ -275,14 +272,7 @@ function withTaxStr(line){
 const DATA={
   ja:{
     nav:{news:'お知らせ',price:'料金',how:'利用方法',contact:'問い合わせ',sns:'各SNS',about:'概要'},
-    news:{h:'お知らせ',note:'最新のお知らせは随時更新します。'},
-    sale:{
-      h:'開店前セールのお知らせ',
-      short:'限定メニューを通常の半額で受付中。協力者はオープン後も同条件であと2回まで利用可能。受付はLINEまたはメールにて。',
-      toggle:'詳しくはこちら ∨',
-      line:'LINEでお申し込み',
-      form:'フォームからお申し込み',
-      body:`BeShoeでは、正式な店舗オープンに先立ち、期間限定の開店前セールを開催しています。<br><br>
+    news:{h:'お知らせ',note:'最限定メニューを通常の半額で受付中<br><br>
 ピンヒール修理・リフト交換・ハーフラバー・靴クリーニング（スタンダード）は通常価格の50％OFF、その他すべてのメニューも30％OFF。<br><br>
 4点以上のご依頼で「返送料無料」／8,000円以上のご利用で「往復送料無料」。<br><br>
 ※郵送修理の場合、写真だけでは判断が難しく、文章のみでリスクや仕上がりの説明が難しい作業はお受けできない場合があります。`
