@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="ja">
 <head>
@@ -55,30 +54,15 @@
 
     /* Hero */
     .hero{display:flex;justify-content:center;align-items:center;margin:14px 0 0}
-   .hero-img{
-  width:100%;
-  max-width:1100px;
-  height:auto;              /* ← 固定高さをやめる */
-  max-height:72vh;          /* ← 画面に収まる上限だけ設定（任意） */
-  object-fit:contain;       /* ← トリミングせず全体を表示 */
-  object-position:center;   /* ← 中央配置 */
-  display:block;
-  margin:0 auto;
-  border-radius:14px;
-  box-shadow:0 6px 18px rgba(17,24,39,.06);
-  background:#fff;
-}
-@media (max-width:840px){
-  .hero-img{
-    height:auto;            /* ← モバイルでも高さ固定しない */
-    max-height:60vh;        /* ← 縦長で大きくなりすぎないように（任意） */
-    object-fit:contain;
-    object-position:center;
-  }
-}
+    .hero-img{
+      width:100%;max-width:1100px;height:auto;max-height:72vh;object-fit:contain;object-position:center;
+      display:block;margin:0 auto;border-radius:14px;box-shadow:0 6px 18px rgba(17,24,39,.06);background:#fff
+    }
+    @media (max-width:840px){
+      .hero-img{height:auto;max-height:60vh;object-fit:contain;object-position:center}
+    }
 
-
-    /* SNS buttons (colored) */
+    /* SNS buttons */
     .sns-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
     .sns{display:flex;align-items:center;gap:10px;padding:12px;border-radius:12px;background:#fff;text-decoration:none;font-weight:700;color:#111;justify-content:center}
     .sns.ig{color:#fff;background:linear-gradient(45deg,#fd5949,#d6249f,#285AEB)}
@@ -115,7 +99,7 @@
 
     footer{padding:36px 0;color:var(--muted);text-align:center}
 
-    /* Mobile + hamburger */
+    /* Mobile */
     @media (max-width:840px){
       .wrap{padding:0 14px}
       header .nav{gap:10px;padding:10px 12px}
@@ -139,8 +123,7 @@
     .sale-actions{display:flex;gap:10px;justify-content:center;margin-top:10px;flex-wrap:wrap}
     .btn-line{background:#06C755;color:#fff;text-decoration:none;padding:10px 16px;border-radius:10px;display:inline-block}
     .btn-form{background:#111;color:#fff;text-decoration:none;padding:10px 16px;border-radius:10px;display:inline-block}
-    .grid-2{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}
-@media (max-width:840px){.grid-2{grid-template-columns:1fr}}
+    @media (max-width:840px){.grid-2{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
@@ -175,24 +158,20 @@
   </div>
 
   <!-- News + Calendar -->
-<section id="news" class="active">
-  <h1 data-i18n="news.h">お知らせ</h1>
+  <section id="news" class="active">
+    <h1 data-i18n="news.h">お知らせ</h1>
+    <div class="grid-2">
+      <!-- Left: Sale -->
+      <div class="card" style="text-align:center">
+        <img id="saleImage" src="sale.png" alt="開店前セール" style="width:100%;border-radius:12px;margin-bottom:16px;">
+        <div class="sale-box">
+          <h3 id="saleTitle">開店前セールのお知らせ</h3>
+          <p id="saleLead">限定メニューを通常の半額で受付中。協力者はオープン後も同条件であと2回まで利用可能。受付はLINEまたはGoogleフォームにて。</p>
 
-  <div class="grid-2"><!-- ← 親：左右2カラム -->
+          <button id="toggleSale" class="sale-toggle">詳しくはこちら ∨</button>
 
-    <!-- 左カラム：セール -->
-    <div class="card" style="text-align:center">
-      <img src="sale.png" alt="開店前セール" style="width:100%;border-radius:12px;margin-bottom:16px;">
-      <div style="background:#e6f0ff;border:2px solid #3b82f6;border-radius:12px;padding:18px;">
-        <h3>開店前セールのお知らせ</h3>
-        <p>限定メニューを通常の半額で受付中。協力者はオープン後も同条件であと2回まで利用可能。受付はLINEまたはGoogleフォームにて。</p>
-
-
-        <button id="toggleSale" style="margin-top:2px;padding:8px 14px;border:none;border-radius:8px;background:#3b82f6;color:#fff;font-weight:700;">
-          詳しくはこちら
-        </button>
-
-        <div id="saleDetail" style="display:none;margin-top:14px;text-align:left;white-space:pre-line;">
+          <div id="saleDetail" style="display:none;margin-top:14px;text-align:left;white-space:pre-line;">
+            <div id="saleText">
 BeShoeでは、正式な店舗オープンに先立ち、期間限定の開店前セールを開催しています。
 
 作業環境が整った今、開店準備期間中にしかできない特別価格で、靴・鞄の修理やクリーニングをお試しいただけます。
@@ -201,7 +180,7 @@ BeShoeでは、正式な店舗オープンに先立ち、期間限定の開店�
 ・リフト交換
 ・ハーフラバー
 ・革靴・スニーカークリーニング（スタンダード）は通常価格の50％OFF！
-          
+
 その他すべてのメニューも30％OFF！！
 （50%OFFと30%OFFのメニューを組み合わせた修理の際は、それぞれ該当する割引額の合計となります）
 
@@ -213,7 +192,7 @@ BeShoeでは、正式な店舗オープンに先立ち、期間限定の開店�
 お近くの方は、直接のお持ち込みも可能（現状：木曜日のみ）です。
 郵送先は靴クリーニングは東京都、その他のメニューは埼玉県・越谷駅周辺の作業拠点となります。
 お客様ご自身でご用意いただいた箱・袋に梱包のうえお送りください。
-お見積もり、納期等にご納得いただけましたら詳しい郵送先お伝えいたします
+お見積もり、納期等にご納得いただけましたら詳しい郵送先お伝えいたします。
 修理完了後は、お送りいただいた梱包材を再利用して返送いたします。
 
 修理のご依頼は、公式LINEまたはGoogleフォームから受け付けています。
@@ -229,42 +208,26 @@ BeShoeでは、正式な店舗オープンに先立ち、期間限定の開店�
 ※原則店舗物件が決まり次第（都内予定・時期未定）終了となりますが、実験的かつ出血大キャンペーンのため、
 想像以上の反響をいただいた場合や、予期せぬトラブル、物理的に店主から血が出た場合は、
 早期の終了、内容変更をいたします。
+            </div>
 
-<div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:16px;">
-  <a id="saleLineBtn" href="https://page.line.me/981xrswf" target="_blank" rel="noopener"
-     style="background:#06C755;color:#fff;font-weight:700;padding:10px 16px;border-radius:10px;text-decoration:none;">
-     LINEでお申し込み
-  </a>
-  <a id="saleFormBtn" href="https://docs.google.com/forms/d/e/1FAIpQLSf9o97G87u-Xt7iC8LCMYAIL1PdNBX6ff00Y-rm0viorL61Rw/viewform?usp=dialog"
-     target="_blank" rel="noopener"
-     style="background:#111;color:#fff;font-weight:700;padding:10px 16px;border-radius:10px;text-decoration:none;">
-     フォームからお申し込み
-  </a>
-</div>
-        </div><!-- /#saleDetail -->
-      </div><!-- /青枠 -->
-    </div><!-- /左カラム.card -->
-
-    <!-- 右カラム：カレンダー -->
-    <div class="card">
-      <h3 data-i18n="cal.h">営業日カレンダー</h3>
-      <div style="aspect-ratio:4/3;max-height:520px">
-        <iframe title="calendar"
-          src="https://calendar.google.com/calendar/embed?src=beshoe.repair%40gmail.com&ctz=Asia%2FTokyo"
-          style="border:0;width:100%;height:100%;border-radius:12px" loading="lazy"></iframe>
+            <div class="sale-actions">
+              <a id="saleLineBtn" href="https://page.line.me/981xrswf" target="_blank" rel="noopener" class="btn-line">LINEでお申し込み</a>
+              <a id="saleFormBtn" href="https://docs.google.com/forms/d/e/1FAIpQLSf9o97G87u-Xt7iC8LCMYAIL1PdNBX6ff00Y-rm0viorL61Rw/viewform?usp=dialog" target="_blank" rel="noopener" class="btn-form">フォームからお申し込み</a>
+            </div>
+          </div>
+        </div>
       </div>
-      <p class="note" data-i18n="cal.note">予定はカレンダー更新で自動反映されます。</p>
-    </div><!-- /右カラム.card -->
 
-  </div><!-- /.grid-2 -->
-</section>
-  
-<script>
-document.getElementById('toggleSale').addEventListener('click',()=>{
-  const d = document.getElementById('saleDetail');
-  d.style.display = (d.style.display==='none'||d.style.display==='')?'block':'none';
-});
-</script>
+      <!-- Right: Calendar -->
+      <div class="card">
+        <h3 data-i18n="cal.h">営業日カレンダー</h3>
+        <div style="aspect-ratio:4/3;max-height:520px">
+          <iframe title="calendar" src="https://calendar.google.com/calendar/embed?src=beshoe.repair%40gmail.com&ctz=Asia%2FTokyo" style="border:0;width:100%;height:100%;border-radius:12px" loading="lazy"></iframe>
+        </div>
+        <p class="note" data-i18n="cal.note">予定はカレンダー更新で自動反映されます。</p>
+      </div>
+    </div>
+  </section>
 
   <!-- Price -->
   <section id="price">
@@ -285,18 +248,6 @@ document.getElementById('toggleSale').addEventListener('click',()=>{
       <div class="card" style="text-align:center">
         <h3 data-i18n="how.post">郵送</h3>
         <ol id="howPost" class="steps"></ol>
-
-<div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:12px;">
-  <a href="https://page.line.me/981xrswf" target="_blank" rel="noopener"
-     style="background:#06C755;color:#fff;font-weight:700;padding:10px 16px;border-radius:10px;text-decoration:none;">
-     LINEでお申し込み
-  </a>
-  <a href="https://docs.google.com/forms/d/e/1FAIpQLSf9o97G87u-Xt7iC8LCMYAIL1PdNBX6ff00Y-rm0viorL61Rw/viewform?usp=dialog"
-     target="_blank" rel="noopener"
-     style="background:#111;color:#fff;font-weight:700;padding:10px 16px;border-radius:10px;text-decoration:none;">
-     フォームからお申し込み
-  </a>
-</div>
         <div class="sale-actions" id="howButtons"></div>
         <p class="note" id="postNote"></p>
       </div>
@@ -380,87 +331,44 @@ document.getElementById('toggleSale').addEventListener('click',()=>{
         order:['standard','clean','sole'],
         blocks:{
           standard:{title:'通常修理料金　　納期10日〜',
-  groups:[
-    {subtitle:'靴', items:[
-      'ピンヒール　¥1,300(¥1,430)',
-      'ヒールリフト小　¥1,500(¥1,650)',
-      'ヒール巻き替え　¥9,000(¥9,900)',
-      'ヒール取り替え　¥20,000(¥22,000)',
-      '中敷交換 全敷 ¥4,000(¥4,400)／半敷 ¥3,500(¥3,850)',
-      'ヒールリフト 5〜6mm　¥3,500(¥3,850)',
-      'ヒールリフト 8mm〜　¥5,000(¥5,500)',
-      'ビブラム等 20mm　¥6,000(¥6,600)',
-      'トゥスチール　¥3,700(¥4,070)',
-      'スベリ革交換（革靴）¥6,000(¥6,600)',
-      'ハーフラバーソール　¥3,500(¥3,850)',
-      'かかとコーナー（傾斜）¥3,500(¥3,850)',
-      'つま先 レザー ¥3,500(¥3,850)／ラバー ¥3,000(¥3,300)',
-      'フラットソール再接着（片足）¥6,000(¥6,600)',
-      'カップソール再接着（片足）¥10,000(¥11,000)'
-    ]},
-
-    {subtitle:'靴磨き', items:[
-      'ベーシック ¥1,800(¥1,980)',
-      'ベーシックブーツ ¥2,500(¥2,750)',
-      'ハイシャイン ¥4,000(¥4,400)',
-      'ハイシャインブーツ ¥6,000(¥6,600)'
-    ]},
-
-    {subtitle:'バッグ修理', items:[
-      '穴あけ１箇所目 ¥600(¥660)〜追加一個につき¥200(¥220)',
-      'ドットボタンバネホック ¥1,000(¥1,100)',
-      'ホコロビ修理ミシン ¥1,500(¥1,650)',
-      'ホコロビ修理手縫い ¥2,500(¥2,750)',
-      '金具交換(縫い解きなし) ¥8,000(¥8,800)',
-      'ファスナー交換 ¥12,000(¥13,200)',
-      'スライダー交換 ¥4,500(¥4,950)',
-      '内張交換(落とし込み) ¥28,000(¥30,800)',
-      '内張交換(張り込み) ¥48,000(¥52,800)'
-    ]}
-  ]
-},
+            groups:[
+              {subtitle:'靴', items:[
+                'ピンヒール　¥1,300(¥1,430)','ヒールリフト小　¥1,500(¥1,650)','ヒール巻き替え　¥9,000(¥9,900)','ヒール取り替え　¥20,000(¥22,000)',
+                '中敷交換 全敷 ¥4,000(¥4,400)／半敷 ¥3,500(¥3,850)','ヒールリフト 5〜6mm　¥3,500(¥3,850)','ヒールリフト 8mm〜　¥5,000(¥5,500)',
+                'ビブラム等 20mm　¥6,000(¥6,600)','トゥスチール　¥3,700(¥4,070)','スベリ革交換（革靴）¥6,000(¥6,600)',
+                'ハーフラバーソール　¥3,500(¥3,850)','かかとコーナー（傾斜）¥3,500(¥3,850)','つま先 レザー ¥3,500(¥3,850)／ラバー ¥3,000(¥3,300)',
+                'フラットソール再接着（片足）¥6,000(¥6,600)','カップソール再接着（片足）¥10,000(¥11,000)'
+              ]},
+              {subtitle:'靴磨き', items:[
+                'ベーシック ¥1,800(¥1,980)','ベーシックブーツ ¥2,500(¥2,750)','ハイシャイン ¥4,000(¥4,400)','ハイシャインブーツ ¥6,000(¥6,600)'
+              ]},
+              {subtitle:'バッグ修理', items:[
+                '穴あけ１箇所目 ¥600(¥660)〜追加一個につき¥200(¥220)','ドットボタンバネホック ¥1,000(¥1,100)','ホコロビ修理ミシン ¥1,500(¥1,650)',
+                'ホコロビ修理手縫い ¥2,500(¥2,750)','金具交換(縫い解きなし) ¥8,000(¥8,800)','ファスナー交換 ¥12,000(¥13,200)',
+                'スライダー交換 ¥4,500(¥4,950)','内張交換(落とし込み) ¥28,000(¥30,800)','内張交換(張り込み) ¥48,000(¥52,800)'
+              ]}
+            ]
+          },
           clean:{title:'クリーニング　　納期10日〜', groups:[
             {subtitle:'靴', items:[
-              'スニーカークリーニング スタンダード　¥5,500（¥6,050）',
-              '厚底・コンビ素材　¥7,500（¥8,250）',
-              '革靴 スタンダード　¥5,500（¥6,050）',
-              'ブーツ スタンダード　¥6,500（¥7,150）',
-              'カビ取り　¥7,000（¥7,700）'
+              'スニーカークリーニング スタンダード　¥5,500（¥6,050）','厚底・コンビ素材　¥7,500（¥8,250）','革靴 スタンダード　¥5,500（¥6,050）',
+              'ブーツ スタンダード　¥6,500（¥7,150）','カビ取り　¥7,000（¥7,700）'
             ]},
             {subtitle:'オプション', items:[
-              '傷補修1箇所　¥2,000（¥2,200）',
-              'カラー 部分補修　¥5,000（¥5,500）',
-              'カラー 全体補修　¥7,000（¥7,700）',
+              '傷補修1箇所　¥2,000（¥2,200）','カラー 部分補修　¥5,000（¥5,500）','カラー 全体補修　¥7,000（¥7,700）',
               'パティーヌ：短靴 ¥15,000（¥16,500）／ブーツ ¥20,000（¥22,000）／バッグ ¥20,000（¥22,000）'
             ]},
-            {subtitle:'バッグ', items:[
-              'スムース革　¥7,000（¥7,700）',
-              '特殊素材　¥9,000（¥9,900）'
-            ]},
-            {subtitle:'オプション', items:[
-              'カラー 部分補修　¥8,000（¥8,800）',
-              'カラー 全体補修　¥10,000（¥11,000）'
-            ]}
+            {subtitle:'バッグ', items:['スムース革　¥7,000（¥7,700）','特殊素材　¥9,000（¥9,900）']},
+            {subtitle:'オプション', items:['カラー 部分補修　¥8,000（¥8,800）','カラー 全体補修　¥10,000（¥11,000）']}
           ]},
           sole:{title:'オールソール　　納期1.5ヶ月〜', groups:[
-            {subtitle:'レザーオールソール', items:[
-              '（リフトはラバー Vibram5350 または革とのコンビリフト）',
-              '¥18,000（¥19,800）'
-            ]},
+            {subtitle:'レザーオールソール', items:['（リフトはラバー Vibram5350 または革とのコンビリフト）','¥18,000（¥19,800）']},
             {subtitle:'オプション', items:[
-              'ハーフソール　¥3,500（¥3,850）',
-              'トゥスチール　¥3,700（¥4,070）',
-              'ヒドゥンチャネル　¥4,000（¥4,400）',
-              '半カラス　¥4,000（¥4,400）',
-              'リウェルト　¥15,000（¥16,500）',
-              '中底交換　¥13,000（¥14,300）',
-              '先心抜き　¥12,000（¥13,200）',
-              'ダブルソール　¥6,000（¥6,600)'
+              'ハーフソール　¥3,500（¥3,850）','トゥスチール　¥3,700（¥4,070）','ヒドゥンチャネル　¥4,000（¥4,400）','半カラス　¥4,000（¥4,400）',
+              'リウェルト　¥15,000（¥16,500）','中底交換　¥13,000（¥14,300）','先心抜き　¥12,000（¥13,200）','ダブルソール　¥6,000（¥6,600)'
             ]},
             {subtitle:'ラバーオールソール', items:[
-              'クッションソール　¥16,000（¥17,600）',
-              'ラバーソール　¥17,000（¥18,700）',
-              'ミッドソール（合成ゴム）¥5,000（¥5,500）／（革）¥6,000（¥6,600）'
+              'クッションソール　¥16,000（¥17,600）','ラバーソール　¥17,000（¥18,700）','ミッドソール（合成ゴム）¥5,000（¥5,500）／（革）¥6,000（¥6,600）'
             ]}
           ]}
         },
@@ -489,70 +397,38 @@ document.getElementById('toggleSale').addEventListener('click',()=>{
       nav:{news:'News',price:'Price',how:'How to Use',contact:'Contact',sns:'SNS',about:'About'},
       news:{h:'News',note:'Latest updates will appear here.'},
       cal:{h:'Calendar',note:'Updates reflect automatically via Google Calendar.'},
-      sale:{h:'Pre-opening Sale',toggle:'More details ∨',line:'Apply via LINE',form:'Apply via Form',
-        body:'We are now accepting limited-menu services at half the regular price. Supporters can use the same condition two more times after opening. Contact via LINE or email.'},
+      sale:{h:'Pre-opening Sale Notice',toggle:'See details ∨',line:'Official LINE',form:'Google Form',
+        body:'We are now accepting limited-menu services at half the regular price. Supporters can use the same condition two more times after opening. Apply via LINE or the form.'},
       price:{h:'Price list (tax incl.)',
         order:['standard','clean','sole'],
         blocks:{
           standard:{title:'Standard Repairs', groups:[{subtitle:'', items:[
-            'Pin heel ¥1,200 (¥1,320)',
-            'Small heel lift ¥1,400 (¥1,540)',
-            'Heel wrap replacement ¥9,000 (¥9,900)',
-            'Heel block replacement ¥20,000 (¥22,000)',
-            'Insole replace full ¥4,000 (¥4,400) / half ¥3,500 (¥3,850)',
-            'Heel lift 5–6mm ¥3,300 (¥3,630)',
-            'Heel lift 8mm+ ¥4,300 (¥4,730)',
-            'Vibram etc. 20mm ¥5,000 (¥5,500)',
-            'Toe steel ¥3,700 (¥4,070)',
-            'Lining patch at heel (leather shoes) ¥6,000 (¥6,600)',
-            'Half rubber sole ¥3,300 (¥3,630)',
-            'Heel corner bevel ¥3,000 (¥3,300)',
-            'Toe patch leather ¥3,000 (¥3,300) / rubber ¥2,500 (¥2,750)',
-            'Flat sole re-glue (per foot) ¥6,000 (¥6,600)',
-            'Cup sole re-glue (per foot) ¥10,000 (¥11,000)'
+            'Pin heel ¥1,200 (¥1,320)','Small heel lift ¥1,400 (¥1,540)','Heel wrap replacement ¥9,000 (¥9,900)','Heel block replacement ¥20,000 (¥22,000)',
+            'Insole replace full ¥4,000 (¥4,400) / half ¥3,500 (¥3,850)','Heel lift 5–6mm ¥3,300 (¥3,630)','Heel lift 8mm+ ¥4,300 (¥4,730)',
+            'Vibram etc. 20mm ¥5,000 (¥5,500)','Toe steel ¥3,700 (¥4,070)','Lining patch at heel (leather shoes) ¥6,000 (¥6,600)',
+            'Half rubber sole ¥3,300 (¥3,630)','Heel corner bevel ¥3,000 (¥3,300)','Toe patch leather ¥3,000 (¥3,300) / rubber ¥2,500 (¥2,750)',
+            'Flat sole re-glue (per foot) ¥6,000 (¥6,600)','Cup sole re-glue (per foot) ¥10,000 (¥11,000)'
           ]}]},
           clean:{title:'Cleaning', groups:[
             {subtitle:'Shoes', items:[
-              'Sneaker cleaning – standard ¥5,500 (¥6,050)',
-              'Thick sole / mixed materials ¥7,500 (¥8,250)',
-              'Leather shoes – standard ¥5,500 (¥6,050)',
-              'Boots – standard ¥6,500 (¥7,150)',
-              'Mold removal ¥7,000 (¥7,700)'
+              'Sneaker cleaning – standard ¥5,500 (¥6,050)','Thick sole / mixed materials ¥7,500 (¥8,250)','Leather shoes – standard ¥5,500 (¥6,050)',
+              'Boots – standard ¥6,500 (¥7,150)','Mold removal ¥7,000 (¥7,700)'
             ]},
             {subtitle:'Options', items:[
-              'Scratch repair (per spot) ¥2,000 (¥2,200)',
-              'Color touch-up (partial) ¥5,000 (¥5,500)',
-              'Full recolor ¥7,000 (¥7,700)',
+              'Scratch repair (per spot) ¥2,000 (¥2,200)','Color touch-up (partial) ¥5,000 (¥5,500)','Full recolor ¥7,000 (¥7,700)',
               'Patina: shoes ¥15,000 (¥16,500) / boots ¥20,000 (¥22,000) / bags ¥20,000 (¥22,000)'
             ]},
-            {subtitle:'Bags', items:[
-              'Smooth leather ¥7,000 (¥7,700)',
-              'Special materials ¥9,000 (¥9,900)'
-            ]},
-            {subtitle:'Options', items:[
-              'Color touch-up (partial) ¥8,000 (¥8,800)',
-              'Full recolor ¥10,000 (¥11,000)'
-            ]}
+            {subtitle:'Bags', items:['Smooth leather ¥7,000 (¥7,700)','Special materials ¥9,000 (¥9,900)']},
+            {subtitle:'Options', items:['Color touch-up (partial) ¥8,000 (¥8,800)','Full recolor ¥10,000 (¥11,000)']}
           ]},
           sole:{title:'Full Sole Replacement', groups:[
-            {subtitle:'Leather full sole', items:[
-              'Lift: rubber Vibram 5350 or leather combo',
-              '¥18,000 (¥19,800)'
-            ]},
+            {subtitle:'Leather full sole', items:['Lift: rubber Vibram 5350 or leather combo','¥18,000 (¥19,800)']},
             {subtitle:'Options', items:[
-              'Half sole ¥3,500 (¥3,850)',
-              'Toe steel ¥3,700 (¥4,070)',
-              'Hidden channel ¥4,000 (¥4,400)',
-              'Half black waist ¥4,000 (¥4,400)',
-              'Re-welting ¥15,000 (¥16,500)',
-              'Insole replacement ¥13,000 (¥14,300)',
-              'Toe puff removal ¥12,000 (¥13,200)',
-              'Double sole ¥6,000 (¥6,600)'
+              'Half sole ¥3,500 (¥3,850)','Toe steel ¥3,700 (¥4,070)','Hidden channel ¥4,000 (¥4,400)','Half black waist ¥4,000 (¥4,400)',
+              'Re-welting ¥15,000 (¥16,500)','Insole replacement ¥13,000 (¥14,300)','Toe puff removal ¥12,000 (¥13,200)','Double sole ¥6,000 (¥6,600)'
             ]},
             {subtitle:'Rubber full sole', items:[
-              'Cushion sole ¥16,000 (¥17,600)',
-              'Rubber sole ¥17,000 (¥18,700)',
-              'Midsole (synthetic) ¥5,000 (¥5,500) / (leather) ¥6,000 (¥6,600)'
+              'Cushion sole ¥16,000 (¥17,600)','Rubber sole ¥17,000 (¥18,700)','Midsole (synthetic) ¥5,000 (¥5,500) / (leather) ¥6,000 (¥6,600)'
             ]}
           ]}
         },
@@ -583,6 +459,7 @@ document.getElementById('toggleSale').addEventListener('click',()=>{
   let lang = 'ja';
   const langBtn = document.getElementById('langBtn');
   function i18nText(path){ const D = DATA[lang]; const ks = path.split('.'); let cur = D; for(const k of ks) cur = cur?.[k]; return typeof cur==='string'?cur:''; }
+
   function i18nApply(){
     document.documentElement.lang = lang;
     document.title = lang==='ja' ? 'Repair shop Beshoe｜靴修理・クリーニング' : 'Repair shop Beshoe｜Shoe Repair & Cleaning';
@@ -593,25 +470,25 @@ document.getElementById('toggleSale').addEventListener('click',()=>{
 
     const hero = document.getElementById('heroImage');
     if(hero){ hero.src = (lang==='en') ? 'IMG_0099_hero.png' : 'IMG_0099_hero.jpg'; }
-    
-// --- セール枠 多言語切替（本文だけ差し替え／ボタンは残す） ---
-const st  = document.getElementById('saleTitle');   // 見出し
-const sl  = document.getElementById('saleLead');    // リード文
-const tgl = document.getElementById('toggleSale');  // 「詳しくはこちら」
-const det = document.getElementById('saleDetail');  // 詳細全体
-const txt = document.getElementById('saleText');    // ← 詳細の本文だけ
-const bl  = document.getElementById('saleLineBtn'); // LINEボタン
-const bf  = document.getElementById('saleFormBtn'); // フォームボタン
 
-if (st && sl && tgl && det && txt) {
-  if (lang === 'en') {
-    st.textContent  = 'Pre-opening Sale Notice';
-    sl.textContent  = 'Limited menu at half price. Supporters can use the same discount two more times after opening. Apply via LINE or the form.';
-    tgl.textContent = (det.style.display === 'block') ? 'Close' : 'See details';
-    if (bl) bl.textContent = 'Apply via LINE';
-    if (bf) bf.textContent = 'Apply via form';
+    // Sale box i18n
+    const st  = document.getElementById('saleTitle');
+    const sl  = document.getElementById('saleLead');
+    const tgl = document.getElementById('toggleSale');
+    const det = document.getElementById('saleDetail');
+    const txt = document.getElementById('saleText');
+    const bl  = document.getElementById('saleLineBtn');
+    const bf  = document.getElementById('saleFormBtn');
 
-    txt.textContent =
+    if (st && sl && tgl && det && txt) {
+      if (lang === 'en') {
+        st.textContent  = DATA.en.sale.h;
+        sl.textContent  = DATA.en.sale.body; // 短いリード
+        tgl.textContent = (det.style.display === 'block') ? 'Close ∧' : DATA.en.sale.toggle;
+        if (bl) bl.textContent = DATA.en.sale.line;  // Official LINE
+        if (bf) bf.textContent = DATA.en.sale.form;  // Google Form
+
+        txt.textContent =
 `We are running a limited pre-opening sale.
 
 Now that our setup is ready, you can try shoe and bag repair/cleaning at special prices available only during our preparation period.
@@ -643,79 +520,35 @@ For quality improvement and reference cases after opening, we may introduce the 
 We handle each item carefully. Please take this opportunity to try our service.
 
 *This campaign will basically end when our store location is fixed (planned in Tokyo; date TBD). Due to its experimental nature, if response is beyond expectation or unexpected issues occur, we may end or change the contents earlier.*`;
-  } else {
-    st.textContent  = '開店前セールのお知らせ';
-    sl.textContent  = '限定メニューを通常の半額で受付中。協力者はオープン後も同条件であと2回まで利用可能。受付はLINEまたはGoogleフォームにて。';
-    tgl.textContent = (det.style.display === 'block') ? '閉じる' : '詳しくはこちら';
-    if (bl) bl.textContent = 'LINEでお申し込み';
-    if (bf) bf.textContent = 'フォームからお申し込み';
+      } else {
+        st.textContent  = DATA.ja.sale.h;
+        sl.textContent  = DATA.ja.sale.body;
+        tgl.textContent = (det.style.display === 'block') ? '閉じる ∧' : DATA.ja.sale.toggle;
+        if (bl) bl.textContent = DATA.ja.sale.line;
+        if (bf) bf.textContent = DATA.ja.sale.form;
 
-    // 日本語本文（元の長文）をそのまま戻す
-    txt.textContent =
-`BeShoeでは、正式な店舗オープンに先立ち、期間限定の開店前セールを開催しています。
+        // 日本語本文はそのまま saleText に保持（既にHTML内）
+      }
+    }
 
-作業環境が整った今、開店準備期間中にしかできない特別価格で、靴・鞄の修理やクリーニングをお試しいただけます。
+    // 英語時に日本語ロゴと sale.png を隠す
+    const jpLogo = document.querySelector('.brand-sub');
+    const saleImg = document.getElementById('saleImage');
+    if (lang === 'en') { if (jpLogo) jpLogo.style.display='none'; if (saleImg) saleImg.style.display='none'; }
+    else { if (jpLogo) jpLogo.style.display=''; if (saleImg) saleImg.style.display=''; }
 
-・ピンヒール修理
-・リフト交換
-・ハーフラバー
-・革靴・スニーカークリーニング（スタンダード）は通常価格の50％OFF！
-
-その他すべてのメニューも30％OFF！！
-（50%OFFと30%OFFのメニューを組み合わせた修理の際は、それぞれ該当する割引額の合計となります）
-
-さらに、
-・4点以上のご依頼で「返送料無料」
-・8,000円以上のご利用で「往復送料無料」
-
-現在は埼玉県・越谷駅周辺の作業拠点にて対応しております。
-お近くの方は、直接のお持ち込みも可能（現状：木曜日のみ）です。
-郵送先は靴クリーニングは東京都、その他のメニューは埼玉県・越谷駅周辺の作業拠点となります。
-お客様ご自身でご用意いただいた箱・袋に梱包のうえお送りください。
-お見積もり、納期等にご納得いただけましたら詳しい郵送先お伝えいたします。
-修理完了後は、お送りいただいた梱包材を再利用して返送いたします。
-
-修理のご依頼は、公式LINEまたはGoogleフォームから受け付けています。
-初回の方はどなたでもセール割引をご利用いただけます。
-2回目以降も割引を継続して利用できるのは、LINE公式アカウントにご登録のうえ、初回ご利用後のアンケートにご協力いただいた方のみとなります。
-
-仕上がりの品質向上と開業後の参考事例づくりのため、
-施工過程や仕上がりをSNS等で紹介させていただくことをご了承の上での受付となります。
-（個人が特定される内容は掲載いたしません）
-
-一点ずつ丁寧に対応いたします。この機会にぜひお試しください。
-
-※原則店舗物件が決まり次第（都内予定・時期未定）終了となりますが、実験的かつ出血大キャンペーンのため、
-想像以上の反響をいただいた場合や、予期せぬトラブル、物理的に店主から血が出た場合は、
-早期の終了、内容変更をいたします。`;
+    renderPrice();
+    renderHow();
+    renderPostNote();
+    loadNews();
+    attachFormLinks();
   }
-}
 
-// --- 英語時に日本語ロゴと sale.png を隠す ---
-const jpLogo = document.querySelector('.brand-sub');
-const saleImg = document.getElementById('saleImage'); // id指定が安全
-if (lang === 'en') {
-  if (jpLogo)  jpLogo.style.display  = 'none';
-  if (saleImg) saleImg.style.display = 'none';
-} else {
-  if (jpLogo)  jpLogo.style.display  = '';
-  if (saleImg) saleImg.style.display = '';
-}
-
-// --- セールボタンの英語表記（ボタンは常に表示） ---
-const saleLineBtn = document.getElementById('saleLineBtn');
-const saleFormBtn = document.getElementById('saleFormBtn');
-if (lang === 'en') {
-  if (saleLineBtn) saleLineBtn.textContent = 'Apply via LINE';
-  if (saleFormBtn) saleFormBtn.textContent = 'Apply via form';
-} else {
-  if (saleLineBtn) saleLineBtn.textContent = 'LINEでお申し込み';
-  if (saleFormBtn) saleFormBtn.textContent = 'フォームからお申し込み';
-}
-
-    renderPrice(); renderHow(); renderPostNote(); loadNews(); renderSale(); attachFormLinks();
-  }
-  langBtn.addEventListener('click',()=>{ lang = (lang==='ja')?'en':'ja'; langBtn.textContent = (lang==='ja')?'EN':'日本語'; i18nApply(); });
+  langBtn.addEventListener('click',()=>{
+    lang = (lang==='ja')?'en':'ja';
+    langBtn.textContent = (lang==='ja')?'EN':'日本語';
+    i18nApply();
+  });
 
   /* Hamburger */
   const menuBtn = document.getElementById('menuBtn');
@@ -725,12 +558,11 @@ if (lang === 'en') {
     menuBtn.setAttribute('aria-expanded', open?'true':'false');
   });
 
-  /* SPA: switch sections + keep hash, close menu on nav */
+  /* SPA: switch sections + keep hash + close menu */
   const sections = Array.from(document.querySelectorAll('main section'));
   function switchTo(id){
     sections.forEach(s=>s.classList.toggle('active', s.id===id));
     document.querySelectorAll('#nav a').forEach(a=>a.classList.toggle('active', a.getAttribute('href')==='#'+id));
-    // close hamburger on mobile after navigation
     document.getElementById('nav').classList.remove('open');
     menuBtn.setAttribute('aria-expanded','false');
   }
@@ -738,13 +570,14 @@ if (lang === 'en') {
     if(e.target.tagName==='A'){
       e.preventDefault();
       const id = e.target.getAttribute('href').slice(1);
-      location.hash = id;
+      location.hash = id; // ハッシュに保存 → リロードしても同じセクション
     }
   });
   function initSection(){ const id = (location.hash || '#news').slice(1); switchTo(id); }
   window.addEventListener('hashchange', initSection);
+  window.addEventListener('DOMContentLoaded', initSection, {once:true});
 
-  /* Price render in desired order */
+  /* Price render */
   function renderPrice(){
     const box = document.getElementById('priceBlocks');
     const order = DATA[lang].price.order;
@@ -767,6 +600,15 @@ if (lang === 'en') {
     document.getElementById('howShop').innerHTML = D.s.map(x=>`<li>${x}</li>`).join('');
     document.getElementById('howPost').innerHTML = D.p.map(x=>`<li>${x}</li>`).join('');
     document.querySelector('[data-i18n="how.shopLead"]').textContent = D.shopLead;
+
+    // 郵送欄ボタン（言語ラベルは sale.line / sale.form を流用）
+    const hb = document.getElementById('howButtons');
+    if(hb){
+      hb.innerHTML = `
+        <a href="https://page.line.me/981xrswf" target="_blank" rel="noopener" class="btn-line">${i18nText('sale.line')}</a>
+        <a href="${FORM_URL}" target="_blank" rel="noopener" class="btn-form">${i18nText('sale.form')}</a>
+      `;
+    }
   }
   function renderPostNote(){
     const txt_ja = '※写真だけでは判断が難しく、文章のみでリスクや仕上がりの説明が難しい作業はお受けできない場合があります。店頭にお持ちいただければ対応可能な場合もありますので、お気軽にご相談ください。';
@@ -775,40 +617,34 @@ if (lang === 'en') {
     if(el) el.textContent = (lang==='ja')?txt_ja:txt_en;
   }
 
-  /* Attach LINE & Form buttons under Mail-in step 4 and in Contact */
+  /* Attach form links */
   function attachFormLinks(){
     const saleFormBtn = document.getElementById('saleFormBtn');
     if(saleFormBtn) saleFormBtn.href = FORM_URL;
     const contactFormBtn = document.getElementById('contactFormBtn');
     if(contactFormBtn) contactFormBtn.href = FORM_URL;
-
-    const howBtns = document.getElementById('howButtons');
-    if(howBtns){
-      howBtns.innerHTML = `
-        <a href="https://page.line.me/981xrswf" target="_blank" rel="noopener" class="btn-line">${i18nText('sale.line')}</a>
-        <a href="${FORM_URL}" target="_blank" rel="noopener" class="btn-form">${i18nText('sale.form')}</a>
-      `;
-    }
   }
 
-  /* Sale toggle */
-  function renderSale(){
-    document.getElementById('saleText').textContent = DATA[lang].sale.body;
-    const btn = document.getElementById('saleToggle');
+  /* Sale toggle button */
+  (function(){
+    const btn = document.getElementById('toggleSale');
     const box = document.getElementById('saleDetail');
     if(btn && box){
-      btn.onclick = ()=>{
-        const open = box.style.display !== 'none';
+      btn.addEventListener('click', ()=>{
+        const open = box.style.display === 'block';
         box.style.display = open ? 'none' : 'block';
-        btn.textContent = open ? i18nText('sale.toggle') : (lang==='ja'?'閉じる ∧':'Close ∧');
-      };
+        btn.textContent = (lang==='ja')
+          ? (open ? '詳しくはこちら ∨' : '閉じる ∧')
+          : (open ? 'See details ∨' : 'Close ∧');
+      });
     }
-  }
+  })();
 
-  /* News (exclude sale items, avoid double note) */
+  /* News (exclude sale items) */
   async function loadNews(){
-    const el = document.getElementById('newsList');
+    const el = document.getElementById('newsList'); // 無ければ何もしない
     const note = document.querySelector('#news [data-i18n="news.note"]');
+    if(!el){ if(note) note.style.display='block'; return; }
     try{
       const r = await fetch('news.json?v='+Date.now(), {cache:'no-store'});
       const list = await r.json();
@@ -829,7 +665,7 @@ if (lang === 'en') {
       }).join('');
       if(note) note.style.display='none';
     }catch(e){
-      el.innerHTML='';
+      if(el) el.innerHTML='';
       if(note){ note.textContent=(lang==='ja'?'お知らせを読み込めませんでした。':'Failed to load news.'); note.style.display='block'; }
     }
   }
@@ -837,36 +673,6 @@ if (lang === 'en') {
   /* Init */
   function boot(){ i18nApply(); initSection(); }
   boot();
-</script>
-  <script>
-const nav = document.getElementById('nav');
-nav.addEventListener('click', (e)=>{
-  if(e.target.tagName==='A'){
-    e.preventDefault();
-    const id = e.target.getAttribute('href').slice(1);
-    location.hash = id;
-    nav.classList.remove('open');
-    document.getElementById('menuBtn')?.setAttribute('aria-expanded','false');
-  }
-});
-</script>
-<script>
-const sections = Array.from(document.querySelectorAll('main section'));
-
-function switchTo(id){
-  sections.forEach(s => s.classList.toggle('active', s.id===id));
-  document.querySelectorAll('#nav a').forEach(a=>{
-    a.classList.toggle('active', a.getAttribute('href')==='#'+id);
-  });
-}
-
-function initSection(){
-  const id = (location.hash || '#news').slice(1);
-  switchTo(id);
-}
-
-window.addEventListener('hashchange', initSection);
-window.addEventListener('DOMContentLoaded', initSection, {once:true});
 </script>
 </body>
 </html>
