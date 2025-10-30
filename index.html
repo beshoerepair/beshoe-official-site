@@ -107,7 +107,7 @@
       .menu{display:none;position:absolute;right:12px;top:52px;flex-direction:column;gap:6px;background:#fff;padding:10px;border-radius:12px;box-shadow:0 12px 32px rgba(0,0,0,.12)}
       .menu.open{display:flex}
       .menu a,.menu button{padding:8px 12px;font-size:14px}
-      .brand-sub{font-size:12px;margin-left:6px}
+      .brand-sub{font-size:12px}
       .brand-top{font-size:12px}
       h1{font-size:28px} h2{font-size:22px} h3{font-size:18px} h4{font-size:16px}
       .grid-2,.grid-3,.sns-grid{grid-template-columns:1fr}
@@ -318,8 +318,12 @@ BeShoeでは、正式な店舗オープンに先立ち、期間限定の開店�
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 
+  /* Form URLs */
+  const FORM_URL_JA = 'https://docs.google.com/forms/d/e/1FAIpQLSf9o97G87u-Xt7iC8LCMYAIL1PdNBX6ff00Y-rm0viorL61Rw/viewform?usp=dialog';
+  const FORM_URL_EN = 'https://docs.google.com/forms/d/1VofaONnznnfVX-JjFgy76UZTq_wku-lza0e1APo3p8g/edit';
+  function formUrl(){ return lang==='en' ? FORM_URL_EN : FORM_URL_JA; }
+
   /* Data */
-  const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSf9o97G87u-Xt7iC8LCMYAIL1PdNBX6ff00Y-rm0viorL61Rw/viewform?usp=dialog';
   const DATA = {
     ja: {
       nav:{news:'お知らせ',price:'料金',how:'利用方法',contact:'問い合わせ',sns:'各SNS',about:'概要'},
@@ -483,10 +487,10 @@ BeShoeでは、正式な店舗オープンに先立ち、期間限定の開店�
     if (st && sl && tgl && det && txt) {
       if (lang === 'en') {
         st.textContent  = DATA.en.sale.h;
-        sl.textContent  = DATA.en.sale.body; // 短いリード
+        sl.textContent  = DATA.en.sale.body;
         tgl.textContent = (det.style.display === 'block') ? 'Close ∧' : DATA.en.sale.toggle;
-        if (bl) bl.textContent = DATA.en.sale.line;  // Official LINE
-        if (bf) bf.textContent = DATA.en.sale.form;  // Google Form
+        if (bl) bl.textContent = DATA.en.sale.line;
+        if (bf) bf.textContent = DATA.en.sale.form;
 
         txt.textContent =
 `We are running a limited pre-opening sale.
@@ -526,8 +530,6 @@ We handle each item carefully. Please take this opportunity to try our service.
         tgl.textContent = (det.style.display === 'block') ? '閉じる ∧' : DATA.ja.sale.toggle;
         if (bl) bl.textContent = DATA.ja.sale.line;
         if (bf) bf.textContent = DATA.ja.sale.form;
-
-        // 日本語本文はそのまま saleText に保持（既にHTML内）
       }
     }
 
@@ -570,7 +572,7 @@ We handle each item carefully. Please take this opportunity to try our service.
     if(e.target.tagName==='A'){
       e.preventDefault();
       const id = e.target.getAttribute('href').slice(1);
-      location.hash = id; // ハッシュに保存 → リロードしても同じセクション
+      location.hash = id; // ハッシュ保持 → リロードで同ページ
     }
   });
   function initSection(){ const id = (location.hash || '#news').slice(1); switchTo(id); }
@@ -606,7 +608,7 @@ We handle each item carefully. Please take this opportunity to try our service.
     if(hb){
       hb.innerHTML = `
         <a href="https://page.line.me/981xrswf" target="_blank" rel="noopener" class="btn-line">${i18nText('sale.line')}</a>
-        <a href="${FORM_URL}" target="_blank" rel="noopener" class="btn-form">${i18nText('sale.form')}</a>
+        <a href="${formUrl()}" target="_blank" rel="noopener" class="btn-form">${i18nText('sale.form')}</a>
       `;
     }
   }
@@ -620,9 +622,12 @@ We handle each item carefully. Please take this opportunity to try our service.
   /* Attach form links */
   function attachFormLinks(){
     const saleFormBtn = document.getElementById('saleFormBtn');
-    if(saleFormBtn) saleFormBtn.href = FORM_URL;
+    if(saleFormBtn) saleFormBtn.href = formUrl();
     const contactFormBtn = document.getElementById('contactFormBtn');
-    if(contactFormBtn) contactFormBtn.href = FORM_URL;
+    if(contactFormBtn){
+      contactFormBtn.href = formUrl();
+      contactFormBtn.textContent = (lang==='en') ? 'Google Form' : 'Googleフォーム';
+    }
   }
 
   /* Sale toggle button */
