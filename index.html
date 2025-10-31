@@ -380,4 +380,280 @@ BeShoeでは、正式な店舗オープンに先立ち、期間限定の開店�
       news:{h:'News',note:'Latest updates will appear here.'},
       cal:{h:'Calendar',note:'Updates reflect automatically via Google Calendar.'},
       sale:{h:'Pre-opening Sale Notice',toggle:'See details ∨',line:'Official LINE',form:'Google Form',
-        body:'Limited menus at half price for this year only. Apply via LINE or the Go
+        body:'Limited menus at half price for this year only. Apply via LINE or the Google Form.'},
+      price:{h:'Price list (tax incl.)',
+        order:['standard','clean','sole'],
+        blocks:{
+          standard:{title:'Standard Repairs', groups:[{subtitle:'', items:[
+            'Pin heel ¥1,200 (¥1,320)','Small heel lift ¥1,400 (¥1,540)','Heel wrap replacement ¥9,000 (¥9,900)','Heel block replacement ¥20,000 (¥22,000)',
+            'Insole replace full ¥4,000 (¥4,400) / half ¥3,500 (¥3,850)','Heel lift 5–6mm ¥3,300 (¥3,630)','Heel lift 8mm+ ¥4,300 (¥4,730)',
+            'Vibram etc. 20mm ¥5,000 (¥5,500)','Toe steel ¥3,700 (¥4,070)','Lining patch at heel (leather shoes) ¥6,000 (¥6,600)',
+            'Half rubber sole ¥3,300 (¥3,630)','Heel corner bevel ¥3,000 (¥3,300)','Toe patch leather ¥3,000 (¥3,300) / rubber ¥2,500 (¥2,750)',
+            'Flat sole re-glue (per foot) ¥6,000 (¥6,600)','Cup sole re-glue (per foot) ¥10,000 (¥11,000)'
+          ]}]},
+          clean:{title:'Cleaning', groups:[
+            {subtitle:'Shoes', items:[
+              'Sneaker cleaning – standard ¥5,500 (¥6,050)','Thick sole / mixed materials ¥7,500 (¥8,250)','Leather shoes – standard ¥5,500 (¥6,050)',
+              'Boots – standard ¥6,500 (¥7,150)','Mold removal ¥7,000 (¥7,700)'
+            ]},
+            {subtitle:'Options', items:[
+              'Scratch repair (per spot) ¥2,000 (¥2,200)','Color touch-up (partial) ¥5,000 (¥5,500)','Full recolor ¥7,000 (¥7,700)',
+              'Patina: shoes ¥15,000 (¥16,500) / boots ¥20,000 (¥22,000) / bags ¥20,000 (¥22,000)'
+            ]},
+            {subtitle:'Bags', items:['Smooth leather ¥7,000 (¥7,700)','Special materials ¥9,000 (¥9,900)']},
+            {subtitle:'Options', items:['Color touch-up (partial) ¥8,000 (¥8,800)','Full recolor ¥10,000 (¥11,000)']}
+          ]},
+          sole:{title:'Full Sole Replacement', groups:[
+            {subtitle:'Leather full sole', items:['Lift: rubber Vibram 5350 or leather combo','¥18,000 (¥19,800)']},
+            {subtitle:'Options', items:[
+              'Half sole ¥3,500 (¥3,850)','Toe steel ¥3,700 (¥4,070)','Hidden channel ¥4,000 (¥4,400)','Half black waist ¥4,000 (¥4,400)',
+              'Re-welting ¥15,000 (¥16,500)','Insole replacement ¥13,000 (¥14,300)','Toe puff removal ¥12,000 (¥13,200)','Double sole ¥6,000 (¥6,600)'
+            ]},
+            {subtitle:'Rubber full sole', items:[
+              'Cushion sole ¥16,000 (¥17,600)','Rubber sole ¥17,000 (¥18,700)','Midsole (synthetic) ¥5,000 (¥5,500) / (leather) ¥6,000 (¥6,600)'
+            ]}
+          ]}
+        },
+        noteExtra:'*If you have a request not listed, feel free to contact us. We can consult with specialists and propose the right method and pricing.*'
+      },
+      how:{h:'How to Use',shop:'In-store',post:'Mail-in',
+        shopLead:'Please bring your items to our address (TBD). We discuss the work, quote and lead time before starting.',
+        s:['Visit & inspection','Quote, lead time & prepayment','Work (we notify via LINE/SMS/phone when completed)','Pickup'],
+        p:['Send photos and request via LINE or Google Form (email)','We reply with a rough quote and shipping address','Final quote after arrival → work after payment','Ship out as soon as completed']
+      },
+      ct:{h:'Contact',linebtn:'Official LINE',linesub:'↑ Deals and updates here ↑',tel:'Phone (temp)',note:'Address and hours will be announced.'},
+      sns:{h:'SNS',note:'We post works on SNS.'},
+      about:{h:'About',
+        p1:'With hands and eyes trained in making things, we help you keep your items in use for longer.',
+        p2:'Grounded in fundamentals of foot/shoe structure and hand-made shoemaking learned from specialists, we repair and clean with care.',
+        k1:'“Beshoe”',k1b:'means',k2:'美醜', jp:'',
+        p3:'“Be” your “shoe” again is one meaning,',
+        p4:'and we also value the idea that beauty and ugliness coexist.',
+        p5:'We keep pristine items beautiful, and restore those that became unsightly back to beauty.',
+        p6:'Even with scars or wear, we honor the true beauty that holds memories beyond price.',
+        p7:'That is the idea behind the name.'
+      },
+      legal:'Company info and legal notice will be posted later.'
+    }
+  };
+
+  let lang = 'ja';
+  const langBtn = document.getElementById('langBtn');
+
+  function i18nText(path){
+    const D = DATA[lang];
+    const ks = path.split('.');
+    let cur = D;
+    for(const k of ks) cur = cur?.[k];
+    return typeof cur==='string'?cur:'';
+  }
+
+  function i18nApply(){
+    document.documentElement.lang = lang;
+    document.title = lang==='ja' ? 'Repair shop Beshoe｜靴修理・クリーニング' : 'Repair shop Beshoe｜Shoe Repair & Cleaning';
+    document.querySelectorAll('[data-i18n]').forEach(el=>{ el.textContent = i18nText(el.getAttribute('data-i18n')); });
+
+    const bi = document.getElementById('biShuNote');
+    if(bi){ bi.style.display = (lang==='en')?'inline-block':'none'; if(lang==='en'){ bi.textContent = 'This means beauty and ugliness.'; } }
+
+    const hero = document.getElementById('heroImage');
+    if(hero){ hero.src = (lang==='en') ? 'IMG_0099_hero.png' : 'IMG_0099_hero.jpg'; }
+
+    // Sale box i18n
+    const st  = document.getElementById('saleTitle');
+    const sl  = document.getElementById('saleLead');
+    const tgl = document.getElementById('toggleSale');
+    const det = document.getElementById('saleDetail');
+    const txt = document.getElementById('saleText');
+    const bl  = document.getElementById('saleLineBtn');
+    const bf  = document.getElementById('saleFormBtn');
+
+    if (st && sl && tgl && det && txt) {
+      if (lang === 'en') {
+        st.textContent  = DATA.en.sale.h;
+        sl.textContent  = DATA.en.sale.body; // ← 英文のリード
+        tgl.textContent = det.style.display === 'block' ? 'Close ∧' : DATA.en.sale.toggle;
+        if (bl) bl.textContent = DATA.en.sale.line;
+        if (bf) bf.textContent = DATA.en.sale.form;
+        // 英文の詳細
+        txt.textContent =
+`We are running a limited pre-opening sale.
+
+Now that our setup is ready, you can try shoe and bag repair/cleaning at special prices available only during our preparation period.
+
+• Pin heel repair
+• Heel lift
+• Half rubber sole
+→ 50% OFF the regular price
+
+All other menus → 30% OFF
+(When combining 50%-off and 30%-off items, each discount applies to its item and is summed.)
+
+More benefits:
+• Free return shipping for 4+ items
+• Free round-trip shipping for orders over ¥8,000
+
+We currently operate near Koshigaya Station, Saitama.
+Direct drop-off is available (currently Thursdays only).
+
+For mail-in: please pack items in a box or bag you provide and ship to our worksite near Koshigaya Station. We will reuse your packing materials for the return.
+
+Requests are accepted via Official LINE or the Google Form.
+Anyone can use the sale discount for the first order.
+For continued discounts from the second time onward, please register our Official LINE and answer the post-service survey.
+
+For quality improvement and reference cases after opening, we may introduce the process and results on SNS. We will not post any personally identifiable information.
+
+We handle each item carefully. Please take this opportunity to try our service.
+
+*The campaign basically ends by Dec 31, 2025 (form input deadline). Contents may change or end earlier depending on response or issues.*`;
+      } else {
+        st.textContent  = DATA.ja.sale.h;
+        sl.textContent  = DATA.ja.sale.body; // ← 新しいリード文で上書き
+        tgl.textContent = det.style.display === 'block' ? '閉じる ∧' : DATA.ja.sale.toggle;
+        if (bl) bl.textContent = DATA.ja.sale.line;
+        if (bf) bf.textContent = DATA.ja.sale.form;
+      }
+    }
+
+    // 英語時は日本語ロゴと sale.png を隠す
+    const jpLogo = document.querySelector('.brand-sub');
+    const saleImg = document.getElementById('saleImage');
+    if (lang === 'en') { if (jpLogo) jpLogo.style.display='none'; if (saleImg) saleImg.style.display='none'; }
+    else { if (jpLogo) jpLogo.style.display=''; if (saleImg) saleImg.style.display=''; }
+
+    renderPrice();
+    renderHow();
+    renderPostNote();
+    loadNews();
+    attachFormLinks();
+  }
+
+  langBtn.addEventListener('click',()=>{
+    lang = (lang==='ja')?'en':'ja';
+    langBtn.textContent = (lang==='ja')?'EN':'日本語';
+    i18nApply();
+  });
+
+  const menuBtn = document.getElementById('menuBtn');
+  menuBtn.addEventListener('click', ()=>{
+    const nav = document.getElementById('nav');
+    const open = nav.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', open?'true':'false');
+  });
+
+  const sections = Array.from(document.querySelectorAll('main section'));
+  function switchTo(id){
+    sections.forEach(s=>s.classList.toggle('active', s.id===id));
+    document.querySelectorAll('#nav a').forEach(a=>a.classList.toggle('active', a.getAttribute('href')==='#'+id));
+    document.getElementById('nav').classList.remove('open');
+    menuBtn.setAttribute('aria-expanded','false');
+  }
+  document.getElementById('nav').addEventListener('click', (e)=>{
+    if(e.target.tagName==='A'){
+      e.preventDefault();
+      const id = e.target.getAttribute('href').slice(1);
+      location.hash = id;
+    }
+  });
+  function initSection(){ const id = (location.hash || '#news').slice(1); switchTo(id); }
+  window.addEventListener('hashchange', initSection);
+  window.addEventListener('DOMContentLoaded', initSection, {once:true});
+
+  function renderPrice(){
+    const box = document.getElementById('priceBlocks');
+    const order = DATA[lang].price.order;
+    const blocks = DATA[lang].price.blocks;
+    box.innerHTML = order.map(key=>{
+      const b = blocks[key];
+      const groups = b.groups.map(g=>`
+        ${g.subtitle?`<h4>${g.subtitle}</h4>`:''}
+        <ul>${g.items.map(it=>`<li>${it}</li>`).join('')}</ul>
+      `).join('');
+      return `<div class="price-block"><h3>${b.title}</h3>${groups}</div>`;
+    }).join('');
+    const extra = document.querySelector('[data-i18n="price.noteExtra"]');
+    if(extra){ extra.textContent = DATA[lang].price.noteExtra; }
+  }
+
+  function renderHow(){
+    const D = DATA[lang].how;
+    document.getElementById('howShop').innerHTML = D.s.map(x=>`<li>${x}</li>`).join('');
+    document.getElementById('howPost').innerHTML = D.p.map(x=>`<li>${x}</li>`).join('');
+    document.querySelector('[data-i18n="how.shopLead"]').textContent = D.shopLead;
+
+    const hb = document.getElementById('howButtons');
+    if(hb){
+      hb.innerHTML = `
+        <a href="https://page.line.me/981xrswf" target="_blank" rel="noopener" class="btn-line">${i18nText('sale.line')}</a>
+        <a href="${formUrl()}" target="_blank" rel="noopener" class="btn-form">${i18nText('sale.form')}</a>
+      `;
+    }
+  }
+
+  function renderPostNote(){
+    const txt_ja = '※写真だけでは判断が難しく、文章のみでリスクや仕上がりの説明が難しい作業はお受けできない場合があります。店頭にお持ちいただければ対応可能な場合もありますので、ご相談ください。';
+    const txt_en = 'Note: Some requests are hard to assess from photos and text alone. We may decline in such cases. Bringing items in-store may make them possible.';
+    const el = document.getElementById('postNote');
+    if(el) el.textContent = (lang==='ja')?txt_ja:txt_en;
+  }
+
+  function attachFormLinks(){
+    const saleFormBtn = document.getElementById('saleFormBtn');
+    if(saleFormBtn) saleFormBtn.href = formUrl();
+    const contactFormBtn = document.getElementById('contactFormBtn');
+    if(contactFormBtn){
+      contactFormBtn.href = formUrl();
+      contactFormBtn.textContent = (lang==='en') ? 'Google Form' : 'Googleフォーム';
+    }
+  }
+
+  // 詳細トグルの文言更新は言語に合わせて都度変える
+  (function(){
+    const btn = document.getElementById('toggleSale');
+    const box = document.getElementById('saleDetail');
+    if(btn && box){
+      btn.addEventListener('click', ()=>{
+        const open = box.style.display === 'block';
+        box.style.display = open ? 'none' : 'block';
+        btn.setAttribute('aria-expanded', open ? 'false' : 'true');
+        if (lang==='ja') btn.textContent = open ? '詳しくはこちら ∨' : '閉じる ∧';
+        else btn.textContent = open ? 'See details ∨' : 'Close ∧';
+      });
+    }
+  })();
+
+  async function loadNews(){
+    const el = document.getElementById('newsList');
+    const note = document.querySelector('#news [data-i18n="news.note"]');
+    if(!el){ if(note) note.style.display='block'; return; }
+    try{
+      const r = await fetch('news.json?v='+Date.now(), {cache:'no-store'});
+      const list = await r.json();
+      const filtered = list.filter(n=>{
+        const t = (n.title||'')+' '+(n.text||n.text_ja||'')+' '+(n.title_en||'')+' '+(n.text_en||'');
+        return !/(開店前セール|Pre[- ]?opening Sale|セール\b|SALE\b)/i.test(t);
+      });
+      if(filtered.length===0){ el.innerHTML=''; if(note) note.style.display='block'; return; }
+      el.innerHTML = filtered.map(n=>{
+        const title = (lang==='en')?(n.title_en||n.title||''):(n.title||'');
+        const text  = (lang==='en')?(n.text_en||n.text||n.text_ja||''):(n.text||n.text_ja||'');
+        return `
+          <div style="margin:10px 0;padding:18px;border-radius:16px;background:var(--paper2);box-shadow:0 6px 18px rgba(17,24,39,.05)">
+            <div style="font-weight:800">${title}</div>
+            <div class="note" style="margin-top:6px;text-align:left">${text}</div>
+            <div class="note" style="margin-top:6px">${n.date||''}</div>
+          </div>`;
+      }).join('');
+      if(note) note.style.display='none';
+    }catch(e){
+      if(el) el.innerHTML='';
+      if(note){ note.textContent=(lang==='ja'?'お知らせを読み込めませんでした。':'Failed to load news.'); note.style.display='block'; }
+    }
+  }
+
+  function boot(){ i18nApply(); initSection(); }
+  boot();
+</script>
+</body>
+</html>
